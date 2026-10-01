@@ -83,7 +83,7 @@ z         | z               | 06-26-00-20
 #   E H split in two, one step up and one step down, and the old line becomes negative space
 #   I keeps its bars and takes the diamond of ingwaz between them
 #   N a middle stave through the diagonal, like the stave of naudiz ᚾ
-#   P the pointed bowl of wunjo · F is fehu ᚠ itself
+#   P its diagonal doubled: a second one, a step lower, joined to the first at the right · F is fehu ᚠ itself
 #   K the branches of kaunan · L a second bar right above its foot · M W mannaz's cross
 #   Y algiz · Z a bar · J a short stem hanging free under its bar
 #   B C D G O Q R U V have no line to add: they take ONE stung dot, in the counter
@@ -103,7 +103,7 @@ L         | L               | 06-00-20 01-21
 M         | M               | 00-06-24 20-26-04
 N         | N               | 00-06-20-26 16-10
 O         | O               | =o 13
-P         | P               | 00-06-24-03
+P         | P               | 00-06-26-03 02 25-02-25-26
 Q         | Q               | =q 13
 R         | R               | 00-06-26-03-20 23
 S         | S               | 26-03-23-00 24 02

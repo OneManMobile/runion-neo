@@ -36,7 +36,7 @@ A capital is its lowercase letter with a rune accent: an added or split stroke, 
 | A T | A second crossing bar, like the two arms of ansuz ᚨ: A's sits right above its own, T's below its top. |
 | E H | The middle line splits in two, one step up and one step down, and the old line becomes the space between them. |
 | I | The bars stay, and the diamond of ingwaz ᛜ fills the space between them. |
-| P | Wunjo's ᚹ shape: the bowl comes to a point on the stave. |
+| P | The flag's diagonal is doubled: a second one, one step lower, joined to the first at the right. |
 | F | Fehu ᚠ itself. |
 | K | Branches: the arms meet in the middle like kaunan ᚲ. |
 | L | A second bar right above its foot. |
