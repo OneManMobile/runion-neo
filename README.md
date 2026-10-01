@@ -38,7 +38,8 @@ A capital is its lowercase letter with a rune accent: an added or split stroke, 
 | I | The bars stay, and the diamond of ingwaz ᛜ fills the space between them. |
 | P R | Wunjo's ᚹ shape and raido ᚱ themselves: the bowl comes to a point on the stave. |
 | F | Fehu ᚠ itself. |
-| K L | Branches: K's arms meet in the middle like kaunan ᚲ, L gets laguz's ᛚ slanted arm. |
+| K | Branches: the arms meet in the middle like kaunan ᚲ. |
+| L | A second bar right above its foot. |
 | N | Two downstrokes. The second bends into the bottom right and climbs the right stave. |
 | M W | The cross of mannaz ᛗ. |
 | Y | Algiz ᛉ: the Y with its stave continued to the top. |

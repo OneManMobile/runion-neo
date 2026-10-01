@@ -84,7 +84,7 @@ z         | z               | 06-26-00-20
 #   I keeps its bars and takes the diamond of ingwaz between them
 #   N two downstrokes: the second bends into the bottom right and climbs the right stave
 #   P R the pointed bowls of wunjo and raido · F is fehu ᚠ itself
-#   K L the branches of kaunan and laguz · M W mannaz's cross
+#   K the branches of kaunan · L a second bar right above its foot · M W mannaz's cross
 #   Y algiz · Z a bar · J a short stem hanging free under its bar
 #   B C D G O Q U V have no line to add: they take ONE stung dot, in the counter
 #   (B's sits at the middle right, between its two flags) · S takes two, one in each counter
@@ -99,7 +99,7 @@ H         | H               | 00-06 20-26 02-22 04-24
 I         | I               | 06-26 16-03-10-20-00-10-23-16
 J         | J               | 06-26-21-10-01 16 15-12
 K         | K               | 00-06 26-13-20 03-13
-L         | L               | =l 06-24
+L         | L               | 06-00-20 01-21
 M         | M               | 00-06-24 20-26-04
 N         | N               | 00-06 16-11-20-26
 O         | O               | =o 13
