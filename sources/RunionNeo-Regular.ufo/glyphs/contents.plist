@@ -146,6 +146,10 @@
     <string>dollar.glif</string>
     <key>dotaccent</key>
     <string>dotaccent.glif</string>
+    <key>dotlessi</key>
+    <string>dotlessi.glif</string>
+    <key>dotlessj</key>
+    <string>dotlessj.glif</string>
     <key>dottedcircle</key>
     <string>dottedcircle.glif</string>
     <key>e</key>
