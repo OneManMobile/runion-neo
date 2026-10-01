@@ -13,7 +13,7 @@ Runion Neo is a monospaced display typeface built from straight lines between do
 - **Playground:** open [`index.html`](index.html) or run `make serve`. It has a type tester with a weight slider, every character, and a sketchpad for drawing glyphs on the dots.
 - **Licence:** [SIL Open Font License 1.1](OFL.txt).
 
-![Light to Bold](documentation/weights.png)
+![Light to Bold](documentation/weight-range.png)
 
 ## How it is built
 

@@ -83,7 +83,7 @@ def weights():
         y = 40 + i * 170
         d.text((70, y + 70), f"{name} {w}", font=small, fill=SOFT)
         d.text((360, y), "runion neo  Runion Neo", font=font, fill=INK)
-    img.save(DOC / "weights.png")
+    img.save(DOC / "weight-range.png")
 
 
 def grid():
@@ -119,4 +119,4 @@ def grid():
 if __name__ == "__main__":
     DOC.mkdir(exist_ok=True)
     specimen(), weights(), grid()
-    print("→ documentation/specimen.png · weights.png · grid.png")
+    print("→ documentation/specimen.png · weight-range.png · grid.png")
