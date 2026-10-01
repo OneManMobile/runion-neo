@@ -84,15 +84,17 @@ x         | x               | 06-20 00-26
 y         | y               | 06-13-26 13-10
 z         | z               | 06-26-00-20
 
-# ── Latin capitals ── the same letter with a rune accent ───────────
+# ── Latin capitals ── the lowercase letter plus an ornament ──────────
+#   RULES: add, don't redraw — keep the lowercase form and add dots and/or lines; a line where
+#   a line fits, a dot where it doesn't · vibes trump rules: E, F, H (and Æ Œ Ð) redraw on purpose
 #   A a second bar right above its own · T a second bar below its top, like ansuz's second arm
 #   E splits its middle line in two, one step up and one step down · H is dagaz ᛞ: the bar becomes a cross
 #   I keeps its bars and stem and takes a crossbar through the middle
 #   P its diagonal doubled two steps lower and closed at the right · F is fehu ᚠ itself
-#   K the branches of kaunan · L a second bar right above its foot · M W mannaz's cross
+#   L a second bar right above its foot · M W mannaz's cross
 #   Y algiz · Z a bar · J a short stem hanging free under its bar
-#   B C G O Q R U V have no line to add: they take ONE stung dot, in the counter
-#   (B's, C's and R's sit at the middle right, in the open mouth) · S takes two, one in each
+#   B C G K O Q R U V have no line to add: they take ONE stung dot, in the counter
+#   (B's, C's, K's and R's sit at the middle right, in the open mouth) · S takes two, one in each
 #   counter · D two crossing lines from its stave out to its right edge
 #   N a short branch from the middle of its first stave down to the bottom middle
 A         | A               | 16-00-16-20 03-23 02-22
@@ -105,7 +107,7 @@ G         | G               | 26-03-20-23-13 24
 H         | H               | 00-06 20-26 04-22 02-24
 I         | I               | 06-26 00-20 16-10 03-23
 J         | J               | 06-26-21-10-01 16 15-12
-K         | K               | 00-06 26-13-20 03-13
+K         | K               | 00-06 26-03-20 23
 L         | L               | 06-00-20 01-21
 M         | M               | 00-06-24 20-26-04
 N         | N               | 00-06-20-26 03-10
@@ -130,7 +132,7 @@ Eth       | Ð Đ             | =d 02-12 04-14
 dotlessi  | ı               | =i
 dotlessj  | ȷ               | =j
 oslash    | ø               | 16-03-10-23-16 26-00
-Oslash    | Ø               | 16-03-10-23-16 22-04 02-24
+Oslash    | Ø               | 16-03-10-23-16 26-00 25-12 01-14
 #   å Å are drawn, not composed: the A comes down one step and the ring becomes a dot on its
 #   tip; a + combining ring (decomposed text) draws the same glyph
 aring     | å a+U+030A      | 00-15-20 02-22 16

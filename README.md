@@ -37,6 +37,13 @@ O is four lines, a diamond. C is two strokes; G is C with a stem and a short bar
 
 ### Capitals
 
+A capital is its lowercase letter with an ornament. The ornaments follow a few rules:
+
+- **Add, don't redraw.** Most capitals keep the lowercase letter as it is and add something to it: a dot, a bar, a branch or a cross.
+- **A line where a line fits.** Where the letter has room for one more line, it gets one: a second bar, a crossbar, a branch.
+- **A dot where it doesn't.** Letters with no room for a line get one dot, in the counter or at the middle right. A few take two.
+- **Vibes trump rules.** A handful of capitals change the letter itself because it looks better: E splits its middle line, H turns its bar into a cross, F raises its arms.
+
 | Capitals | Ornament |
 | --- | --- |
 | A T | A second crossing bar: A's right above its own, T's below its top. |
@@ -45,7 +52,6 @@ O is four lines, a diamond. C is two strokes; G is C with a stem and a short bar
 | I | A crossbar through the middle of the stem. |
 | L | A second bar right above the foot. |
 | F | The arms rise as diagonals. |
-| K | The arms meet in the middle. |
 | M W | A cross between the staves. |
 | N | A short branch from the middle of the first stave down to the bottom. |
 | P | The flag's diagonal is doubled and closed at the right. |
@@ -53,10 +59,10 @@ O is four lines, a diamond. C is two strokes; G is C with a stem and a short bar
 | J | A short stem hanging free under the top bar. |
 | Y | The stave runs on to the top. |
 | X Z | A bar across. |
-| B C G O Q R U V | One dot, in the counter or, for B, C and R, at the middle right. |
+| B C G K O Q R U V | One dot, in the counter or, for B, C, K and R, at the middle right. |
 | S | Two dots, one in each counter. |
 
-The rest follow the same logic. Æ, Œ and Ð split their middle bar like E. ø is the diamond with a slash, and Ø has a small cross instead. Å is drawn as a lower A with a dot above its tip.
+The rest follow the same logic. Æ, Œ and Ð split their middle bar like E. ø is the diamond with a slash, and Ø keeps that slash with a short stroke on either side of it. Å is drawn as a lower A with a dot above its tip.
 
 Everything is defined in one text file, [`sources/glyphs.txt`](sources/glyphs.txt).
 
