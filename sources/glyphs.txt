@@ -46,12 +46,13 @@ space     | U+0020          |
 uni00A0   | U+00A0          |
 
 # ── Latin lowercase ── the plain letter ────────────────────────────
-#   sharp: C D G are halves of the diamond O · P is three strokes, a flag on the stave;
-#   R is P plus a leg (four strokes); B is P with the flag mirrored below
+#   sharp: C G are halves of the diamond O · D is three strokes, a stave and a point
+#   P is three strokes, a flag on the stave; R is P plus a leg (four strokes);
+#   B is P with the flag mirrored below
 a         | a               | 00-16-20 02-22
 b         | b               | 00-06-26-03-20-00
 c         | c               | 26-16-03-10-20
-d         | d               | 00-06-16-23-10-00
+d         | d               | 00-06-23-00
 e         | e               | 26-06-00-20 03-13
 f         | f               | 00-06-26 03-13
 g         | g               | 26-16-03-10-20-22-12
