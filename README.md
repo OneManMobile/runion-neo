@@ -52,7 +52,9 @@ A capital is its lowercase letter with a rune accent: an added or split stroke, 
 | D S | Two dots. D's sit at the top and bottom of its right edge, S's in its two counters (upper right and lower left). |
 | N | A short branch from the middle of the first stave down to the bottom middle. |
 
-Æ, Œ, Ð, Ø, Þ, ẞ, Ħ and Ł follow the same rules. Æ, Œ and Ð split their middle bar like E. ø is the diamond O with one slash from corner to corner; capital Ø adds the other diagonal, so the slashes cross. Capital Þ is thurisaz ᚦ itself, the rune the Latin letter comes from.
+Æ, Œ, Ð, Ø, Þ, ẞ, Ħ and Ł follow the same rules. Æ, Œ and Ð split their middle bar like E. ø is the diamond O with one slash from corner to corner; capital Ø adds a dot in each of the other two corners. Capital Þ is thurisaz ᚦ itself, the rune the Latin letter comes from.
+
+Å is drawn rather than built from A and a ring: the A comes down one step and the ring becomes a dot above its tip. å has one bar, Å two, like a and A.
 
 The lowercase letters are sharp too. O is four lines, a diamond, the same shape as ingwaz ᛜ. C is two strokes, the angle of kaunan ᚲ. G is four: C, then up to the middle and a bar inwards that stops short of the first strokes. Capital G's dot sits in the mouth above that bar. D is three strokes: a stave and a point. P is a flag on the stave with a 45° diagonal; R is a stave, a flag and a leg (four strokes), and B is a flag with a second one mirrored below. S is three strokes: from the upper right down to the middle left, across to the middle right, and down to the lower left.
 

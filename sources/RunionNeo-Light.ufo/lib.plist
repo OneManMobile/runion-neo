@@ -67,6 +67,8 @@
       <string>dotlessj</string>
       <string>oslash</string>
       <string>Oslash</string>
+      <string>aring</string>
+      <string>Aring</string>
       <string>oe</string>
       <string>OE</string>
       <string>thorn</string>
@@ -213,7 +215,6 @@
       <string>uni00C2</string>
       <string>uni00C3</string>
       <string>uni00C4</string>
-      <string>uni00C5</string>
       <string>uni00C7</string>
       <string>uni00C8</string>
       <string>uni00C9</string>
@@ -239,7 +240,6 @@
       <string>uni00E2</string>
       <string>uni00E3</string>
       <string>uni00E4</string>
-      <string>uni00E5</string>
       <string>uni00E7</string>
       <string>uni00E8</string>
       <string>uni00E9</string>

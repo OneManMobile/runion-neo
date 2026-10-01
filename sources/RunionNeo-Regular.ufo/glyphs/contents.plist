@@ -8,6 +8,8 @@
     <string>A_.glif</string>
     <key>AE</key>
     <string>A_E_.glif</string>
+    <key>Aring</key>
+    <string>A_ring.glif</string>
     <key>B</key>
     <string>B_.glif</string>
     <key>C</key>
@@ -86,6 +88,8 @@
     <string>ansuz_ring.glif</string>
     <key>ar</key>
     <string>ar.glif</string>
+    <key>aring</key>
+    <string>aring.glif</string>
     <key>asciicircum</key>
     <string>asciicircum.glif</string>
     <key>asciitilde</key>
@@ -372,8 +376,6 @@
     <string>uni00C_3.glif</string>
     <key>uni00C4</key>
     <string>uni00C_4.glif</string>
-    <key>uni00C5</key>
-    <string>uni00C_5.glif</string>
     <key>uni00C7</key>
     <string>uni00C_7.glif</string>
     <key>uni00C8</key>
@@ -424,8 +426,6 @@
     <string>uni00E_3.glif</string>
     <key>uni00E4</key>
     <string>uni00E_4.glif</string>
-    <key>uni00E5</key>
-    <string>uni00E_5.glif</string>
     <key>uni00E7</key>
     <string>uni00E_7.glif</string>
     <key>uni00E8</key>

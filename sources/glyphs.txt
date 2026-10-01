@@ -130,7 +130,11 @@ Eth       | Ð Đ             | =d 02-12 04-14
 dotlessi  | ı               | =i
 dotlessj  | ȷ               | =j
 oslash    | ø               | 16-03-10-23-16 26-00
-Oslash    | Ø               | 16-03-10-23-16 26-00 06-20
+Oslash    | Ø               | 16-03-10-23-16 26-00 06 20
+#   å Å are drawn, not composed: the A comes down one step and the ring becomes a dot on its
+#   tip; a + combining ring (decomposed text) draws the same glyph
+aring     | å a+U+030A      | 00-15-20 02-22 16
+Aring     | Å A+U+030A      | 00-15-20 02-22 16 03-23
 oe        | œ               | 26-16-03-10-20 16-10 13-23
 OE        | Œ               | 26-16-03-10-20 16-10 14-24 12-22
 thorn     | þ               | 00-06 05-15-24-22-11-01
