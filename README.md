@@ -36,7 +36,7 @@ A capital is its lowercase letter with a rune accent: an added or split stroke, 
 | A T | A second crossing bar, like the two arms of ansuz ᚨ: A's sits right above its own, T's below its top. |
 | E H | The middle line splits in two, one step up and one step down, and the old line becomes the space between them. |
 | I | The bars stay, and the diamond of ingwaz ᛜ fills the space between them. |
-| P R | Wunjo's ᚹ shape and raido ᚱ themselves: the bowl comes to a point on the stave. |
+| P | Wunjo's ᚹ shape: the bowl comes to a point on the stave. |
 | F | Fehu ᚠ itself. |
 | K | Branches: the arms meet in the middle like kaunan ᚲ. |
 | L | A second bar right above its foot. |
@@ -45,7 +45,7 @@ A capital is its lowercase letter with a rune accent: an added or split stroke, 
 | Y | Algiz ᛉ: the Y with its stave continued to the top. |
 | X Z | A bar across. |
 | J | A short stem under the top bar, hanging free between the bar and the hook. |
-| B C D G O Q U V | These have no line to add, so they get one dot, in the counter or, for B and C, at the middle right in the open mouth. Medieval carvers made new letters from runes the same way, with a dot: the stung runes. |
+| B C D G O Q R U V | These have no line to add, so they get one dot, in the counter or, for B, C and R, at the middle right in the open mouth. Medieval carvers made new letters from runes the same way, with a dot: the stung runes. |
 | S | Two dots, one in each counter: upper right and lower left. |
 
 Æ, Œ, Ð, Ø, Þ, ẞ, Ħ and Ł follow the same rules. Æ, Œ and Ð split their middle bar like E. Ø gets two slashes, the strokes of the medieval ø rune ᚯ. Capital Þ is thurisaz ᚦ itself, the rune the Latin letter comes from.
