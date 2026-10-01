@@ -37,8 +37,11 @@
 #  strokes    :   "=name" reuses the strokes of a glyph defined above
 # ─────────────────────────────────────────────────────────────────────
 
-# ── settings ── one stroke width for everything ──
+# ── settings ── one stroke width for everything in a weight ──
+#   the Regular, and the Light and Bold masters of the variable font (wght 300 · 400 · 700)
 @stroke      50
+@light       32
+@bold        74
 @charset     charsets/GF_Latin_Core.txt
 
 .notdef   |                 | 00-06-26-20-00 00-26
@@ -48,7 +51,7 @@ uni00A0   | U+00A0          |
 # ── Latin lowercase ── the plain letter ────────────────────────────
 #   sharp: C is two strokes, the angle of kaunan · G is four: C, then up to
 #   the middle, then a bar inwards that stops short of the first strokes · D is a stave and a point
-#   P is three strokes, a flag on the stave; R is P plus a leg (four strokes);
+#   P is a flag on the stave, its diagonal at 45° (26-04); R is a stave, a flag and a leg (four strokes);
 #   B is P with the flag mirrored below · S is three strokes: upper right down to the middle
 #   left, across to the middle right, down to the lower left
 a         | a               | 00-16-20 02-22
@@ -66,7 +69,7 @@ l         | l               | 06-00-20
 m         | m               | 00-06-15-26-20
 n         | n               | 00-06-20-26
 o         | o               | 16-23-10-03-16
-p         | p               | 00-06-26-03
+p         | p               | 00-06-26-04-02
 q         | q               | =o 11-20
 r         | r               | 00-06-26-03-20
 s         | s               | 26-03-23-00
@@ -80,22 +83,23 @@ z         | z               | 06-26-00-20
 
 # ── Latin capitals ── the same letter with a rune accent ───────────
 #   A a second bar right above its own · T a second bar below its top, like ansuz's second arm
-#   E H split in two, one step up and one step down, and the old line becomes negative space
+#   E splits its middle line in two, one step up and one step down · H is dagaz ᛞ: the bar becomes a cross
 #   I keeps its bars and takes the diamond of ingwaz between them
 #   N a middle stave through the diagonal, like the stave of naudiz ᚾ
-#   P its diagonal doubled: a second one, a step lower, joined to the first at the right · F is fehu ᚠ itself
+#   P its diagonal doubled two steps lower and closed at the right · F is fehu ᚠ itself
 #   K the branches of kaunan · L a second bar right above its foot · M W mannaz's cross
 #   Y algiz · Z a bar · J a short stem hanging free under its bar
-#   B C D G O Q R U V have no line to add: they take ONE stung dot, in the counter
-#   (B's, C's and R's sit at the middle right, in the open mouth) · S takes two, one in each counter
+#   B C G O Q R U V have no line to add: they take ONE stung dot, in the counter
+#   (B's, C's and R's sit at the middle right, in the open mouth) · S takes two, one in each
+#   counter · D takes two, at the top and bottom of its right edge
 A         | A               | 16-00-16-20 03-23 02-22
 B         | B               | =b 23
 C         | C               | 26-03-20 23
-D         | D               | =d 13
+D         | D               | 06-00-23-06 26 20
 E         | E               | 26-06-00-20 04-14 02-12
 F         | F               | 06-00 04-26 02-24
 G         | G               | 26-03-20-23-13 24
-H         | H               | 00-06 20-26 02-22 04-24
+H         | H               | 00-06 20-26 04-22 02-24
 I         | I               | 06-26 16-03-10-20-00-10-23-16
 J         | J               | 06-26-21-10-01 16 15-12
 K         | K               | 00-06 26-13-20 03-13
@@ -103,7 +107,7 @@ L         | L               | 06-00-20 01-21
 M         | M               | 00-06-24 20-26-04
 N         | N               | 00-06-20-26 16-10
 O         | O               | =o 13
-P         | P               | 00-06-26-03 02 25-02-25-26
+P         | P               | 00-06-26-04-02-24-26
 Q         | Q               | =q 13
 R         | R               | 00-06-26-03-20 23
 S         | S               | 26-03-23-00 24 02
@@ -122,8 +126,8 @@ eth       | ð đ             | =d 03-13
 Eth       | Ð Đ             | =d 02-12 04-14
 dotlessi  | ı               | =i
 dotlessj  | ȷ               | =j
-oslash    | ø               | =o 02-24
-Oslash    | Ø               | =o 01-23 03-25
+oslash    | ø               | 16-03-10-23-16 26-00
+Oslash    | Ø               | 16-03-10-23-16 26-00 06-20
 oe        | œ               | 26-16-03-10-20 16-10 13-23
 OE        | Œ               | 26-16-03-10-20 16-10 14-24 12-22
 thorn     | þ               | 00-06 05-15-24-22-11-01
@@ -180,22 +184,22 @@ sowilo.ss01 | ~ᛊ            | 26-04-23-02-20
 # ── Numbers ── same grid, same rules ───────────────────────────────
 zero      | 0               | 10-01-05-16-25-21-10 12-14
 one       | 1               | 05-16-10 00-20
-two       | 2               | 06-26-24-02-00-20
+two       | 2               | 06-26-23-03-00-20
 three     | 3               | 06-26-13-20-00
 four      | 4               | 20-26-02-22
-five      | 5               | 26-06-04-22-20-00
-six       | 6               | 26-04-00-20-22-04
+five      | 5               | 26-06-03-23-20-00
+six       | 6               | 20-00-02-22-20 02-26
 seven     | 7               | 06-26-00
 eight     | 8               | 06-26-00-20-06
-nine      | 9               | 00-22-26-06-04-22
+nine      | 9               | 06-26-24-04-06 24-00
 
 # ── Symbols ──────────────────────────────────────────────────────────
 period    | .               | 10
 comma     | , ‚             | 11-00
 colon     | : ᛬             | 12 14
 semicolon | ;               | 14 12-01
-exclam    | !               | 16-12 10
-question  | ?               | 05-16-25-13-12 10
+exclam    | !               | 16-11 11 10
+question  | ?               | 06-26-24-14-13 13-11 10
 hyphen    | - − U+2013 U+2014 | 03-23
 underscore| _               | 00-20
 plus      | +               | 03-23 12-14
@@ -225,8 +229,8 @@ ampersand  | &              | 23-05-16-25-03-01-10-21
 at         | @              | 12-14-24-25-16-05-01-10-21
 braceleft  | {              | 26-15-14-03-12-11-20
 braceright | }              | 06-15-14-23-12-11-00
-exclamdown | ¡              | 16 14-10
-questiondown | ¿            | 21-10-01-13-14 16
+exclamdown | ¡              | 10-15 16
+questiondown | ¿            | 20-00-02-12-13 13-15 16
 dollar     | $              | 26-04-22-00 10-16
 cent       | ¢              | 25-03-21 11-15
 sterling   | £              | 25-16-10 00-20 03-23

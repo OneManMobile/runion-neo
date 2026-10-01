@@ -1,8 +1,9 @@
 /* Runion Neo — specimen + dot-to-dot sketchpad. Data comes from build.py (specimen/data.js). */
 (() => {
-  const { params: P, glyphs, built } = window.RUNION;
-  // load the font stamped with its build time, so a rebuild is never hidden by the browser cache
-  new FontFace("Runion Neo", `url(fonts/webfonts/RunionNeo-Regular.woff2?v=${built})`).load().then((f) => document.fonts.add(f));
+  const { params: P, glyphs, built, weights: W } = window.RUNION;
+  // load the variable font stamped with its build time, so a rebuild is never hidden by the browser cache
+  new FontFace("Runion Neo", `url("fonts/webfonts/RunionNeo[wght].woff2?v=${built}")`, { weight: "300 700" })
+    .load().then((f) => document.fonts.add(f));
   const h0 = P.stroke / 2, $ = (id) => document.getElementById(id);
   let pen = P.stroke;                                     // sketchpad pen: the dots never move, only the line swells
   const X = (gx) => P.side + h0 + gx * P.cell_w;          // grid → font units, y flipped for SVG
@@ -49,6 +50,11 @@
   };
   for (const id of ["tester", "sub", "runes", "kylver"]) $(id).addEventListener("input", typeset);
   $("size").oninput = (e) => ($("out").style.fontSize = e.target.value + "px");
+  const named = Object.fromEntries(Object.entries(W).map(([name, w]) => [w, name]));
+  $("weight").oninput = (e) => {
+    $("out").style.fontWeight = e.target.value;
+    $("weightv").textContent = named[e.target.value] || e.target.value;
+  };
   typeset();
 
   // ── showcase: every character the font answers to, set in the real font, grouped as in glyphs.txt ──
@@ -167,6 +173,8 @@
   const setPen = (v) => { pen = +v; $("pen").value = pen; $("penv").textContent = pen; draw(); };
   $("pen").oninput = (e) => setPen(e.target.value);
   $("penreg").onclick = () => setPen(P.stroke);
+  $("penlight").onclick = () => setPen(P.light);
+  $("penbold").onclick = () => setPen(P.bold);
 
   // ── glyph table (exact outlines from the build), grouped by the "# ── title ──" lines of glyphs.txt ──
   const sets = {}, NOTE = { Accented: "Accented — never drawn: the build composes letter + mark from Unicode" };

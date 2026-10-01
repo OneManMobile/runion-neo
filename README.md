@@ -10,7 +10,9 @@ Runion Neo comes from [Runion Basic](https://github.com/OneManMobile/Runion-Font
 
 To try it, open [`index.html`](index.html) or run `make serve`. The playground has a type tester (with a switch that writes your text in runes), a table of every character and a sketchpad for drawing glyphs on the dots.
 
-The font files are [`fonts/ttf/RunionNeo-Regular.ttf`](fonts/ttf/RunionNeo-Regular.ttf) and [`fonts/webfonts/RunionNeo-Regular.woff2`](fonts/webfonts/RunionNeo-Regular.woff2). The licence is the [SIL Open Font License 1.1](OFL.txt).
+Runion Neo comes in weights from Light to Bold. The variable font [`fonts/variable/RunionNeo[wght].ttf`](fonts/variable/RunionNeo%5Bwght%5D.ttf) covers every weight from 300 to 700, with named Light, Regular, Medium, SemiBold and Bold. Static Light, Regular and Bold are in [`fonts/ttf/`](fonts/ttf), and WOFF2 versions of all of them are in [`fonts/webfonts/`](fonts/webfonts). The licence is the [SIL Open Font License 1.1](OFL.txt).
+
+![Light, Regular and Bold](documentation/weights.png)
 
 ## The system
 
@@ -22,7 +24,7 @@ The font is drawn on one grid of 3 columns and 7 rows of dots. A glyph is a list
 | --- | --- |
 | Dot to dot | Every line starts and ends on a dot. Any dot can join any other dot, neighbour or not. There are no curves. |
 | Full width | Every Latin letter and digit touches both the left and the right column. |
-| One stroke | One line thickness for everything (`@stroke` in the source). |
+| One stroke | One line thickness for everything in a weight: 32 units in Light, 50 in Regular, 74 in Bold (`@light`, `@stroke`, `@bold` in the source). The dots never move between weights; only the pen changes. |
 | The nib | Ink at a dot stays inside that dot's square, the nib. Corners are mitred and clipped to it, and line ends are cut flush with the grid, so every glyph has the same outer box. |
 | Unicase | Lowercase and capitals are the same height. A lowercase letter is the plain letter, and its capital is the same letter with a rune accent. |
 | Marks | Accents sit outside the letter, in two rows above and two below. Every glyph fills the same box, so one mark position fits all of them. The 140 or so accented letters are composed by the build from Unicode: letter plus mark. |
@@ -34,9 +36,10 @@ A capital is its lowercase letter with a rune accent: an added or split stroke, 
 | Capitals | Accent |
 | --- | --- |
 | A T | A second crossing bar, like the two arms of ansuz ᚨ: A's sits right above its own, T's below its top. |
-| E H | The middle line splits in two, one step up and one step down, and the old line becomes the space between them. |
+| E | The middle line splits in two, one step up and one step down, and the old line becomes the space between them. |
+| H | Dagaz ᛞ itself: the bar becomes a cross between the staves. |
 | I | The bars stay, and the diamond of ingwaz ᛜ fills the space between them. |
-| P | The flag's diagonal is doubled: a second one, one step lower, joined to the first at the right. |
+| P | The flag's diagonal is doubled: a second one, two steps lower, closed off at the right. |
 | F | Fehu ᚠ itself. |
 | K | Branches: the arms meet in the middle like kaunan ᚲ. |
 | L | A second bar right above its foot. |
@@ -45,12 +48,12 @@ A capital is its lowercase letter with a rune accent: an added or split stroke, 
 | Y | Algiz ᛉ: the Y with its stave continued to the top. |
 | X Z | A bar across. |
 | J | A short stem under the top bar, hanging free between the bar and the hook. |
-| B C D G O Q R U V | These have no line to add, so they get one dot, in the counter or, for B, C and R, at the middle right in the open mouth. Medieval carvers made new letters from runes the same way, with a dot: the stung runes. |
-| S | Two dots, one in each counter: upper right and lower left. |
+| B C G O Q R U V | These have no line to add, so they get one dot, in the counter or, for B, C and R, at the middle right in the open mouth. Medieval carvers made new letters from runes the same way, with a dot: the stung runes. |
+| D S | Two dots. D's sit at the top and bottom of its right edge, S's in its two counters (upper right and lower left). |
 
-Æ, Œ, Ð, Ø, Þ, ẞ, Ħ and Ł follow the same rules. Æ, Œ and Ð split their middle bar like E. Ø gets two slashes, the strokes of the medieval ø rune ᚯ. Capital Þ is thurisaz ᚦ itself, the rune the Latin letter comes from.
+Æ, Œ, Ð, Ø, Þ, ẞ, Ħ and Ł follow the same rules. Æ, Œ and Ð split their middle bar like E. ø is the diamond O with one slash from corner to corner; capital Ø adds the other diagonal, so the slashes cross. Capital Þ is thurisaz ᚦ itself, the rune the Latin letter comes from.
 
-The lowercase letters are sharp too. O is four lines, a diamond, the same shape as ingwaz ᛜ. C is two strokes, the angle of kaunan ᚲ. G is four: C, then up to the middle and a bar inwards that stops short of the first strokes. Capital G's dot sits in the mouth above that bar. D is three strokes: a stave and a point. P is three strokes too, a flag on the stave; R is P with a leg (four strokes) and B is P with the flag mirrored below. S is three strokes: from the upper right down to the middle left, across to the middle right, and down to the lower left.
+The lowercase letters are sharp too. O is four lines, a diamond, the same shape as ingwaz ᛜ. C is two strokes, the angle of kaunan ᚲ. G is four: C, then up to the middle and a bar inwards that stops short of the first strokes. Capital G's dot sits in the mouth above that bar. D is three strokes: a stave and a point. P is a flag on the stave with a 45° diagonal; R is a stave, a flag and a leg (four strokes), and B is a flag with a second one mirrored below. S is three strokes: from the upper right down to the middle left, across to the middle right, and down to the lower left.
 
 All of it is defined in one text file, [`sources/glyphs.txt`](sources/glyphs.txt).
 
@@ -99,9 +102,10 @@ Runion is a typeface and makes no claim to be a scholarly reconstruction.
 ```css
 @font-face {
   font-family: "Runion Neo";
-  src: url("RunionNeo-Regular.woff2") format("woff2");
+  src: url("RunionNeo[wght].woff2") format("woff2");
+  font-weight: 300 700;
 }
-.neo { font-family: "Runion Neo", monospace; }
+.neo { font-family: "Runion Neo", monospace; font-weight: 300; }   /* any weight from 300 to 700 */
 ```
 
 | Feature | Default | Effect |
@@ -120,12 +124,12 @@ The font never turns Latin letters into runes. To write in runes, the text itsel
 
 ```bash
 make venv     # once: Python environment with fontmake, ufoLib2, shapely, pillow
-make build    # glyphs.txt → UFO → fonts/ttf, fonts/webfonts, playground data
+make build    # glyphs.txt → UFOs → fonts/variable, fonts/ttf, fonts/webfonts, playground data
 make proof    # contact sheet (out/) and documentation images
 make test     # fontbakery, Google Fonts profile
 ```
 
-`sources/glyphs.txt` is the source. `sources/build.py` converts it to `sources/RunionNeo-Regular.ufo` and compiles that with fontmake, so the font can be built and reviewed with standard tools. `sources/runion.py` turns the dots and lines into outlines.
+`sources/glyphs.txt` is the source. `sources/build.py` turns it into three master UFOs (`sources/RunionNeo-Light.ufo`, `-Regular.ufo`, `-Bold.ufo`) and `sources/RunionNeo.designspace`, and compiles the variable font from them with fontmake. In the masters every line, corner and dot is a separate piece, so each glyph has the same points at every weight and the masters interpolate exactly. The static fonts are built from the same pieces merged into one outline. `sources/runion.py` turns the dots and lines into outlines.
 
 To change a glyph, edit its line in `glyphs.txt` and run `make build`. The sketchpad in the playground writes the stroke code for you.
 

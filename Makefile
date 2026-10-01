@@ -2,7 +2,7 @@
 PY = .venv/bin/python
 
 help:
-	@echo "make build   glyphs.txt -> UFO -> fonts/ttf + fonts/webfonts + playground data"
+	@echo "make build   glyphs.txt -> UFOs -> fonts/variable + fonts/ttf + fonts/webfonts + playground data"
 	@echo "make proof   contact sheet and documentation images"
 	@echo "make test    fontbakery, Google Fonts profile"
 	@echo "make serve   open the playground on http://localhost:8417"
@@ -18,7 +18,8 @@ proof: build
 	$(PY) sources/proof.py
 
 test: build
-	fontbakery check-googlefonts fonts/ttf/*.ttf -l WARN --succinct --ghmarkdown out/fontbakery.md
+	fontbakery check-googlefonts "fonts/variable/RunionNeo[wght].ttf" -l WARN --succinct --ghmarkdown out/fontbakery-variable.md
+	fontbakery check-googlefonts fonts/ttf/*.ttf -l WARN --succinct --ghmarkdown out/fontbakery-static.md
 
 serve:
 	python3 -m http.server 8417 --bind 127.0.0.1

@@ -1,26 +1,33 @@
-"""Build Runion Neo.
+"""Build Runion Neo: a variable font (wght 300–700) and static Light, Regular and Bold.
 
-    sources/glyphs.txt ─► sources/RunionNeo-Regular.ufo ─ fontmake ─► fonts/ttf/*.ttf ─► fonts/webfonts/*.woff2
-                                                                                   └─► specimen/data.js (playground)
+    sources/glyphs.txt ─► sources/RunionNeo-{Light,Regular,Bold}.ufo + RunionNeo.designspace
+                              (ink as separate pieces, so the masters interpolate)
+                          ─ fontmake ─► fonts/variable/RunionNeo[wght].ttf
+                      └─► merged outlines ─ fontmake ─► fonts/ttf/RunionNeo-{Light,Regular,Bold}.ttf
+    every font ─► fonts/webfonts/*.woff2 · the Regular ─► specimen/data.js (playground)
 
-glyphs.txt is the real source: dots and the lines between them. The UFO is generated from it
-on every build so the font can be compiled — and reviewed — with the standard fontmake tooling.
+glyphs.txt is the real source: dots and the lines between them. The UFOs are generated from it
+on every build so the fonts can be compiled — and reviewed — with the standard fontmake tooling.
+Weight is the pen alone: the dots never move, the lines only get thicker or thinner.
 """
 import json
 import subprocess
 import sys
+import tempfile
 import time
+from dataclasses import replace
 from pathlib import Path
 
+from fontTools.designspaceLib import AxisLabelDescriptor, DesignSpaceDocument
 from fontTools.ttLib import TTFont, newTable
 from fontTools.ttLib.tables.ttProgram import Program
 from ufoLib2 import Font
 
-from runion import Params, contours, outline, parse, uses_full_width
+from runion import Params, contours, outline, parse, pieces, uses_full_width
 
 SRC = Path(__file__).parent
 ROOT = SRC.parent
-FAMILY, STYLE, VERSION = "Runion Neo", "Regular", (1, 0)
+FAMILY, VERSION = "Runion Neo", (1, 0)
 REPO = "https://github.com/OneManMobile/Runion-Neo"
 DESIGNER = "Andreas Rudolph"
 COPYRIGHT = f"Copyright 2026 The {FAMILY} Project Authors ({REPO})"
@@ -34,7 +41,10 @@ NUDGE = 10                            # combining marks are drawn this much low;
                                       # shapers see a real attachment and non-shaping apps are off by 1% of an em
 ASCENT, DESCENT = 1030, -270          # room for the attic and cellar marks; win metrics follow the real bbox
 P = Params()
-STEM = f"{FAMILY.replace(' ', '')}-{STYLE}"
+STEM = FAMILY.replace(" ", "")
+WEIGHTS = {"Light": 300, "Regular": 400, "Medium": 500, "SemiBold": 600, "Bold": 700}   # named instances
+MASTERS = ("Light", "Regular", "Bold")                     # drawn at P.light, P.stroke, P.bold; also the statics
+PANOSE_WEIGHT = {"Light": 3, "Regular": 5, "Bold": 8}
 
 
 def features(glyphs, cmap):
@@ -59,19 +69,24 @@ def features(glyphs, cmap):
     return fea, len(seqs), len(alts)
 
 
-def main():
-    glyphs = parse(SRC / "glyphs.txt", P)
-    names = [g.name for g in glyphs]
-    assert names[0] == ".notdef" and len(set(names)) == len(names), "duplicate glyph name"
+def stroke_of(style):
+    return {"Light": P.light, "Regular": P.stroke, "Bold": P.bold}[style]
 
-    ufo, cmap, data, ys = Font(), {}, [], []
+
+def rings_of(g, Q, merged):
+    """Glyph contours at the pen Q: merged into one outline (statics, playground) or as pieces (masters)."""
+    rings = contours(outline(g, Q), clockwise=False) if merged else [[(round(x), round(y)) for x, y in r]
+                                                                     for r in pieces(g, Q)]
+    if g.mark:                                             # zero-width: the ink sits back over the glyph before it
+        rings = [[(x - P.advance, y - NUDGE) for x, y in r] for r in rings]
+    return rings
+
+
+def make_ufo(glyphs, fea, style, merged):
+    Q = replace(P, stroke=stroke_of(style))
+    ufo, ys = Font(), []
     for g in glyphs:
-        for c in g.chars:
-            assert ord(c) not in cmap, f"{c!r} mapped twice ({cmap.get(ord(c))}, {g.name})"
-            cmap[ord(c)] = g.name
-        rings = contours(outline(g, P), clockwise=False)
-        if g.mark:                                         # zero-width: the ink sits back over the glyph before it
-            rings = [[(x - P.advance, y - NUDGE) for x, y in r] for r in rings]
+        rings = rings_of(g, Q, merged)
         ys += [y for r in rings for _, y in r]
         glyph = ufo.newGlyph(g.name)
         glyph.width = 0 if g.mark else P.advance
@@ -82,55 +97,110 @@ def main():
             for pt in ring[1:]:
                 pen.lineTo(pt)
             pen.closePath()
-        data.append({
-            "name": g.name, "chars": g.chars, "mark": g.mark, "group": g.group,
-            "sequences": ["".join(s) for s in g.sequences], "optional": g.optional,
-            "strokes": g.strokes, "fullWidth": uses_full_width(g, P),
-            "path": " ".join("M" + " L".join(f"{x} {y}" for x, y in r) + " Z" for r in rings),
-        })
-
-    ufo.features.text, n_seq, n_alt = features(glyphs, cmap)
-    ufo.lib["public.glyphOrder"] = names
+    ufo.features.text = fea
+    ufo.lib["public.glyphOrder"] = [g.name for g in glyphs]
     ufo.lib["public.openTypeMeta"] = {"dlng": ["Latn", "Runr"], "slng": ["Latn", "Runr"]}
     i = ufo.info
-    i.familyName, i.styleName, i.versionMajor, i.versionMinor = FAMILY, STYLE, *VERSION
-    i.unitsPerEm, i.ascender, i.descender, i.capHeight, i.xHeight, i.italicAngle = P.upm, ASCENT, DESCENT, P.cap, P.cap, 0
+    i.familyName, i.styleName, i.versionMajor, i.versionMinor = FAMILY, style, *VERSION
+    i.styleMapFamilyName = FAMILY if style in ("Regular", "Bold") else f"{FAMILY} {style}"
+    i.styleMapStyleName = "bold" if style == "Bold" else "regular"
+    i.unitsPerEm, i.ascender, i.descender, i.capHeight, i.xHeight, i.italicAngle = P.upm, ASCENT, DESCENT, Q.cap, Q.cap, 0
     i.copyright, i.openTypeNameDesigner, i.openTypeNameDesignerURL = COPYRIGHT, DESIGNER, REPO
     i.openTypeNameManufacturer, i.openTypeNameManufacturerURL = DESIGNER, REPO
     i.openTypeNameLicense, i.openTypeNameLicenseURL, i.openTypeNameDescription = LICENSE, LICENSE_URL, DESCRIPTION
     i.openTypeHheaAscender, i.openTypeHheaDescender, i.openTypeHheaLineGap = ASCENT, DESCENT, 0
     i.openTypeOS2TypoAscender, i.openTypeOS2TypoDescender, i.openTypeOS2TypoLineGap = ASCENT, DESCENT, 0
-    i.openTypeOS2WinAscent, i.openTypeOS2WinDescent = max(ys + [ASCENT]), -min(ys + [DESCENT])
     i.openTypeOS2Selection, i.openTypeOS2Type, i.openTypeOS2VendorID = [7], [], "NONE"
-    i.openTypeOS2Panose = [2, 0, 5, 9, 0, 0, 0, 0, 0, 0]
-    i.openTypeOS2WeightClass, i.openTypeOS2WidthClass = 400, 5
+    i.openTypeOS2Panose = [2, 0, PANOSE_WEIGHT[style], 9, 0, 0, 0, 0, 0, 0]
+    i.openTypeOS2WeightClass, i.openTypeOS2WidthClass = WEIGHTS[style], 5
     i.postscriptIsFixedPitch, i.postscriptUnderlinePosition, i.postscriptUnderlineThickness = True, -100, int(P.stroke)
+    return ufo, ys
 
-    ufo_path = SRC / f"{STEM}.ufo"
-    ufo.save(ufo_path, overwrite=True)
-    run = subprocess.run([sys.executable, "-m", "fontmake", "-u", str(ufo_path), "-o", "ttf", "--keep-overlaps",
-                          "--no-production-names", "--output-dir", str(ROOT / "fonts/ttf")], capture_output=True, text=True)
+
+def fontmake(*args):
+    run = subprocess.run([sys.executable, "-m", "fontmake", *args, "--no-production-names"], capture_output=True, text=True)
     if run.returncode:
         sys.exit(run.stdout + run.stderr)
 
-    ttf = ROOT / "fonts/ttf" / f"{STEM}.ttf"               # unhinted: same fix-ups as `gftools fix-nonhinting`
-    font = TTFont(ttf)
+
+def finish(path, variable=False):
+    """Unhinted fix-ups (as `gftools fix-nonhinting`), overlap flags for the variable font, then a WOFF2."""
+    font = TTFont(path)
     font["gasp"] = gasp = newTable("gasp")
     gasp.gaspRange = {0xFFFF: 15}
     font["prep"] = prep = newTable("prep")
     prep.program = Program()
     prep.program.fromAssembly(["PUSHW[]", "511", "SCANCTRL[]", "PUSHB[]", "4", "SCANTYPE[]"])
     font["head"].flags |= 1 << 3
-    font.save(ttf)
+    if variable:                                           # its pieces overlap on purpose: OVERLAP_SIMPLE
+        glyf = font["glyf"]
+        for name in font.getGlyphOrder():
+            g = glyf[name]
+            if g.numberOfContours > 0:
+                g.flags[0] |= 0x40
+    font.save(path)
     font.flavor = "woff2"
-    (ROOT / "fonts/webfonts").mkdir(parents=True, exist_ok=True)
-    font.save(ROOT / "fonts/webfonts" / f"{STEM}.woff2")
+    font.save(ROOT / "fonts/webfonts" / path.with_suffix(".woff2").name)
 
-    params = {k: getattr(P, k) for k in ("cols", "rows", "cell_w", "cell_h", "stroke", "side", "advance", "cap")}
+
+def main():
+    glyphs = parse(SRC / "glyphs.txt", P)
+    names = [g.name for g in glyphs]
+    assert names[0] == ".notdef" and len(set(names)) == len(names), "duplicate glyph name"
+    cmap = {}
+    for g in glyphs:
+        for c in g.chars:
+            assert ord(c) not in cmap, f"{c!r} mapped twice ({cmap.get(ord(c))}, {g.name})"
+            cmap[ord(c)] = g.name
+    fea, n_seq, n_alt = features(glyphs, cmap)
+
+    for d in ("fonts/ttf", "fonts/variable", "fonts/webfonts"):
+        (ROOT / d).mkdir(parents=True, exist_ok=True)
+        for old in (ROOT / d).glob("*.*"):
+            old.unlink()
+
+    masters = {s: make_ufo(glyphs, fea, s, merged=False) for s in MASTERS}
+    statics = {s: make_ufo(glyphs, fea, s, merged=True) for s in MASTERS}
+    ys = [y for _, v in [*masters.values(), *statics.values()] for y in v]
+    for ufo, _ in [*masters.values(), *statics.values()]:  # one set of win metrics, from the heaviest ink
+        ufo.info.openTypeOS2WinAscent, ufo.info.openTypeOS2WinDescent = max(ys + [ASCENT]), -min(ys + [DESCENT])
+
+    doc = DesignSpaceDocument()
+    doc.addAxisDescriptor(name="Weight", tag="wght", minimum=300, default=400, maximum=700, axisLabels=[
+        AxisLabelDescriptor(name=s, userValue=w, elidable=s == "Regular", linkedUserValue=700 if s == "Regular" else None)
+        for s, w in WEIGHTS.items()])
+    for s, (ufo, _) in masters.items():
+        path = SRC / f"{STEM}-{s}.ufo"
+        ufo.save(path, overwrite=True)
+        doc.addSourceDescriptor(filename=path.name, name=s, familyName=FAMILY, styleName=s, location={"Weight": WEIGHTS[s]})
+    for s, w in WEIGHTS.items():
+        doc.addInstanceDescriptor(name=s, familyName=FAMILY, styleName=s, location={"Weight": w})
+    ds = SRC / f"{STEM}.designspace"
+    doc.write(ds)
+
+    vf = ROOT / "fonts/variable" / f"{STEM}[wght].ttf"
+    fontmake("-m", str(ds), "-o", "variable", "--output-path", str(vf))
+    finish(vf, variable=True)
+    with tempfile.TemporaryDirectory() as tmp:
+        paths = []
+        for s, (ufo, _) in statics.items():
+            ufo.save(Path(tmp) / f"{STEM}-{s}.ufo")
+            paths.append(str(Path(tmp) / f"{STEM}-{s}.ufo"))
+        fontmake("-u", *paths, "-o", "ttf", "--keep-overlaps", "--output-dir", str(ROOT / "fonts/ttf"))
+    for s in MASTERS:
+        finish(ROOT / "fonts/ttf" / f"{STEM}-{s}.ttf")
+
+    data = [{
+        "name": g.name, "chars": g.chars, "mark": g.mark, "group": g.group,
+        "sequences": ["".join(s) for s in g.sequences], "optional": g.optional,
+        "strokes": g.strokes, "fullWidth": uses_full_width(g, P),
+        "path": " ".join("M" + " L".join(f"{x} {y}" for x, y in r) + " Z" for r in rings_of(g, P, merged=True)),
+    } for g in glyphs]
+    params = {k: getattr(P, k) for k in ("cols", "rows", "cell_w", "cell_h", "stroke", "light", "bold", "side", "advance", "cap")}
     (ROOT / "specimen").mkdir(exist_ok=True)
     (ROOT / "specimen/data.js").write_text(
-        "window.RUNION = " + json.dumps({"built": int(time.time()), "params": params, "glyphs": data}, ensure_ascii=False) + ";\n",
-        encoding="utf-8")
+        "window.RUNION = " + json.dumps({"built": int(time.time()), "params": params, "weights": WEIGHTS, "glyphs": data},
+                                        ensure_ascii=False) + ";\n", encoding="utf-8")
 
     for line in (SRC / "glyphs.txt").read_text().splitlines():     # coverage of every required character set
         if line.startswith("@charset"):
@@ -140,9 +210,9 @@ def main():
     narrow = [g.name for g in glyphs if g.strokes and (g.group.startswith("Latin") or g.group == "Numbers")
               and not uses_full_width(g, P)]
     print(f"{len(names)} glyphs · {len(cmap)} characters · {n_seq} drawn sequences (ccmp) · {n_alt} alternates (ss01)")
-    print(f"advance {P.advance} · cap height {P.cap} · stroke {P.stroke:g} · ink y {min(ys)}…{max(ys)}")
+    print(f"advance {P.advance} · stroke Light {P.light:g} · Regular {P.stroke:g} · Bold {P.bold:g} · ink y {min(ys)}…{max(ys)}")
     print(f"letters and digits not full width ({len(narrow)}): {' '.join(narrow) or '—'}")
-    print(f"→ {ttf.relative_to(ROOT)}")
+    print(f"→ {vf.relative_to(ROOT)} · fonts/ttf/{STEM}-{{{','.join(MASTERS)}}}.ttf")
 
 
 if __name__ == "__main__":

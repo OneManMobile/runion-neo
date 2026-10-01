@@ -60,6 +60,7 @@ Où est le café? Příliš žluťoučký kůň</textarea>
   <div id="out" class="runes"></div>
   <div class="bar">
     <label>size <input id="size" type="range" min="20" max="200" value="72"></label>
+    <label>weight <input id="weight" type="range" min="300" max="700" step="10" value="400"> <span id="weightv">Regular</span></label>
     <label><input id="sub" type="checkbox"> letters underneath</label>
     <label><input id="runes" type="checkbox"> write in runes  (th ng aa → ᚦ ᛜ ᚨ̊)</label>
     <label><input id="kylver" type="checkbox"> four-stroke ᛊ  (ss01)</label>
@@ -82,7 +83,7 @@ Où est le café? Příliš žluťoučký kůň</textarea>
       </div>
       <div class="bar">
         <label>stroke <input id="pen" type="range" min="20" max="130" step="2"> <span id="penv"></span></label>
-        <button id="penreg">font stroke</button>
+        <button id="penlight">light</button><button id="penreg">regular</button><button id="penbold">bold</button>
       </div>
     </div>
   </div>

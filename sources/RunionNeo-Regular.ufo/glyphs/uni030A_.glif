@@ -3,17 +3,48 @@
   <unicode hex="030A"/>
   <outline>
     <contour>
-      <point x="-345" y="865" type="line"/>
-      <point x="-345" y="830" type="line"/>
-      <point x="-55" y="830" type="line"/>
-      <point x="-55" y="865" type="line"/>
-      <point x="-190" y="1000" type="line"/>
-      <point x="-210" y="1000" type="line"/>
+      <point x="-218" y="957" type="line"/>
+      <point x="-98" y="837" type="line"/>
+      <point x="-62" y="873" type="line"/>
+      <point x="-182" y="993" type="line"/>
     </contour>
     <contour>
-      <point x="-140" y="880" type="line"/>
-      <point x="-260" y="880" type="line"/>
-      <point x="-200" y="940" type="line"/>
+      <point x="-320" y="830" type="line"/>
+      <point x="-80" y="830" type="line"/>
+      <point x="-80" y="880" type="line"/>
+      <point x="-320" y="880" type="line"/>
+    </contour>
+    <contour>
+      <point x="-302" y="837" type="line"/>
+      <point x="-182" y="957" type="line"/>
+      <point x="-218" y="993" type="line"/>
+      <point x="-338" y="873" type="line"/>
+    </contour>
+    <contour>
+      <point x="-295" y="880" type="line"/>
+      <point x="-330" y="880" type="line"/>
+      <point x="-345" y="865" type="line"/>
+      <point x="-345" y="830" type="line"/>
+      <point x="-310" y="830" type="line"/>
+      <point x="-295" y="845" type="line"/>
+    </contour>
+    <contour>
+      <point x="-190" y="950" type="line"/>
+      <point x="-175" y="965" type="line"/>
+      <point x="-175" y="985" type="line"/>
+      <point x="-190" y="1000" type="line"/>
+      <point x="-210" y="1000" type="line"/>
+      <point x="-225" y="985" type="line"/>
+      <point x="-225" y="965" type="line"/>
+      <point x="-210" y="950" type="line"/>
+    </contour>
+    <contour>
+      <point x="-105" y="845" type="line"/>
+      <point x="-90" y="830" type="line"/>
+      <point x="-55" y="830" type="line"/>
+      <point x="-55" y="865" type="line"/>
+      <point x="-70" y="880" type="line"/>
+      <point x="-105" y="880" type="line"/>
     </contour>
   </outline>
 </glyph>

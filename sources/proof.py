@@ -9,6 +9,7 @@ SRC = Path(__file__).parent
 ROOT = SRC.parent
 DOC = ROOT / "documentation"
 TTF = str(ROOT / "fonts/ttf/RunionNeo-Regular.ttf")
+VF = str(ROOT / "fonts/variable/RunionNeo[wght].ttf")
 PAPER, INK, SOFT, ACCENT = (244, 240, 232), (24, 22, 20), (139, 131, 119), (196, 72, 48)
 
 
@@ -29,6 +30,19 @@ def specimen():
         d.text((70, y), text, font=ImageFont.truetype(TTF, size), fill=INK)
         y += int(size * 1.5)
     img.save(DOC / "specimen.png")
+
+
+def weights():
+    img = Image.new("RGB", (2000, 900), PAPER)
+    d, small = ImageDraw.Draw(img), label_font(26)
+    for i, (name, w) in enumerate([("Light", 300), ("Regular", 400), ("Medium", 500), ("SemiBold", 600), ("Bold", 700)]):
+        font = ImageFont.truetype(VF, 112)
+        font.set_variation_by_axes([w])
+        y = 40 + i * 170
+        d.text((70, y + 70), f"{name} {w}", font=small, fill=SOFT)
+        d.text((360, y), "Runion Neo ᚠᚢᚦᚨᚱᚲ", font=font, fill=INK)
+    img.save(DOC / "weights.png")
+
 
 
 def futhark():
@@ -79,5 +93,5 @@ def grid():
 
 if __name__ == "__main__":
     DOC.mkdir(exist_ok=True)
-    specimen(), futhark(), grid()
-    print("→ documentation/specimen.png · futhark.png · grid.png")
+    specimen(), weights(), futhark(), grid()
+    print("→ documentation/specimen.png · weights.png · futhark.png · grid.png")

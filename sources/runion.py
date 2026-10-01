@@ -25,7 +25,9 @@ class Params:
     rows: int = 7            # grid points up
     cell_w: float = 120      # distance between columns (font units)
     cell_h: float = 120      # distance between rows
-    stroke: float = 50       # line thickness — one width for everything
+    stroke: float = 50       # line thickness of the Regular — one width for everything …
+    light: float = 32        # … and of the Light and Bold masters of the variable font
+    bold: float = 74
     advance: int = 400       # the monospace cell — the dot lattice sits centred in it
     upm: int = 1000
 
@@ -200,6 +202,78 @@ def outline(g, P=Params()):
     # tiny close-open pass welds float-precision seams without rounding any corner
     shape = unary_union(parts).buffer(0.2, join_style="mitre").buffer(-0.2, join_style="mitre")
     return shape.simplify(0.05)
+
+
+_UNIT = {}
+
+
+def _unit_corner(a, b):
+    """The corner piece between arms a and b at a dot of half-stroke 1, centred on (0, 0)."""
+    if (a, b) not in _UNIT:
+        n = (0.0, 0.0)
+        poly = orient(_line_band(n, a, 1).intersection(_line_band(n, b, 1)).intersection(_nib(n, 1)), sign=1.0)
+        pts = []
+        for p in list(poly.exterior.coords)[:-1]:
+            if not pts or hypot(p[0] - pts[-1][0], p[1] - pts[-1][1]) > 1e-6:
+                pts.append(p)
+        if hypot(pts[0][0] - pts[-1][0], pts[0][1] - pts[-1][1]) <= 1e-6:
+            pts.pop()
+        turns = lambda p, q, r: abs((q[0] - p[0]) * (r[1] - q[1]) - (q[1] - p[1]) * (r[0] - q[0])) > 1e-9
+        _UNIT[a, b] = [p for i, p in enumerate(pts) if turns(pts[i - 1], p, pts[(i + 1) % len(pts)])]
+    return _UNIT[a, b]
+
+
+def pieces(g, P=Params()):
+    """Glyph → its ink as separate, overlapping pieces, outer contours counter-clockwise.
+
+    The same ink as outline(), left unmerged: one band per straight run of line (lines that lie
+    on one another are merged first), one corner per outer corner, one square per dot. Every
+    piece is a fixed shape scaled by the half-stroke around a dot, so a glyph has the same
+    contours and points at every stroke width — the masters of the variable font interpolate exactly.
+    """
+    h, out, arms, runs = P.stroke / 2, [], {}, {}
+    for pts in g.strokes:
+        if len(pts) == 1:
+            x, y = P.pt(*pts[0])
+            out.append([(x - h, y - h), (x + h, y - h), (x + h, y + h), (x - h, y + h)])
+            continue
+        for a, b in zip(pts, pts[1:]):
+            k = gcd(b[0] - a[0], b[1] - a[1])
+            if not k:
+                continue
+            for j in range(k + 1):                         # every dot the line touches or crosses
+                n = (a[0] + (b[0] - a[0]) // k * j, a[1] + (b[1] - a[1]) // k * j)
+                for far, on in ((b, j < k), (a, j > 0)):
+                    if on:
+                        t = atan2((far[1] - n[1]) * P.cell_h, (far[0] - n[0]) * P.cell_w)
+                        arms.setdefault(n, set()).add(round(t + 2 * pi if t < -pi + 1e-9 else t, 9))
+            d = ((b[0] - a[0]) // k, (b[1] - a[1]) // k)   # the line it lies on: direction + offset
+            if d[0] < 0 or (d[0] == 0 and d[1] < 0):
+                d, a, b = (-d[0], -d[1]), b, a
+            pos = lambda p: p[0] * d[0] + p[1] * d[1]
+            runs.setdefault((d, a[0] * d[1] - a[1] * d[0]), []).append((pos(a), pos(b), a, b))
+    for key in sorted(runs):                               # overlapping or touching lines on one line → one band
+        merged = []
+        for s, e, a, b in sorted(runs[key]):
+            if merged and s <= merged[-1][1]:
+                if e > merged[-1][1]:
+                    merged[-1] = (merged[-1][0], e, merged[-1][2], b)
+            else:
+                merged.append((s, e, a, b))
+        for _, _, a, b in merged:
+            (ax, ay), (bx, by) = P.pt(*a), P.pt(*b)
+            L = hypot(bx - ax, by - ay)
+            nx, ny = -(by - ay) / L * h, (bx - ax) / L * h
+            out.append([(ax - nx, ay - ny), (bx - nx, by - ny), (bx + nx, by + ny), (ax + nx, ay + ny)])
+    for n, angles in arms.items():
+        x, y = P.pt(*n)
+        th = sorted(angles)
+        for i, a in enumerate(th):
+            b = th[(i + 1) % len(th)]
+            gap = 2 * pi if len(th) == 1 else (b - a) % (2 * pi)
+            if len(th) == 1 or gap > pi + 1e-9:            # a straight run through a dot is already inked
+                out.append([(x + h * ux, y + h * uy) for ux, uy in _unit_corner(a, b)])
+    return out
 
 
 def _turns(a, b, c):

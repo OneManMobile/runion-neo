@@ -3,14 +3,38 @@
   <unicode hex="0327"/>
   <outline>
     <contour>
-      <point x="-140" y="-200" type="line"/>
-      <point x="-345" y="-200" type="line"/>
-      <point x="-345" y="-250" type="line"/>
-      <point x="-55" y="-250" type="line"/>
-      <point x="-55" y="-215" type="line"/>
+      <point x="-218" y="-123" type="line"/>
+      <point x="-98" y="-243" type="line"/>
+      <point x="-62" y="-207" type="line"/>
+      <point x="-182" y="-87" type="line"/>
+    </contour>
+    <contour>
+      <point x="-320" y="-250" type="line"/>
+      <point x="-80" y="-250" type="line"/>
+      <point x="-80" y="-200" type="line"/>
+      <point x="-320" y="-200" type="line"/>
+    </contour>
+    <contour>
+      <point x="-225" y="-115" type="line"/>
+      <point x="-210" y="-130" type="line"/>
+      <point x="-175" y="-130" type="line"/>
+      <point x="-175" y="-95" type="line"/>
       <point x="-190" y="-80" type="line"/>
       <point x="-225" y="-80" type="line"/>
-      <point x="-225" y="-115" type="line"/>
+    </contour>
+    <contour>
+      <point x="-105" y="-235" type="line"/>
+      <point x="-90" y="-250" type="line"/>
+      <point x="-55" y="-250" type="line"/>
+      <point x="-55" y="-215" type="line"/>
+      <point x="-70" y="-200" type="line"/>
+      <point x="-105" y="-200" type="line"/>
+    </contour>
+    <contour>
+      <point x="-345" y="-250" type="line"/>
+      <point x="-295" y="-250" type="line"/>
+      <point x="-295" y="-200" type="line"/>
+      <point x="-345" y="-200" type="line"/>
     </contour>
   </outline>
 </glyph>
