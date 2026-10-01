@@ -53,7 +53,7 @@ def specimen():
 
     x = 80 * K
     d.text((x, 100 * K), "runion neo", font=vf(250, 400), fill=INK)
-    d.text((x + 6 * K, 395 * K), "Latin made into runes on a grid of 3 × 7 dots", font=label_font(26 * K), fill=SOFT)
+    d.text((x + 6 * K, 395 * K), "Latin with rune-vibes, made on a 3 × 7 grid", font=label_font(26 * K), fill=SOFT)
     d.text((x, 490 * K), "the north wind sings", font=vf(84, 300), fill=INK)
     d.text((x, 615 * K), "through the stones", font=vf(84, 300), fill=INK)
     y, cx = 765 * K, x
