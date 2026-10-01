@@ -49,10 +49,11 @@ A capital is its lowercase letter with a rune accent: an added or split stroke, 
 | X Z | A bar across. |
 | J | A short stem under the top bar, hanging free between the bar and the hook. |
 | B C G O Q R U V | These have no line to add, so they get one dot, in the counter or, for B, C and R, at the middle right in the open mouth. Medieval carvers made new letters from runes the same way, with a dot: the stung runes. |
-| D S | Two dots. D's sit at the top and bottom of its right edge, S's in its two counters (upper right and lower left). |
+| S | Two dots, one in each counter: upper right and lower left. |
+| D | Two lines from the stave, crossing inside the triangle and reaching out to the right edge. |
 | N | A short branch from the middle of the first stave down to the bottom middle. |
 
-Æ, Œ, Ð, Ø, Þ, ẞ, Ħ and Ł follow the same rules. Æ, Œ and Ð split their middle bar like E. ø is the diamond O with one slash from corner to corner; capital Ø adds a dot in each of the other two corners. Capital Þ is thurisaz ᚦ itself, the rune the Latin letter comes from.
+Æ, Œ, Ð, Ø, Þ, ẞ, Ħ and Ł follow the same rules. Æ, Œ and Ð split their middle bar like E. ø is the diamond O with one slash from corner to corner; capital Ø has a cross through the middle of the diamond instead. Capital Þ is thurisaz ᚦ itself, the rune the Latin letter comes from.
 
 Å is drawn rather than built from A and a ring: the A comes down one step and the ring becomes a dot above its tip. å has one bar, Å two, like a and A.
 
