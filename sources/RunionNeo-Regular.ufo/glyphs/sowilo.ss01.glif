@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="sowilo.ss01" format="2">
+  <advance width="400"/>
+  <outline>
+    <contour>
+      <point x="310" y="0" type="line"/>
+      <point x="345" y="0" type="line"/>
+      <point x="345" y="35" type="line"/>
+      <point x="122" y="258" type="line"/>
+      <point x="345" y="370" type="line"/>
+      <point x="345" y="400" type="line"/>
+      <point x="122" y="512" type="line"/>
+      <point x="345" y="735" type="line"/>
+      <point x="345" y="770" type="line"/>
+      <point x="310" y="770" type="line"/>
+      <point x="55" y="515" type="line"/>
+      <point x="55" y="490" type="line"/>
+      <point x="264" y="385" type="line"/>
+      <point x="55" y="280" type="line"/>
+      <point x="55" y="255" type="line"/>
+    </contour>
+  </outline>
+</glyph>

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="qrune" format="2">
+  <advance width="400"/>
+  <unicode hex="16E9"/>
+  <outline>
+    <contour>
+      <point x="295" y="255" type="line"/>
+      <point x="295" y="0" type="line"/>
+      <point x="345" y="0" type="line"/>
+      <point x="345" y="770" type="line"/>
+      <point x="310" y="770" type="line"/>
+      <point x="55" y="515" type="line"/>
+      <point x="55" y="495" type="line"/>
+    </contour>
+    <contour>
+      <point x="295" y="685" type="line"/>
+      <point x="295" y="325" type="line"/>
+      <point x="115" y="505" type="line"/>
+    </contour>
+  </outline>
+</glyph>

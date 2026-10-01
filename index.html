@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Runion Basic</title>
+<title>Runion Neo</title>
 <style>
   :root { --paper:#f4f0e8; --ink:#181614; --soft:#8b8377; --line:#d9d2c4; --accent:#c44830; --card:#fbf9f4; }
   @media (prefers-color-scheme: dark) {
@@ -12,16 +12,15 @@
   * { box-sizing: border-box; }
   body { margin:0; background:var(--paper); color:var(--ink); font:15px/1.5 ui-monospace, Menlo, monospace; }
   main { max-width:1080px; margin:0 auto; padding:48px 16px 96px; }
-  h1 { font:400 clamp(44px, 11vw, 120px)/1 "Runion Basic"; margin:0 0 12px; letter-spacing:.02em; }
+  h1 { font:400 clamp(44px, 11vw, 120px)/1 "Runion Neo"; margin:0 0 12px; letter-spacing:.02em; }
   h2 { font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--soft); font-weight:400;
        margin:64px 0 16px; padding-top:16px; border-top:1px solid var(--line); }
   p { max-width:62ch; margin:0 0 12px; } .soft { color:var(--soft); }
-  .rune { font-family:"Runion Basic"; }
+  .rune { font-family:"Runion Neo"; }
   #tester { display:block; width:100%; padding:12px 14px; border:1px solid var(--line); background:var(--card); color:var(--ink);
             font:16px/1.5 ui-monospace, Menlo, monospace; outline:none; resize:vertical; border-radius:4px; }
   #tester:focus { border-color:var(--accent); }
-  .runes { font:400 72px/1.5 "Runion Basic"; white-space:pre-wrap; overflow-wrap:anywhere; }
-  .runes.plain { font-variant-ligatures:none; }
+  .runes { font:400 72px/1.5 "Runion Neo"; white-space:pre-wrap; overflow-wrap:anywhere; }
   #out { margin-top:12px; padding:24px 20px; min-height:1.7em; border:1px solid var(--line); background:var(--card); border-radius:4px; }
   .runes .w { display:inline-block; white-space:nowrap; }
   .runes .cl { display:inline-block; text-align:center; vertical-align:top; }
@@ -51,8 +50,8 @@
 </head>
 <body>
 <main>
-  <h1>Runion Basic</h1>
-  <p class="soft">Elder Futhark, rebuilt on a grid of 3 × 7 dots. Straight lines only, dot to dot. Monospace, narrow and tall, every letter fills the full width of a cell. One stroke width for everything. Capitals are the same runes drawn with a heavier line. Accents sit outside the rune, two rows above and two below.</p>
+  <h1>Runion Neo</h1>
+  <p class="soft">Latin and the Elder Futhark on a grid of 3 × 7 dots. Straight lines only, from any dot to any dot. Monospace, narrow and tall, every letter fills the full width of a cell. One stroke width for everything. Unicase: each capital is its letter with a rune accent, a second bar, a rune's branch or one stung dot. The runes live at their own Unicode codepoints. Accents sit outside the letter, two rows above and two below.</p>
 
   <h2>Type</h2>
   <textarea id="tester" rows="3" spellcheck="false" autocomplete="off" placeholder="Type anything here…">The North Wind sings through the Stones
@@ -61,9 +60,9 @@ Où est le café? Příliš žluťoučký kůň</textarea>
   <div id="out" class="runes"></div>
   <div class="bar">
     <label>size <input id="size" type="range" min="20" max="200" value="72"></label>
-    <label><input id="sub" type="checkbox" checked> letters underneath</label>
-    <label><input id="liga" type="checkbox" checked> contractions  (th ng aa)</label>
-    <label><input id="nordic" type="checkbox"> nordic°  (ae oe)</label>
+    <label><input id="sub" type="checkbox"> letters underneath</label>
+    <label><input id="runes" type="checkbox"> write in runes  (th ng aa → ᚦ ᛜ ᚨ̊)</label>
+    <label><input id="kylver" type="checkbox"> four-stroke ᛊ  (ss01)</label>
   </div>
 
   <h2>All characters</h2>
@@ -75,15 +74,15 @@ Où est le café? Příliš žluťoučký kůň</textarea>
     <svg id="stage"></svg>
     <div>
       <p>Pick any glyph below to load it, or draw your own: click a dot to start a line, keep clicking to continue it. Click the last dot again to end the stroke (that also makes a lone dot).</p>
-      <p class="soft">A point is written <b>xy</b> — column, then row. <b>06</b> is top-left, <b>20</b> bottom-right. Lines join points with a dash. That string is the entire definition of a glyph.</p>
-      <input id="code" spellcheck="false" placeholder="00-06 04-26 02-24">
+      <p class="soft">A point is written <b>xy</b> — column, then row. <b>06</b> is top-left, <b>20</b> bottom-right. Lines join any two points with a dash. That string is the entire definition of a glyph.</p>
+      <input id="code" spellcheck="false" placeholder="00-16-20 02-22 04-24">
       <div class="bar">
         <button id="undo">undo point</button><button id="clear">clear</button><button id="copy">copy</button>
         <span id="rule"></span>
       </div>
       <div class="bar">
         <label>stroke <input id="pen" type="range" min="20" max="130" step="2"> <span id="penv"></span></label>
-        <button id="penreg">regular</button><button id="pencap">capital</button>
+        <button id="penreg">font stroke</button>
       </div>
     </div>
   </div>

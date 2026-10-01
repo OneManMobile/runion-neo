@@ -1,8 +1,8 @@
 # gftools-builder config. The UFO is generated from glyphs.txt by sources/build.py,
 # which also runs fontmake itself; this file lets `gftools builder` compile the same UFO.
 sources:
-  - RunionBasic-Regular.ufo
-familyName: Runion Basic
+  - RunionNeo-Regular.ufo
+familyName: Runion Neo
 buildVariable: false
 buildOTF: false
 buildWebfont: true

@@ -1,4 +1,4 @@
-"""Runion Basic — the engine: glyph source → skeleton → outline.
+"""Runion Neo — the engine: glyph source → skeleton → outline.
 
 The model
     dot      a grid point. Its ink is a square "nib" (stroke × stroke).
@@ -8,6 +8,7 @@ The model
              and EVERY glyph ends up in exactly the same ink box.
              A dot is inked once, from all the lines meeting there.
 """
+import re
 import unicodedata
 from dataclasses import dataclass
 from math import atan2, cos, gcd, hypot, pi, sin
@@ -24,8 +25,7 @@ class Params:
     rows: int = 7            # grid points up
     cell_w: float = 120      # distance between columns (font units)
     cell_h: float = 120      # distance between rows
-    stroke: float = 50       # line thickness — one width for everything …
-    cap_stroke: float = 74   # … except CAPITALS: same dots, same lines, heavier pen
+    stroke: float = 50       # line thickness — one width for everything
     advance: int = 400       # the monospace cell — the dot lattice sits centred in it
     upm: int = 1000
 
@@ -35,7 +35,7 @@ class Params:
 
     @property
     def side(self):
-        """Side bearing of the regular stroke (capitals eat a little into it)."""
+        """Side bearing of the stroke."""
         return (self.advance - self.stroke - (self.cols - 1) * self.cell_w) / 2
 
     @property
@@ -43,7 +43,7 @@ class Params:
         return round(self.stroke + (self.rows - 1) * self.cell_h)
 
     def pt(self, gx, gy):
-        """Grid point → font units. The dots never move: capitals swell around the same skeleton."""
+        """Grid point → font units."""
         return ((self.advance - (self.cols - 1) * self.cell_w) / 2 + gx * self.cell_w,
                 self.h + gy * self.cell_h)
 
@@ -52,16 +52,17 @@ class Params:
 class Glyph:
     name: str
     chars: list          # single characters mapped to this glyph
-    ligatures: list      # lists of characters that contract into this glyph   (t+h)
-    optional: list       # same, but only when the reader switches them on     (a~e)
+    sequences: list      # lists of characters the font draws as this one glyph   (ᚨ+U+030A)
+    optional: list       # characters shown as this glyph when the reader turns on ss01   (~ᛊ)
     strokes: list        # list of polylines, each a list of (gx, gy)
-    cap: bool = False    # drawn with Params.cap_stroke
     mark: bool = False   # combining mark: zero width, sits over the glyph before it
+    group: str = ""      # the "# ── title ──" section it was defined in
 
 
 # ── source parsing ──────────────────────────────────────────────────
 CELLAR = {"a": -1, "b": -2}          # rows below the baseline, for marks like cedilla
 ATTIC = 2                            # rows above the top row, for marks like acute
+GROUP = re.compile(r"#\s*──\s*(.+?)\s*──")
 
 
 def _char(tok):
@@ -73,19 +74,21 @@ def _point(tok):
 
 
 def parse(path, P=Params()):
-    """Read the source → list of Glyphs (plain glyphs, then marks, composites and capitals).
+    """Read the source → list of Glyphs (plain glyphs, then marks, then composites).
 
     "@key value"   sets a Param ·  "@charset file"  names characters the font must cover
-    UPPERCASE      characters are split off into "<name>.cap": same strokes, heavier pen
+    "# ── title ──" starts a group; every glyph below it belongs to that group
     combining      characters (U+0301 …) are split off into a zero-width "uniXXXX" mark
     "=name"        in the strokes field reuses another glyph's strokes
     accented       characters wanted by a charset are composed automatically from their
-                   Unicode decomposition: base rune + mark(s). Every rune fills the same
+                   Unicode decomposition: base letter + mark(s). Every glyph fills the same
                    box, so a mark sits in the same place over all of them.
     """
     path = Path(path)
-    glyphs, caps, marks, wanted, by_name = [], [], [], [], {}
+    glyphs, marks, wanted, by_name, group = [], [], [], {}, ""
     for n, raw in enumerate(open(path, encoding="utf-8"), 1):
+        if m := GROUP.match(raw.strip()):
+            group = m.group(1)
         line = raw.split("#")[0].strip()
         if not line:
             continue
@@ -97,12 +100,13 @@ def parse(path, P=Params()):
                 setattr(P, key, type(getattr(P, key))(float(val)))
             continue
         name, chars, strokes = (f.strip() for f in line.split("|"))
-        g = by_name[name] = Glyph(name, [], [], [], [])
+        g = by_name[name] = Glyph(name, [], [], [], [], group=group)
         for tok in chars.split():
-            if len(tok) > 1 and "+" in tok and not tok.upper().startswith("U+"):
-                g.ligatures.append([_char(t) for t in tok.split("+")])
-            elif len(tok) > 1 and "~" in tok:                      # a~e pair, or ~ä single
-                g.optional.append([_char(t) for t in tok.split("~") if t])
+            if len(tok) > 1 and tok.startswith("~"):              # ~ᛊ: ss01 alternate
+                g.optional.append(_char(tok[1:]))
+            elif len(tok) > 1 and "+" in tok.replace("U+", "U"):    # ᚨ+U+030A: a sequence
+                g.sequences.append([_char(t.replace("U", "U+", 1) if t.startswith("U") else t)
+                                    for t in tok.replace("U+", "U").split("+")])
             else:
                 g.chars.append(_char(tok))
         for tok in strokes.split():
@@ -117,22 +121,18 @@ def parse(path, P=Params()):
         glyphs.append(g)
         for c in [c for c in g.chars if unicodedata.combining(c)]:
             g.chars.remove(c)
-            marks.append(Glyph(f"uni{ord(c):04X}", [c], [], [], g.strokes, mark=True))
-        upper = [c for c in g.chars if c.isupper()]
-        if upper or g.ligatures or g.optional:
-            g.chars = [c for c in g.chars if not c.isupper()]
-            caps.append(Glyph(name + ".cap", upper, [], [], g.strokes, cap=True))
+            marks.append(Glyph(f"uni{ord(c):04X}", [c], [], [], g.strokes, mark=True, group=group))
 
-    glyphs = [g for g in glyphs if g.chars or g.ligatures or g.optional or g.name in (".notdef", "space")]
-    have = {c: g for g in glyphs + caps + marks for c in g.chars}
+    glyphs = [g for g in glyphs if g.chars or g.sequences or g.optional or g.name in (".notdef", "space")]
+    have = {c: g for g in glyphs + marks for c in g.chars}
     composed = []
-    for ch in wanted:                                              # base rune + mark(s), straight from Unicode
+    for ch in wanted:                                              # base letter + mark(s), straight from Unicode
         parts = unicodedata.normalize("NFD", ch)
         if ch in have or len(parts) < 2 or not all(c in have for c in parts):
             continue
         strokes = [s for c in parts for s in have[c].strokes]
-        composed.append(Glyph(f"uni{ord(ch):04X}", [ch], [], [], strokes, cap=ch.isupper()))
-    return glyphs + marks + composed + caps
+        composed.append(Glyph(f"uni{ord(ch):04X}", [ch], [], [], strokes, group="Accented"))
+    return glyphs + marks + composed
 
 
 def uses_full_width(g, P=Params()):
@@ -171,7 +171,7 @@ def outline(g, P=Params()):
     (the mitre of those two lines), clipped to the dot's nib. One line alone → its end cap.
     Three lines meeting (the tip of ᛏ) → still just the one outer corner, no shoulders.
     """
-    h, parts, arms = (P.cap_stroke if g.cap else P.stroke) / 2, [], {}
+    h, parts, arms = P.stroke / 2, [], {}
     for pts in g.strokes:
         if len(pts) == 1:                                  # a dot
             parts.append(_nib(P.pt(*pts[0]), h))

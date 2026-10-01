@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="tiwaz" format="2">
+  <advance width="400"/>
+  <unicode hex="16CF"/>
+  <outline>
+    <contour>
+      <point x="175" y="639" type="line"/>
+      <point x="175" y="0" type="line"/>
+      <point x="225" y="0" type="line"/>
+      <point x="225" y="639" type="line"/>
+      <point x="305" y="480" type="line"/>
+      <point x="345" y="480" type="line"/>
+      <point x="345" y="511" type="line"/>
+      <point x="215" y="770" type="line"/>
+      <point x="185" y="770" type="line"/>
+      <point x="55" y="511" type="line"/>
+      <point x="55" y="480" type="line"/>
+      <point x="95" y="480" type="line"/>
+    </contour>
+  </outline>
+</glyph>

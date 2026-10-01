@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="wunjo" format="2">
+  <advance width="400"/>
+  <unicode hex="16B9"/>
+  <outline>
+    <contour>
+      <point x="55" y="0" type="line"/>
+      <point x="105" y="0" type="line"/>
+      <point x="105" y="370" type="line"/>
+      <point x="345" y="490" type="line"/>
+      <point x="345" y="515" type="line"/>
+      <point x="90" y="770" type="line"/>
+      <point x="55" y="770" type="line"/>
+    </contour>
+    <contour>
+      <point x="105" y="425" type="line"/>
+      <point x="105" y="685" type="line"/>
+      <point x="278" y="512" type="line"/>
+    </contour>
+  </outline>
+</glyph>

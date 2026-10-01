@@ -1,29 +1,53 @@
-# Runion Basic
+# Runion Neo
 
-The Elder Futhark, rebuilt on a grid of 3 × 7 dots. Straight lines only, dot to dot. Monospace, narrow and tall, every letter fills the full width of a cell.
+Latin and the Elder Futhark on a grid of 3 × 7 dots. Straight lines only, from any dot to any dot. Monospace, narrow and tall, every letter fills the full width of a cell.
 
-![Runion Basic specimen](documentation/specimen.png)
+![Runion Neo specimen](documentation/specimen.png)
 
-Type ordinary text and you get runes. `f` is ᚠ fehu, `u` is ᚢ uruz, and `th` becomes the single rune ᚦ thurisaz. Capitals are the same runes drawn with a heavier line. The Unicode runes (ᚠᚢᚦᚨᚱᚲ…) map to the same shapes.
+Runion Neo is a Latin typeface built from runes. Type ordinary text and you get Latin letters. Each capital is drawn as its lowercase letter plus a rune accent. The runes have their own Unicode codepoints (ᚠᚢᚦᚨᚱᚲ…), and the font draws them too.
 
-To try it, open [`index.html`](index.html) or run `make serve`. The playground has a type tester, a table of every character and a sketchpad for drawing glyphs on the dots.
+Runion Neo comes from [Runion Basic](https://github.com/OneManMobile/Runion-Font), which shows runes when you type Latin letters. Neo keeps Basic's grid, engine and runes. It adds a real Latin alphabet, so Latin text is Latin and runic text is runic.
 
-The font files are [`fonts/ttf/RunionBasic-Regular.ttf`](fonts/ttf/RunionBasic-Regular.ttf) and [`fonts/webfonts/RunionBasic-Regular.woff2`](fonts/webfonts/RunionBasic-Regular.woff2). The licence is the [SIL Open Font License 1.1](OFL.txt).
+To try it, open [`index.html`](index.html) or run `make serve`. The playground has a type tester (with a switch that writes your text in runes), a table of every character and a sketchpad for drawing glyphs on the dots.
+
+The font files are [`fonts/ttf/RunionNeo-Regular.ttf`](fonts/ttf/RunionNeo-Regular.ttf) and [`fonts/webfonts/RunionNeo-Regular.woff2`](fonts/webfonts/RunionNeo-Regular.woff2). The licence is the [SIL Open Font License 1.1](OFL.txt).
 
 ## The system
 
 ![Construction on the dot grid](documentation/grid.png)
 
-The font is drawn on one grid of 3 columns and 7 rows of dots. A glyph is a list of connections between dots. Fehu is `00-06 04-26 02-24`: a stave up the left side and two arms.
+The font is drawn on one grid of 3 columns and 7 rows of dots. A glyph is a list of lines between dots. Lowercase a is `00-16-20 02-22`: up from the bottom left to the top middle, down to the bottom right, and a bar across.
 
 | Rule | What it means |
 | --- | --- |
-| Dot to dot | Every line starts and ends on a dot. There are no curves. |
-| Full width | Every letter and digit touches both the left and the right column. |
+| Dot to dot | Every line starts and ends on a dot. Any dot can join any other dot, neighbour or not. There are no curves. |
+| Full width | Every Latin letter and digit touches both the left and the right column. |
 | One stroke | One line thickness for everything (`@stroke` in the source). |
 | The nib | Ink at a dot stays inside that dot's square, the nib. Corners are mitred and clipped to it, and line ends are cut flush with the grid, so every glyph has the same outer box. |
-| Capitals | Not drawn separately. An uppercase letter uses the same dots and lines with a heavier pen (`@cap_stroke`). The dots don't move, so stems line up across cases. |
-| Marks | Accents sit outside the rune, in two rows above and two below. Every rune fills the same box, so one mark position fits all of them. The 140 or so accented letters are composed by the build from Unicode: rune plus mark. |
+| Unicase | Lowercase and capitals are the same height. A lowercase letter is the plain letter, and its capital is the same letter with a rune accent. |
+| Marks | Accents sit outside the letter, in two rows above and two below. Every glyph fills the same box, so one mark position fits all of them. The 140 or so accented letters are composed by the build from Unicode: letter plus mark. |
+
+### Capitals
+
+A capital is its lowercase letter with a rune accent: an added or split stroke, or a rune's own shape. Where nothing can be added, it gets a dot.
+
+| Capitals | Accent |
+| --- | --- |
+| A T | A second crossing bar, like the two arms of ansuz ᚨ: A's goes above its bar, T's below its top. |
+| E H I | The middle line splits in two, one step to either side, and the old line becomes the space between them. E and H get two middle lines, I gets two downstrokes. |
+| B P | The bowls come to a point on the stave, as in berkanan ᛒ and wunjo ᚹ. |
+| R | Raido ᚱ itself. |
+| F | The arms of fehu ᚠ. |
+| K L | Branches: K's arms meet in the middle like kaunan ᚲ, L gets laguz's ᛚ slanted arm. |
+| N | Two downstrokes. The second bends into the bottom right and climbs the right stave. |
+| M W | The cross of mannaz ᛗ. |
+| Y | Algiz ᛉ: the Y with its stave continued to the top. |
+| X Z | A bar across. |
+| C D G J O Q S U V | These have no line to add, so they get one dot in the counter. Medieval carvers made new letters from runes the same way, with a dot: the stung runes. |
+
+Æ, Œ, Ð, Ø, Þ, ẞ, Ħ and Ł follow the same rules. Æ and Œ split their middle bar like E. Ø gets two slashes, the strokes of the medieval ø rune ᚯ. Capital Þ is thurisaz ᚦ itself, the rune the Latin letter comes from.
+
+The lowercase letters are sharp too. O is four lines, a diamond, the same shape as ingwaz ᛜ. R and S have pointed bowls and corners.
 
 All of it is defined in one text file, [`sources/glyphs.txt`](sources/glyphs.txt).
 
@@ -33,7 +57,7 @@ All of it is defined in one text file, [`sources/glyphs.txt`](sources/glyphs.txt
 
 The Elder Futhark is the oldest runic alphabet. It has 24 runes and was used by Germanic peoples from about the 2nd to the 8th century. The oldest securely dated inscription is the Vimose comb, from about 160 AD. The name comes from the first six runes: f, u, þ, a, r, k. The angular shapes are presumably an adaptation to cutting in wood and metal. Runion follows the same constraint.
 
-These are not the Viking runes. The Elder Futhark belongs to the Roman Iron Age and the Migration Period, and it was already being replaced when the Viking Age began. The Vikings wrote with the Younger Futhark, which has only 16 runes, so one rune covers several sounds: ᚢ stood for u, o, v, w, y and ø, and ᚴ for k, g and ŋ. The older row of 24 fits modern text much better. Runion starts from it and borrows from later rows only where the Elder Futhark has no rune.
+These are not the Viking runes. The Elder Futhark belongs to the Roman Iron Age and the Migration Period, and it was already being replaced when the Viking Age began. The Vikings wrote with the Younger Futhark, which has only 16 runes, so one rune covers several sounds: ᚢ stood for u, o, v, w, y and ø, and ᚴ for k, g and ŋ. Towards the end of the Viking Age carvers started adding stung runes, a rune marked with a dot or a bar to show a second sound. By the early 13th century these medieval runes matched the Latin alphabet letter for letter. The Anglo-Saxon futhorc went the other way and added new runes.
 
 The rune names used here (fehu, uruz, thurisaz and the rest) are scholarly reconstructions of Proto-Germanic words, worked out from later rune poems. None of them is attested in an Elder Futhark inscription.
 
@@ -44,29 +68,26 @@ Some of the objects the shapes come from:
 - The Golden Horns of Gallehus (Denmark, early 5th century) carried one of the earliest full sentences in runes, *ek hlewagastiz holtijaz horna tawido*: "I Hlewagastiz Holtijaz made the horn". The horns were stolen in 1802 and melted down for the gold.
 - Codex Runicus (c. 1300) is a law book, the Scanian Law, written entirely in medieval runes. Runes were still a working script long after the Viking Age.
 
-Later rune rows fill the gaps the Elder Futhark leaves for modern text. The Younger Futhark of the Viking Age cut the row to 16 runes. Towards the end of the Viking Age carvers started adding stung runes, a rune marked with a dot or a bar to show a second sound, and by the early 13th century these medieval runes matched the Latin alphabet letter for letter. The Anglo-Saxon futhorc went the other way and added new runes.
+### The runes in the font
 
-A few details:
+All 24 Elder Futhark runes are at their own Unicode codepoints. They keep their historical structure and orientation and were checked against reference glyphs for the Unicode Runic block. A few later runes are included as well:
 
-- ᛃ and ᛅ are the same rune at two points in time. Jera (`j`) is the only Elder Futhark rune made of two unconnected parts, and Runion draws it that way. When Proto-Norse *\*jāra* lost its initial j, the rune's sound changed from j to a. Its simplified form is the Younger Futhark ár rune ᛅ, which Runion uses for `æ`.
-- ᛊ has two forms. The four-stroke Σ form is more common in the oldest inscriptions, from the 3rd to the 5th century, and is the one on the Kylver Stone. The three-stroke S form is more common from the 5th century on and is the one on the Gallehus horns. Runion uses the three-stroke form for `s` and the four-stroke form for `ß`.
-- `th` and `ng` each had a rune of their own, ᚦ and ᛜ. Runion contracts the letter pairs into those runes as you type.
+| Rune | Notes |
+| --- | --- |
+| ᚳ cen, ᚻ haegl, ᛝ ing | From the Anglo-Saxon futhorc. Haegl has two bars where hagalaz ᚺ has one. |
+| ᛅ ár | The Younger Futhark a/æ rune. It developed from jera ᛃ: when Proto-Norse *\*jāra* lost its initial j, the rune's sound changed from j to a. |
+| ᚯ ø, ᚧ eth, ᚡ v | Medieval stung runes: a stave struck twice, thurisaz with a bar, fehu with a dot. The reference form of ᚧ has a dot. Runion uses a bar because a dot clogs inside the bowl. |
+| ᛩ q | The medieval q rune. |
+| ᚨ + ◌̊ | Typing ansuz followed by a combining ring above (U+030A) gives ansuz with a third arm, for å. Fonts without this drawing show ᚨ with a ring, which means the same thing. |
 
-### What is faithful and what is not
-
-All 24 runes keep their historical structure and orientation. They were checked against reference glyphs for the Unicode Runic block. The differences come from the narrow grid and the full-width rule:
+The differences come from the narrow grid:
 
 | Glyph | Status |
 | --- | --- |
-| ᛁ isa (`i`) | A bare stave cannot fill the width, so it has bars at top and bottom. The plain stave is still there as `\|`. |
 | ᚲ kaunan, ᛃ jera, ᛜ ingwaz | These runes have no stave, and reference charts usually draw them smaller than the rest. Here they are full height. |
 | ᛒ berkanan | Two symmetric 45° bowls would need nine rows, so the bowls are steep on the outside and shallow on the inside. ᚹ wunjo and ᚱ raido use the same bowl. |
 | ᛞ dagaz | A cross from corner to corner clogs at this width, so a smaller 45° cross joins the staves. |
-| ᛊ sowilo (`s`) | The later three-stroke form. The older four-stroke form is used for `ß`. |
-| `c`, `æ`, `ø`, `ð` | Borrowed from later rows: Anglo-Saxon cen ᚳ, the Younger Futhark ᛅ for æ, and the medieval stung runes ᚯ for ø and ᚧ for ð. Stung runes were marked with a dot or a bar. The reference form of ᚧ has a dot. Runion uses a bar because a dot fills in at the heavy capital stroke. |
-| `y` | ᛇ eihwaz, the yew rune. Its sound value is disputed and it was not a y. The medieval y-rune was ᛦ. |
-| `x` | Invented: a stave with a cross. Rune readers will see ᚼ, the Viking-Age h. |
-| `å`, `q`, `v`, digits, symbols, accents | Invented on the same grid rules. Runes never had them. |
+| ᛊ sowilo | Drawn in the three-stroke form, which is more common from the 5th century on (the Gallehus horns). The older four-stroke form of the Kylver Stone is the `ss01` alternate. |
 
 Runion is a typeface and makes no claim to be a scholarly reconstruction.
 
@@ -74,19 +95,23 @@ Runion is a typeface and makes no claim to be a scholarly reconstruction.
 
 ```css
 @font-face {
-  font-family: "Runion Basic";
-  src: url("RunionBasic-Regular.woff2") format("woff2");
+  font-family: "Runion Neo";
+  src: url("RunionNeo-Regular.woff2") format("woff2");
 }
-.runes { font-family: "Runion Basic", monospace; }
+.neo { font-family: "Runion Neo", monospace; }
 ```
 
 | Feature | Default | Effect |
 | --- | --- | --- |
-| `liga` | on | Contracts `th` to ᚦ, `ng` to ᛜ and `aa` to å. The contraction takes the case of its first letter. Turn it off with `font-variant-ligatures: none`. |
-| `ss01` | off | Nordic sound-runes. `ae` becomes æ and `oe` becomes ø. ä and ö become the æ and ø runes, which is how medieval carvers wrote those sounds, and ü becomes the y rune by analogy. Turn it on with `font-feature-settings: "ss01"`. |
-| `mark` | on | Combining accents attach to any rune. |
+| `ccmp` | on | Draws ᚨ + U+030A as ansuz with a third arm. |
+| `ss01` | off | The four-stroke ᛊ of the Kylver Stone. Turn it on with `font-feature-settings: "ss01"`. |
+| `mark` | on | Combining accents attach to any letter or rune. |
 
-The font covers the Google Fonts Latin Core set (319 characters) and the Elder Futhark runes of the Unicode Runic block.
+The font covers the Google Fonts Latin Core set (319 characters), the 24 Elder Futhark runes, the later runes above and the runic punctuation ᛫ ᛬ ᛭.
+
+### Writing in runes
+
+The font never turns Latin letters into runes. To write in runes, the text itself has to contain runes, so that copying, searching and screen readers get runes too. The playground's "write in runes" switch converts what you type to runic codepoints. Letter by letter it follows the Elder Futhark, `th` becomes ᚦ and `ng` becomes ᛜ, and later runes fill the gaps: ᚳ for c, ᛩ for q, ᚡ for v, ᛅ for æ and ä, ᚯ for ø and ö. For y it uses eihwaz ᛇ, the yew rune; its sound value is disputed and it was not a y. You can also type runes directly with a keyboard layout that has the Runic block.
 
 ## Building
 
@@ -97,16 +122,16 @@ make proof    # contact sheet (out/) and documentation images
 make test     # fontbakery, Google Fonts profile
 ```
 
-`sources/glyphs.txt` is the source. `sources/build.py` converts it to `sources/RunionBasic-Regular.ufo` and compiles that with fontmake, so the font can be built and reviewed with standard tools. `sources/runion.py` turns the dots and lines into outlines.
+`sources/glyphs.txt` is the source. `sources/build.py` converts it to `sources/RunionNeo-Regular.ufo` and compiles that with fontmake, so the font can be built and reviewed with standard tools. `sources/runion.py` turns the dots and lines into outlines.
 
 To change a glyph, edit its line in `glyphs.txt` and run `make build`. The sketchpad in the playground writes the stroke code for you.
 
 ## How it was made
 
-Runion Basic was made with AI. I worked with Claude, Anthropic's AI model, in Claude Code. I set the concept and the rules: the dot grid, full-width letters, one stroke width, heavier capitals, the rows for accents. I decided what to keep and what to change, and reviewed the results as we went. Claude drew the glyph constructions on the grid, wrote the build code and the playground, researched the history and drafted this README. No existing font data or outlines were used. Every outline is generated from `sources/glyphs.txt`.
+Runion Neo was made with AI. I worked with Claude, Anthropic's AI model, in Claude Code. I set the concept and the rules: the dot grid, full-width letters, one stroke width, the rune accents on the capitals, and specific letterforms such as A, E and H. I decided what to keep and what to change, and reviewed the results as we went. Claude drew the glyph constructions on the grid, wrote the build code and the playground, researched the history and drafted this README. No existing font data or outlines were used. Every outline is generated from `sources/glyphs.txt`.
 
 ## Licence
 
-Copyright 2026 The Runion Basic Project Authors (https://github.com/OneManMobile/Runion-Font).
+Copyright 2026 The Runion Neo Project Authors (https://github.com/OneManMobile/Runion-Neo).
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1. The licence is in [`OFL.txt`](OFL.txt) and is also available with a FAQ at https://openfontlicense.org.

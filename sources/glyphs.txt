@@ -1,5 +1,5 @@
 # ─────────────────────────────────────────────────────────────────────
-#  RUNION BASIC — glyph source
+#  RUNION NEO — glyph source
 # ─────────────────────────────────────────────────────────────────────
 #  The whole font lives on ONE grid of 3 × 7 points:
 #
@@ -13,87 +13,164 @@
 #   y=0      ·   ·   ·     baseline
 #
 #  point    = "xy"            e.g. 06 = top-left, 20 = bottom-right
-#  stroke   = points joined by "-" (a polyline, corners are mitred)
+#  stroke   = points joined by "-" (a polyline, corners are mitred). Any dot may join
+#             any other dot: neighbours (05-16) or across the grid (00-16, 06-20).
+#             A line may cross another between dots: A's bars run through its legs.
 #             first == last  → closed shape
 #             a lone point   → a dot
-#  RULE     : every letter and digit must touch x=0 AND x=2.
-#  MARKS    : accents live outside the rune — two attic rows above (y = 7, 8) and
-#             two cellar rows below (y = a, b  →  -1, -2). Every rune fills the same
+#  RULE     : every Latin letter and digit must touch x=0 AND x=2.
+#  CASE     : unicase. a lowercase letter is the plain Latin form; its CAPITAL is the
+#             same letter with a rune accent: the rune's extra stroke (A takes ansuz's
+#             second arm, M takes mannaz's cross), the rune's pointed bowls (B P R), or
+#             the stung dot medieval carvers used to derive one letter from another.
+#  RUNES    : the Runic block only (U+16A0…). They are never mapped to Latin letters.
+#  MARKS    : accents live outside the letter — two attic rows above (y = 7, 8) and
+#             two cellar rows below (y = a, b  →  -1, -2). Every glyph fills the same
 #             box, so one mark position fits them all; accented letters (é ñ š ő …)
-#             are never drawn: the build composes them from Unicode, rune + mark.
-#  CAPITALS : never drawn separately — an UPPERCASE character reuses the
-#             same dots and lines, traced with the heavier @cap_stroke.
+#             are never drawn: the build composes them from Unicode, letter + mark.
+#  GROUPS   : a "# ── title ──" line starts a group in the playground's glyph table.
 #
 #  line format:   name | characters | strokes
-#  characters :   space separated · "t+h" = contraction (ligature, always on)
-#                 "a~e" = optional contraction (OpenType ss01, off by default)
-#                 "~ü"  = optional single swap (ss01): ü shows this rune instead
-#                 U+XXXX allowed for awkward characters
+#  characters :   space separated · U+XXXX allowed for awkward characters
+#                 "ᚨ+U+030A" = a sequence the font draws as one glyph (OpenType ccmp)
+#                 "~ᛊ"       = alternate for ᛊ, shown when the reader turns on ss01
 #  strokes    :   "=name" reuses the strokes of a glyph defined above
 # ─────────────────────────────────────────────────────────────────────
 
-# ── settings ── one stroke width for everything; CAPITALS get a heavier one ──
+# ── settings ── one stroke width for everything ──
 @stroke      50
-@cap_stroke  74
 @charset     charsets/GF_Latin_Core.txt
 
 .notdef   |                 | 00-06-26-20-00 00-26
 space     | U+0020          |
 uni00A0   | U+00A0          |
 
-# ── Elder Futhark ── the 24 ─────────────────────────────────────────
-fehu      | f F ᚠ           | 00-06 04-26 02-24
-uruz      | u U ᚢ           | 00-06-24-20
-thurisaz  | t+h þ Þ ᚦ       | 00-06 05-23-01
-ansuz     | a A ᚨ           | 00-06-24 04-22
-raido     | r R ᚱ           | 00-06-24-03-20
-kaunan    | k K ᚲ           | 26-03-20
-gebo      | g G ᚷ           | 06-20 00-26
-wunjo     | w W ᚹ           | 00-06-24-03
-hagalaz   | h H ᚺ ᚻ         | 00-06 20-26 04-22
-naudiz    | n N ᚾ           | 10-16 04-22
-isa       | i I ı ᛁ         | 06-26 16-10 00-20
-jera      | j J ȷ ᛃ         | 16-04-12 14-22-10
-eihwaz    | y Y ~ü ᛇ        | 02-10-16-24
-perthro   | p P ᛈ           | 26-14-06-00-12-20
-algiz     | z Z ᛉ           | 10-16 06-13-26
-sowilo    | s S ᛊ ᛋ         | 26-04-22-00
-tiwaz     | t T ᛏ           | 10-16 04-16-24
-berkanan  | b B ᛒ           | 00-06-24-03-22-00
-ehwaz     | e E ᛖ           | 00-06-14-26-20
-mannaz    | m M ᛗ           | 00-06-24 20-26-04
-laguz     | l L ᛚ           | 00-06-24
-ingwaz    | n+g ŋ Ŋ ᛜ ᛝ     | 16-23-10-03-16
-dagaz     | d D ᛞ           | 00-06 20-26 04-22 02-24
-othala    | o O ᛟ           | 00-24-16-04-20
+# ── Latin lowercase ── the plain letter ────────────────────────────
+a         | a               | 00-16-20 02-22
+b         | b               | 00-06-16-25-24-13-22-21-10-00 03-13
+c         | c               | 26-16-05-01-10-20
+d         | d               | 00-06-16-25-21-10-00
+e         | e               | 26-06-00-20 03-13
+f         | f               | 00-06-26 03-13
+g         | g               | 26-16-05-01-10-20-22-12
+h         | h               | 00-06 20-26 03-23
+i         | i ı             | 06-26 16-10 00-20
+j         | j ȷ             | 06-26-21-10-01
+k         | k               | 00-06 26-03-20
+l         | l               | 06-00-20
+m         | m               | 00-06-15-26-20
+n         | n               | 00-06-20-26
+o         | o               | 16-23-10-03-16
+p         | p               | 00-06-16-25-24-13-03
+q         | q               | =o 11-20
+r         | r               | 00-06-25-13-03 13-20
+s         | s               | 26-16-04-22-10-00
+t         | t               | 06-26 16-10
+u         | u               | 06-01-10-21-26
+v         | v               | 06-10-26
+w         | w               | 06-00-11-20-26
+x         | x               | 06-20 00-26
+y         | y               | 06-13-26 13-10
+z         | z               | 06-26-00-20
 
-# ── Latin gaps ── borrowed from later rune rows / invented on-grid ──
-#   c = cen ᚳ (Anglo-Saxon) · q = invented: algiz forked at both ends, echoing the
-#   Anglo-Saxon k-runes ᛣ ᛤ (the true q-rune cweorth ᛢ needs five columns) · v, x = invented
-cen       | c C ᚳ           | 00-06 03-21
-qfork     | q Q             | 10-16 06-14-26 00-12-20
-vend      | v V             | 06-10-26
-iks       | x X             | 10-16 04-22 02-24
+# ── Latin capitals ── the same letter with a rune accent ───────────
+#   A T take a second crossing stroke below or above their own, like ansuz's second arm
+#   E H I split in two, one step to either side, and the old line becomes negative space:
+#   E and H get two middle lines, I gets two downstrokes
+#   N two downstrokes: the second bends into the bottom right and climbs the right stave
+#   B P the pointed bowls of berkanan and wunjo · R is raido ᚱ itself · F the arms of fehu
+#   K L the branches of kaunan and laguz · M W mannaz's cross
+#   Y algiz · Z a bar
+#   C D G J O Q S U V have no line to add: they take ONE stung dot, in the counter
+A         | A               | 00-16-20 02-22 04-24
+B         | B               | 00-06-16-25-24-03-22-21-10-00
+C         | C               | =c 13
+D         | D               | =d 13
+E         | E               | 26-06-00-20 04-14 02-12
+F         | F               | 00-06 04-26 02-24 06-16
+G         | G               | =g 14
+H         | H               | 00-06 20-26 02-22 04-24
+I         | I               | 06-26 00-20 05-01 25-21
+J         | J               | =j 13
+K         | K               | 00-06 26-13-20 03-13
+L         | L               | =l 06-24
+M         | M               | 00-06-24 20-26-04
+N         | N               | 00-06 16-11-20-26
+O         | O               | =o 13
+P         | P               | 00-06-16-25-24-03
+Q         | Q               | =q 13
+R         | R               | 00-06-24-03-20
+S         | S               | =s 14
+T         | T               | =t 04-24
+U         | U               | =u 13
+V         | V               | =v 15
+W         | W               | 06-00-22 26-20-02
+X         | X               | =x 03-23
+Y         | Y               | =y 16-13
+Z         | Z               | =z 03-23
 
-# ── Nordic ── made the medieval way: take a rune, strike it, or add to it ──
-#   æ = ᛅ, the Younger Futhark ár rune (a/æ) — itself the descendant of jera ᛃ
-#   ø = ᚯ, the medieval ø rune: the same stave struck twice   (ä ö share æ ø)
-#       alt ø, o with a bar through its diamond:  00-24-16-04-20 04-24
-#   å = "double a": ansuz with a third arm          (aa contracts to it)
-#   ð = þ with a bar
-#   ß = the older four-stroke Σ form of sowilo · ħ ł = h, l with one more stroke
-#   ä ö ü are composed (rune + dots) like every accented letter; with ss01 they
-#   become the sound-runes instead: ä → æ, ö → ø as medieval carvers wrote them (ü → y by analogy)
-ae        | æ Æ ~ä a~e ᛅ    | 10-16 02-24
-oslash    | ø Ø œ Œ ~ö o~e ᚯ | 10-16 03-25 01-23
-aring     | å Å a+a         | 00-06-24 04-22 02-20
-eth       | ð Ð đ Đ ᚧ       | 00-06 05-23-01 03-23
-germandbls| ß ẞ             | 26-04-23-02-20
-hbar      | ħ Ħ             | =hagalaz 05-25
-lslash    | ł Ł             | =laguz 01-23
+# ── Latin more letters ── lowercase, then the capital with its accent ──
+ae        | æ               | 00-16-26 16-10-20 03-23
+AE        | Æ               | 00-16-26 16-10-20 02-22 04-24
+eth       | ð đ             | =d 03-13
+Eth       | Ð Đ             | =d 03-13 14
+oslash    | ø               | =o 02-24
+Oslash    | Ø               | =o 01-23 03-25
+oe        | œ               | 26-16-05-01-10-20 16-10 13-23
+OE        | Œ               | 26-16-05-01-10-20 16-10 14-24 12-22
+thorn     | þ               | 00-06 05-15-24-22-11-01
+Thorn     | Þ               | 00-06 05-23-01
+germandbls| ß               | 00-05-16-25-24-13-22-21-10
+uni1E9E   | ẞ               | 00-06-26-13-22-21-10
+hbar      | ħ               | =h 05-15
+Hbar      | Ħ               | =H 05-15
+lslash    | ł               | =l 02-14
+Lslash    | Ł               | =L 02-14
 
-# ── Numbers ── invented, same grid, same rules ──────────────────────
-zero      | 0               | 10-01-05-16-25-21-10
+# ── Elder Futhark ── the 24 runes, Unicode Runic block only ─────────
+fehu      | ᚠ               | 00-06 04-26 02-24
+uruz      | ᚢ               | 00-06-24-20
+thurisaz  | ᚦ               | 00-06 05-23-01
+ansuz     | ᚨ               | 00-06-24 04-22
+raido     | ᚱ               | 00-06-24-03-20
+kaunan    | ᚲ               | 26-03-20
+gebo      | ᚷ               | 06-20 00-26
+wunjo     | ᚹ               | 00-06-24-03
+hagalaz   | ᚺ               | 00-06 20-26 04-22
+naudiz    | ᚾ               | 10-16 04-22
+isa       | ᛁ               | 10-16
+jera      | ᛃ               | 16-04-12 14-22-10
+eihwaz    | ᛇ               | 02-10-16-24
+perthro   | ᛈ               | 26-14-06-00-12-20
+algiz     | ᛉ               | 10-16 06-13-26
+sowilo    | ᛊ ᛋ             | 26-04-22-00
+tiwaz     | ᛏ               | 10-16 04-16-24
+berkanan  | ᛒ               | 00-06-24-03-22-00
+ehwaz     | ᛖ               | 00-06-14-26-20
+mannaz    | ᛗ               | 00-06-24 20-26-04
+laguz     | ᛚ               | 00-06-24
+ingwaz    | ᛜ               | 16-23-10-03-16
+dagaz     | ᛞ               | 00-06 20-26 04-22 02-24
+othala    | ᛟ               | 00-24-16-04-20
+
+# ── Later runes ── from the Anglo-Saxon and medieval rows ──────────
+#   ᚳ cen · ᚻ the two-bar haegl · ᛝ ing · ᛅ the Younger Futhark ár · ᚯ ø and ᚧ eth,
+#   stung runes (the reference ᚧ has a dot; a bar reads better) · ᚡ v, the stung fehu
+#   ᛩ q · "ᚨ + ring above" draws ansuz with a third arm, for å
+#   ss01: the older four-stroke ᛊ of the Kylver Stone
+cen       | ᚳ               | 00-06 03-21
+haegl     | ᚻ               | 00-06 20-26 05-23 03-21
+ing       | ᛝ               | 16-24-00 16-04-20
+ar        | ᛅ               | 10-16 02-24
+oerune    | ᚯ               | 10-16 03-25 01-23
+ethrune   | ᚧ               | 00-06 05-23-01 03-23
+stungfehu | ᚡ               | =fehu 25
+qrune     | ᛩ               | 20-26-04-22
+ansuz_ring| ᚨ+U+030A        | 00-06-24 04-22 02-20
+sowilo.ss01 | ~ᛊ            | 26-04-23-02-20
+
+# ── Numbers ── same grid, same rules ───────────────────────────────
+zero      | 0               | 10-01-05-16-25-21-10 12-14
 one       | 1               | 05-16-10 00-20
 two       | 2               | 06-26-24-02-00-20
 three     | 3               | 06-26-13-20-00
@@ -104,7 +181,7 @@ seven     | 7               | 06-26-00
 eight     | 8               | 06-26-00-20-06
 nine      | 9               | 00-22-26-06-04-22
 
-# ── Symbols ── first handful, more as we progress ───────────────────
+# ── Symbols ──────────────────────────────────────────────────────────
 period    | .               | 10
 comma     | , ‚             | 11-00
 colon     | : ᛬             | 12 14
@@ -126,11 +203,9 @@ bracketright | ]            | 06-26-20-00
 less      | <               | 25-03-21
 greater   | >               | 05-23-01
 asterisk  | *               | 05-23 03-25 13-15
-numbersign| U+0023          | 00-06 20-26 02-22 04-24
+numbersign| U+0023          | 00-15 10-25 02-22 04-24
 runedot   | ᛫ ·             | 13
 runecross | ᛭ ×             | 02-24 04-22
-
-# ── Symbols, second batch ───────────────────────────────────────────
 bar        | U+007C         | 10-16
 asciicircum| ^              | 04-16-24
 grave      | `              | 06-15

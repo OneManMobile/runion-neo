@@ -1,7 +1,7 @@
-"""Build Runion Basic.
+"""Build Runion Neo.
 
-    sources/glyphs.txt ─► sources/RunionBasic-Regular.ufo ─ fontmake ─► fonts/ttf/*.ttf ─► fonts/webfonts/*.woff2
-                                                                                      └─► specimen/data.js (playground)
+    sources/glyphs.txt ─► sources/RunionNeo-Regular.ufo ─ fontmake ─► fonts/ttf/*.ttf ─► fonts/webfonts/*.woff2
+                                                                                   └─► specimen/data.js (playground)
 
 glyphs.txt is the real source: dots and the lines between them. The UFO is generated from it
 on every build so the font can be compiled — and reviewed — with the standard fontmake tooling.
@@ -20,15 +20,16 @@ from runion import Params, contours, outline, parse, uses_full_width
 
 SRC = Path(__file__).parent
 ROOT = SRC.parent
-FAMILY, STYLE, VERSION = "Runion Basic", "Regular", (1, 0)
-REPO = "https://github.com/OneManMobile/Runion-Font"
+FAMILY, STYLE, VERSION = "Runion Neo", "Regular", (1, 0)
+REPO = "https://github.com/OneManMobile/Runion-Neo"
 DESIGNER = "Andreas Rudolph"
 COPYRIGHT = f"Copyright 2026 The {FAMILY} Project Authors ({REPO})"
 LICENSE = ("This Font Software is licensed under the SIL Open Font License, Version 1.1. "
            "This license is available with a FAQ at: https://openfontlicense.org")
 LICENSE_URL = "https://openfontlicense.org"
-DESCRIPTION = ("A monospaced rune face: the Elder Futhark rebuilt on a grid of 3 by 7 dots. "
-               "Straight lines only, dot to dot. Capitals are the same runes traced with a heavier line.")
+DESCRIPTION = ("A monospaced Latin and Elder Futhark face on a grid of 3 by 7 dots. Straight lines only, dot to dot. "
+               "Unicase: each capital is its letter with a rune accent.")
+SS01 = "Four-stroke sowilo"
 NUDGE = 10                            # combining marks are drawn this much low; their anchor lifts them back, so
                                       # shapers see a real attachment and non-shaping apps are off by 1% of an em
 ASCENT, DESCENT = 1030, -270          # room for the attic and cellar marks; win metrics follow the real bbox
@@ -36,44 +37,26 @@ P = Params()
 STEM = f"{FAMILY.replace(' ', '')}-{STYLE}"
 
 
-def features(glyphs, cmap, data):
-    """OpenType features: contractions (liga), sound-runes (ss01), mark attachment, GDEF classes."""
-    names = [g.name for g in glyphs]
-    cap_of = {cmap[ord(c)]: cmap[ord(c.upper())] for c in map(chr, cmap)
-              if c.upper() != c and len(c.upper()) == 1 and ord(c.upper()) in cmap and cmap[ord(c.upper())] != cmap[ord(c)]}
-    both = lambda n: f"[{n} {cap_of[n]}]" if n in cap_of else n
+def features(glyphs, cmap):
+    """OpenType features: drawn sequences (ccmp), alternates (ss01), mark attachment, GDEF classes."""
+    seqs = [f"    sub {' '.join(cmap[ord(c)] for c in s)} by {g.name};" for g in glyphs for s in g.sequences]
+    alts = [f"    sub {cmap[ord(c)]} by {g.name};" for g in glyphs for c in g.optional]
+    fea = "languagesystem DFLT dflt;\nlanguagesystem latn dflt;\nlanguagesystem runr dflt;\n"
+    if seqs:
+        fea += "feature ccmp {\n" + "\n".join(seqs) + "\n} ccmp;\n"
+    if alts:
+        fea += f'feature ss01 {{\n    featureNames {{ name "{SS01}"; }};\n' + "\n".join(alts) + "\n} ss01;\n"
 
-    def rules(kind):                  # a contraction takes the case of its first letter:  th tH → þ   Th TH → heavy þ
-        out = []
-        for g in glyphs:
-            for lig in getattr(g, kind):
-                first, *rest = (cmap[ord(c)] for c in lig)
-                tail = " ".join(both(n) for n in rest)
-                out.append(f"    sub {first} {tail} by {g.name};")
-                if first in cap_of and g.name in cap_of:
-                    out.append(f"    sub {cap_of[first]} {tail} by {cap_of[g.name]};")
-                    next(d for d in data if d["name"] == cap_of[g.name])[kind].append("".join(lig).capitalize())
-        return out
-
-    subs, opt = rules("ligatures"), rules("optional")
-    fea = ("languagesystem DFLT dflt;\nlanguagesystem latn dflt;\nlanguagesystem runr dflt;\n"
-           "feature liga {\n" + "\n".join(subs) + "\n} liga;\n")
-    if opt:
-        fea += 'feature ss01 {\n    featureNames { name "Nordic sound-runes"; };\n' + "\n".join(opt) + "\n} ss01;\n"
-
-    # combining marks: every rune fills the same box, so ONE anchor above and ONE below serve all bases
+    # combining marks: every glyph fills the same box, so ONE anchor above and ONE below serve all bases
     top = [g.name for g in glyphs if g.mark and max(y for s in g.strokes for _, y in s) > P.rows - 1]
     bottom = [g.name for g in glyphs if g.mark and g.name not in top]
-    ligs = [g.name for g in glyphs if (g.ligatures or g.name.removesuffix(".cap") in
-                                       {x.name for x in glyphs if x.ligatures}) and g.strokes]
-    bases = [g.name for g in glyphs if not g.mark and g.strokes and g.name not in ligs and g.name != ".notdef"]
+    bases = [g.name for g in glyphs if not g.mark and g.strokes and g.name != ".notdef"]
     mid, hi, lo = P.advance // 2, P.cap + 60, -60
     fea += (f"markClass [{' '.join(top)}] <anchor {mid - P.advance} {hi - NUDGE}> @TOP;\n"
             f"markClass [{' '.join(bottom)}] <anchor {mid - P.advance} {lo - NUDGE}> @BOTTOM;\n"
-            f"feature mark {{\n    pos base [{' '.join(bases + ligs)}] <anchor {mid} {hi}> mark @TOP <anchor {mid} {lo}> mark @BOTTOM;\n}} mark;\n"
-            f"table GDEF {{\n    GlyphClassDef [{' '.join(bases)}], [{' '.join(ligs)}], [{' '.join(top + bottom)}], ;\n"
-            + "".join(f"    LigatureCaretByPos {n} {mid};\n" for n in ligs) + "} GDEF;\n")
-    return fea, len(subs), len(opt)
+            f"feature mark {{\n    pos base [{' '.join(bases)}] <anchor {mid} {hi}> mark @TOP <anchor {mid} {lo}> mark @BOTTOM;\n}} mark;\n"
+            f"table GDEF {{\n    GlyphClassDef [{' '.join(bases)}], , [{' '.join(top + bottom)}], ;\n}} GDEF;\n")
+    return fea, len(seqs), len(alts)
 
 
 def main():
@@ -100,13 +83,13 @@ def main():
                 pen.lineTo(pt)
             pen.closePath()
         data.append({
-            "name": g.name, "chars": g.chars, "cap": g.cap, "mark": g.mark,
-            "ligatures": ["".join(l) for l in g.ligatures], "optional": ["".join(l) for l in g.optional],
+            "name": g.name, "chars": g.chars, "mark": g.mark, "group": g.group,
+            "sequences": ["".join(s) for s in g.sequences], "optional": g.optional,
             "strokes": g.strokes, "fullWidth": uses_full_width(g, P),
             "path": " ".join("M" + " L".join(f"{x} {y}" for x, y in r) + " Z" for r in rings),
         })
 
-    ufo.features.text, n_subs, n_opt = features(glyphs, cmap, data)
+    ufo.features.text, n_seq, n_alt = features(glyphs, cmap)
     ufo.lib["public.glyphOrder"] = names
     ufo.lib["public.openTypeMeta"] = {"dlng": ["Latn", "Runr"], "slng": ["Latn", "Runr"]}
     i = ufo.info
@@ -143,7 +126,7 @@ def main():
     (ROOT / "fonts/webfonts").mkdir(parents=True, exist_ok=True)
     font.save(ROOT / "fonts/webfonts" / f"{STEM}.woff2")
 
-    params = {k: getattr(P, k) for k in ("cols", "rows", "cell_w", "cell_h", "stroke", "cap_stroke", "side", "advance", "cap")}
+    params = {k: getattr(P, k) for k in ("cols", "rows", "cell_w", "cell_h", "stroke", "side", "advance", "cap")}
     (ROOT / "specimen").mkdir(exist_ok=True)
     (ROOT / "specimen/data.js").write_text(
         "window.RUNION = " + json.dumps({"built": int(time.time()), "params": params, "glyphs": data}, ensure_ascii=False) + ";\n",
@@ -154,10 +137,11 @@ def main():
             want = [int(t[2:], 16) for t in (SRC / line.split()[1]).read_text().split() if t.startswith("U+")]
             miss = [cp for cp in want if cp not in cmap]
             print(f"{line.split()[1]}: {len(want) - len(miss)}/{len(want)}" + (" · missing " + " ".join(f"U+{cp:04X}" for cp in miss) if miss else " ✓"))
-    narrow = [g.name for g in glyphs if g.strokes and not g.mark and not g.name.startswith("uni") and not uses_full_width(g, P)]
-    print(f"{len(names)} glyphs · {len(cmap)} characters · {n_subs} contractions + {n_opt} optional (ss01)")
-    print(f"advance {P.advance} · cap height {P.cap} · stroke {P.stroke:g} · capitals {P.cap_stroke:g} · ink y {min(ys)}…{max(ys)}")
-    print(f"not full width ({len(narrow)}): {' '.join(narrow)}")
+    narrow = [g.name for g in glyphs if g.strokes and (g.group.startswith("Latin") or g.group == "Numbers")
+              and not uses_full_width(g, P)]
+    print(f"{len(names)} glyphs · {len(cmap)} characters · {n_seq} drawn sequences (ccmp) · {n_alt} alternates (ss01)")
+    print(f"advance {P.advance} · cap height {P.cap} · stroke {P.stroke:g} · ink y {min(ys)}…{max(ys)}")
+    print(f"letters and digits not full width ({len(narrow)}): {' '.join(narrow) or '—'}")
     print(f"→ {ttf.relative_to(ROOT)}")
 
 

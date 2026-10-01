@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Oslash" format="2">
+  <advance width="400"/>
+  <unicode hex="00D8"/>
+  <outline>
+    <contour>
+      <point x="129" y="159" type="line"/>
+      <point x="182" y="0" type="line"/>
+      <point x="218" y="0" type="line"/>
+      <point x="345" y="381" type="line"/>
+      <point x="345" y="389" type="line"/>
+      <point x="289" y="558" type="line"/>
+      <point x="345" y="615" type="line"/>
+      <point x="345" y="650" type="line"/>
+      <point x="310" y="650" type="line"/>
+      <point x="271" y="611" type="line"/>
+      <point x="218" y="770" type="line"/>
+      <point x="182" y="770" type="line"/>
+      <point x="55" y="389" type="line"/>
+      <point x="55" y="381" type="line"/>
+      <point x="111" y="212" type="line"/>
+      <point x="55" y="155" type="line"/>
+      <point x="55" y="120" type="line"/>
+      <point x="90" y="120" type="line"/>
+    </contour>
+    <contour>
+      <point x="249" y="519" type="line"/>
+      <point x="291" y="392" type="line"/>
+      <point x="151" y="251" type="line"/>
+      <point x="109" y="378" type="line"/>
+    </contour>
+    <contour>
+      <point x="169" y="198" type="line"/>
+      <point x="263" y="292" type="line"/>
+      <point x="200" y="104" type="line"/>
+    </contour>
+    <contour>
+      <point x="137" y="478" type="line"/>
+      <point x="200" y="666" type="line"/>
+      <point x="231" y="572" type="line"/>
+    </contour>
+  </outline>
+</glyph>

@@ -1,4 +1,4 @@
-# Runion Basic — build, proof and test
+# Runion Neo — build, proof and test
 PY = .venv/bin/python
 
 help:
