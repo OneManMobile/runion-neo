@@ -69,9 +69,9 @@ def specimen():
         draw_construction(d, glyphs[name], P, 1330 * K + i * 300 * K, 180 * K, S, line=5 * K // 2, r=8 * K // 2 + 2)
     small = label_font(24 * K)
     d.text((1345 * K, 735 * K), "a                  A", font=small, fill=INK)
-    d.text((1345 * K, 790 * K), "every line runs dot to dot;", font=small, fill=SOFT)
-    d.text((1345 * K, 830 * K), "the capital adds a rune accent,", font=small, fill=SOFT)
-    d.text((1345 * K, 870 * K), "here ansuz's second arm", font=small, fill=SOFT)
+    d.text((1345 * K, 790 * K), "Every line runs dot to dot,", font=small, fill=SOFT)
+    d.text((1345 * K, 830 * K), "capitals are ornamented with", font=small, fill=SOFT)
+    d.text((1345 * K, 870 * K), "dots and/or lines.", font=small, fill=SOFT)
     img.resize((2000, 1050), Image.LANCZOS).save(DOC / "specimen.png")
 
 
