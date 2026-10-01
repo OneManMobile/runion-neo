@@ -93,8 +93,8 @@ z         | z               | 06-26-00-20
 #   Y algiz · Z a bar · J a short stem hanging free under its bar
 #   B C G O Q R U V have no line to add: they take ONE stung dot, in the counter
 #   (B's, C's and R's sit at the middle right, in the open mouth) · S takes two, one in each
-#   counter · D takes two, at the top and bottom of its right edge · N a dot at the top middle and a
-#   short branch from the middle of its first stave down to the bottom middle
+#   counter · D takes two, at the top and bottom of its right edge
+#   N a short branch from the middle of its first stave down to the bottom middle
 A         | A               | 16-00-16-20 03-23 02-22
 B         | B               | =b 23
 C         | C               | 26-03-20 23
@@ -108,7 +108,7 @@ J         | J               | 06-26-21-10-01 16 15-12
 K         | K               | 00-06 26-13-20 03-13
 L         | L               | 06-00-20 01-21
 M         | M               | 00-06-24 20-26-04
-N         | N               | 00-06-20-26 16 10 03-10
+N         | N               | 00-06-20-26 03-10
 O         | O               | =o 13
 P         | P               | 00-06-26-04-02-24-26
 Q         | Q               | =q 13
