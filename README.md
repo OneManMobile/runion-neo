@@ -56,7 +56,7 @@ A capital is its lowercase letter with a rune accent: an added or split stroke, 
 
 Å is drawn rather than built from A and a ring: the A comes down one step and the ring becomes a dot above its tip. å has one bar, Å two, like a and A.
 
-The lowercase letters are sharp too. O is four lines, a diamond, the same shape as ingwaz ᛜ. C is two strokes, the angle of kaunan ᚲ. G is four: C, then up to the middle and a bar inwards that stops short of the first strokes. Capital G's dot sits in the mouth above that bar. D is three strokes: a stave and a point. P is a flag on the stave with a 45° diagonal; R is a stave, a flag and a leg (four strokes), and B is a flag with a second one mirrored below. S is three strokes: from the upper right down to the middle left, across to the middle right, and down to the lower left.
+The lowercase letters are sharp too. O is four lines, a diamond, the same shape as ingwaz ᛜ. C is two strokes, the angle of kaunan ᚲ. G is four: C, then up to the middle and a bar inwards that stops short of the first strokes. Capital G's dot sits in the mouth above that bar. D is three strokes: a stave and a point. P is three strokes, a flag on the stave; R is P with a leg (four strokes), and B is P with the flag mirrored below. S is three strokes: from the upper right down to the middle left, across to the middle right, and down to the lower left.
 
 All of it is defined in one text file, [`sources/glyphs.txt`](sources/glyphs.txt).
 
@@ -113,7 +113,7 @@ Runion is a typeface and makes no claim to be a scholarly reconstruction.
 
 | Feature | Default | Effect |
 | --- | --- | --- |
-| `ccmp` | on | Draws ᚨ + U+030A as ansuz with a third arm. |
+| `ccmp` | on | Draws ᚨ + U+030A as ansuz with a third arm, and a/A + U+030A as the drawn å/Å. |
 | `ss01` | off | The four-stroke ᛊ of the Kylver Stone. Turn it on with `font-feature-settings: "ss01"`. |
 | `mark` | on | Combining accents attach to any letter or rune. |
 

@@ -54,7 +54,7 @@ uni00A0   | U+00A0          |
 # ── Latin lowercase ── the plain letter ────────────────────────────
 #   sharp: C is two strokes, the angle of kaunan · G is four: C, then up to
 #   the middle, then a bar inwards that stops short of the first strokes · D is a stave and a point
-#   P is a flag on the stave, its diagonal at 45° (26-04); R is a stave, a flag and a leg (four strokes);
+#   P is three strokes, a flag on the stave; R is P plus a leg (four strokes);
 #   B is P with the flag mirrored below · S is three strokes: upper right down to the middle
 #   left, across to the middle right, down to the lower left
 a         | a               | 00-16-20 02-22
@@ -72,7 +72,7 @@ l         | l               | 06-00-20
 m         | m               | 00-06-15-26-20
 n         | n               | 00-06-20-26
 o         | o               | 16-23-10-03-16
-p         | p               | 00-06-26-04-02
+p         | p               | 00-06-26-03
 q         | q               | =o 11-20
 r         | r               | 00-06-26-03-20
 s         | s               | 26-03-23-00
@@ -110,7 +110,7 @@ L         | L               | 06-00-20 01-21
 M         | M               | 00-06-24 20-26-04
 N         | N               | 00-06-20-26 03-10
 O         | O               | =o 13
-P         | P               | 00-06-26-04-02-24-26
+P         | P               | 00-06-26-03 01-24-26
 Q         | Q               | =q 13
 R         | R               | 00-06-26-03-20 23
 S         | S               | 26-03-23-00 24 02
