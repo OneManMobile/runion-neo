@@ -29,27 +29,27 @@
     </source>
   </sources>
   <instances>
-    <instance name="Light" familyname="Runion Neo" stylename="Light">
+    <instance name="Light" familyname="Runion Neo" stylename="Light" filename="instances/RunionNeo-Light.ufo">
       <location>
         <dimension name="Weight" xvalue="300"/>
       </location>
     </instance>
-    <instance name="Regular" familyname="Runion Neo" stylename="Regular">
+    <instance name="Regular" familyname="Runion Neo" stylename="Regular" filename="instances/RunionNeo-Regular.ufo">
       <location>
         <dimension name="Weight" xvalue="400"/>
       </location>
     </instance>
-    <instance name="Medium" familyname="Runion Neo" stylename="Medium">
+    <instance name="Medium" familyname="Runion Neo" stylename="Medium" filename="instances/RunionNeo-Medium.ufo">
       <location>
         <dimension name="Weight" xvalue="500"/>
       </location>
     </instance>
-    <instance name="SemiBold" familyname="Runion Neo" stylename="SemiBold">
+    <instance name="SemiBold" familyname="Runion Neo" stylename="SemiBold" filename="instances/RunionNeo-SemiBold.ufo">
       <location>
         <dimension name="Weight" xvalue="600"/>
       </location>
     </instance>
-    <instance name="Bold" familyname="Runion Neo" stylename="Bold">
+    <instance name="Bold" familyname="Runion Neo" stylename="Bold" filename="instances/RunionNeo-Bold.ufo">
       <location>
         <dimension name="Weight" xvalue="700"/>
       </location>

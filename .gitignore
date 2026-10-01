@@ -5,3 +5,8 @@ __pycache__/
 out/
 .claude/
 .DS_Store
+# gftools builder working files
+sources/instances/
+sources/build.ninja
+sources/.ninja_log
+sources/instance_ufos/

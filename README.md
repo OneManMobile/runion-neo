@@ -127,13 +127,16 @@ The font never turns Latin letters into runes. To write in runes, the text itsel
 ## Building
 
 ```bash
-make venv     # once: Python environment with fontmake, ufoLib2, shapely, pillow
+make venv     # once: Python environment with fontmake, ufoLib2, shapely, pillow, gftools, fontbakery
 make build    # glyphs.txt → UFOs → fonts/variable, fonts/ttf, fonts/webfonts, playground data
+make gftools  # the Google Fonts path: gftools builder compiles fonts/ from sources/config.yaml
 make proof    # contact sheet (out/) and documentation images
 make test     # fontbakery, Google Fonts profile
 ```
 
 `sources/glyphs.txt` is the source. `sources/build.py` turns it into three master UFOs (`sources/RunionNeo-Light.ufo`, `-Regular.ufo`, `-Bold.ufo`) and `sources/RunionNeo.designspace`, and compiles the variable font from them with fontmake. In the masters every line, corner and dot is a separate piece, so each glyph has the same points at every weight and the masters interpolate exactly. The static fonts are built from the same pieces merged into one outline. `sources/runion.py` turns the dots and lines into outlines.
+
+The master UFOs and the designspace are committed, so the fonts can also be built without `glyphs.txt`: `sources/config.yaml` lets `gftools builder` compile the variable font and the statics from them (`make gftools`). After changing `glyphs.txt`, run `make build` first so the masters are up to date. Every push is built and checked with fontbakery by GitHub Actions; the fonts and the report are attached to each run.
 
 To change a glyph, edit its line in `glyphs.txt` and run `make build`. The sketchpad in the playground writes the stroke code for you.
 
@@ -143,6 +146,6 @@ Runion Neo was made with AI. I worked with Claude, Anthropic's AI model, in Clau
 
 ## Licence
 
-Copyright 2026 The Runion Neo Project Authors (https://github.com/OneManMobile/Runion-Neo).
+Copyright 2026 The Runion Neo Project Authors (https://github.com/OneManMobile/runion-neo).
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1. The licence is in [`OFL.txt`](OFL.txt) and is also available with a FAQ at https://openfontlicense.org.

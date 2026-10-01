@@ -7,7 +7,7 @@
     <key>capHeight</key>
     <integer>752</integer>
     <key>copyright</key>
-    <string>Copyright 2026 The Runion Neo Project Authors (https://github.com/OneManMobile/Runion-Neo)</string>
+    <string>Copyright 2026 The Runion Neo Project Authors (https://github.com/OneManMobile/runion-neo)</string>
     <key>descender</key>
     <integer>-270</integer>
     <key>familyName</key>
@@ -25,7 +25,7 @@
     <key>openTypeNameDesigner</key>
     <string>Andreas Rudolph</string>
     <key>openTypeNameDesignerURL</key>
-    <string>https://github.com/OneManMobile/Runion-Neo</string>
+    <string>https://github.com/OneManMobile</string>
     <key>openTypeNameLicense</key>
     <string>This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://openfontlicense.org</string>
     <key>openTypeNameLicenseURL</key>
@@ -33,7 +33,7 @@
     <key>openTypeNameManufacturer</key>
     <string>Andreas Rudolph</string>
     <key>openTypeNameManufacturerURL</key>
-    <string>https://github.com/OneManMobile/Runion-Neo</string>
+    <string>https://github.com/OneManMobile/runion-neo</string>
     <key>openTypeOS2Panose</key>
     <array>
       <integer>2</integer>

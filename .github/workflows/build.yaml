@@ -1,0 +1,28 @@
+name: Build and test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - name: Install
+        run: make venv
+      - name: Build fonts from sources/glyphs.txt
+        run: make build
+      - name: Fontbakery, Google Fonts profile
+        run: make test
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: runion-neo
+          path: |
+            fonts
+            out/fontbakery-*.md

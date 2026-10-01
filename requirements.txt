@@ -3,3 +3,5 @@ fontmake>=3.9
 ufoLib2>=0.16
 shapely>=2.0
 pillow>=10.0
+gftools>=0.9
+fontbakery[googlefonts]>=0.13

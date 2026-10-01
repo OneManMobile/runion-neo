@@ -28,8 +28,8 @@ from runion import Params, contours, outline, parse, pieces, uses_full_width
 SRC = Path(__file__).parent
 ROOT = SRC.parent
 FAMILY, VERSION = "Runion Neo", (1, 0)
-REPO = "https://github.com/OneManMobile/Runion-Neo"
-DESIGNER = "Andreas Rudolph"
+REPO = "https://github.com/OneManMobile/runion-neo"
+DESIGNER, DESIGNER_URL = "Andreas Rudolph", "https://github.com/OneManMobile"
 COPYRIGHT = f"Copyright 2026 The {FAMILY} Project Authors ({REPO})"
 LICENSE = ("This Font Software is licensed under the SIL Open Font License, Version 1.1. "
            "This license is available with a FAQ at: https://openfontlicense.org")
@@ -105,7 +105,7 @@ def make_ufo(glyphs, fea, style, merged):
     i.styleMapFamilyName = FAMILY if style in ("Regular", "Bold") else f"{FAMILY} {style}"
     i.styleMapStyleName = "bold" if style == "Bold" else "regular"
     i.unitsPerEm, i.ascender, i.descender, i.capHeight, i.xHeight, i.italicAngle = P.upm, ASCENT, DESCENT, Q.cap, Q.cap, 0
-    i.copyright, i.openTypeNameDesigner, i.openTypeNameDesignerURL = COPYRIGHT, DESIGNER, REPO
+    i.copyright, i.openTypeNameDesigner, i.openTypeNameDesignerURL = COPYRIGHT, DESIGNER, DESIGNER_URL
     i.openTypeNameManufacturer, i.openTypeNameManufacturerURL = DESIGNER, REPO
     i.openTypeNameLicense, i.openTypeNameLicenseURL, i.openTypeNameDescription = LICENSE, LICENSE_URL, DESCRIPTION
     i.openTypeHheaAscender, i.openTypeHheaDescender, i.openTypeHheaLineGap = ASCENT, DESCENT, 0
@@ -174,7 +174,8 @@ def main():
         ufo.save(path, overwrite=True)
         doc.addSourceDescriptor(filename=path.name, name=s, familyName=FAMILY, styleName=s, location={"Weight": WEIGHTS[s]})
     for s, w in WEIGHTS.items():
-        doc.addInstanceDescriptor(name=s, familyName=FAMILY, styleName=s, location={"Weight": w})
+        doc.addInstanceDescriptor(name=s, familyName=FAMILY, styleName=s, location={"Weight": w},
+                                  filename=f"instances/{STEM}-{s}.ufo")   # gftools builder names its statics after these
     ds = SRC / f"{STEM}.designspace"
     doc.write(ds)
 
