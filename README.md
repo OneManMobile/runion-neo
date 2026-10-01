@@ -27,6 +27,7 @@ The font is drawn on one grid of 3 columns and 7 rows of dots. A glyph is a list
 | One stroke | One line thickness for everything in a weight: 32 units in Light, 50 in Regular, 74 in Bold (`@light`, `@stroke`, `@bold` in the source). The dots never move between weights; only the pen changes. |
 | The nib | Ink at a dot stays inside that dot's square, the nib. Corners are mitred and clipped to it, and line ends are cut flush with the grid, so every glyph has the same outer box. |
 | Unicase | Lowercase and capitals are the same height. A lowercase letter is the plain letter, and its capital is the same letter with a rune accent. |
+| Dots | A dot that stands free (the stung dots, the period, the umlaut) is 1.4 pens wide (`@dot`), because a small square reads lighter than a line of the same width. Where a dot that big would crowd a line, it shrinks back towards one pen. A dot that sits on a line stays one pen. |
 | Marks | Accents sit outside the letter, in two rows above and two below. Every glyph fills the same box, so one mark position fits all of them. The 140 or so accented letters are composed by the build from Unicode: letter plus mark. |
 
 ### Capitals
@@ -43,13 +44,13 @@ A capital is its lowercase letter with a rune accent: an added or split stroke, 
 | F | Fehu ᚠ itself. |
 | K | Branches: the arms meet in the middle like kaunan ᚲ. |
 | L | A second bar right above its foot. |
-| N | A middle stave through the diagonal, like the stave of naudiz ᚾ crossed by its bar. |
 | M W | The cross of mannaz ᛗ. |
 | Y | Algiz ᛉ: the Y with its stave continued to the top. |
 | X Z | A bar across. |
 | J | A short stem under the top bar, hanging free between the bar and the hook. |
 | B C G O Q R U V | These have no line to add, so they get one dot, in the counter or, for B, C and R, at the middle right in the open mouth. Medieval carvers made new letters from runes the same way, with a dot: the stung runes. |
 | D S | Two dots. D's sit at the top and bottom of its right edge, S's in its two counters (upper right and lower left). |
+| N | A dot at the top middle, and a short branch from the middle of the first stave down to the bottom middle. |
 
 Æ, Œ, Ð, Ø, Þ, ẞ, Ħ and Ł follow the same rules. Æ, Œ and Ð split their middle bar like E. ø is the diamond O with one slash from corner to corner; capital Ø adds the other diagonal, so the slashes cross. Capital Þ is thurisaz ᚦ itself, the rune the Latin letter comes from.
 

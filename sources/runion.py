@@ -28,6 +28,7 @@ class Params:
     stroke: float = 50       # line thickness of the Regular — one width for everything …
     light: float = 32        # … and of the Light and Bold masters of the variable font
     bold: float = 74
+    dot: float = 1.0         # a free-standing dot is this many pens wide: a small square reads lighter than a line
     advance: int = 400       # the monospace cell — the dot lattice sits centred in it
     upm: int = 1000
 
@@ -164,6 +165,43 @@ def _line_band(n, theta, h):
     return _band((n[0] - ux, n[1] - uy), (n[0] + ux, n[1] + uy), h)
 
 
+def _on_lines(g):
+    """Every grid dot that some line of the glyph touches or crosses."""
+    on = set()
+    for pts in g.strokes:
+        for a, b in zip(pts, pts[1:]):
+            k = gcd(b[0] - a[0], b[1] - a[1])
+            if k:
+                on.update((a[0] + (b[0] - a[0]) // k * j, a[1] + (b[1] - a[1]) // k * j) for j in range(k + 1))
+    return on
+
+
+def _dot_halves(g, P):
+    """Half-size of every lone dot of the glyph, by grid point.
+
+    A free-standing dot is P.dot pens wide, so it reads as strongly as a line. Where a dot that
+    big would come within half a pen of a line, it shrinks back towards one pen. A dot that
+    sits on a line stays one pen.
+    """
+    h, dots = P.stroke / 2, [s[0] for s in g.strokes if len(s) == 1]
+    if not dots:
+        return {}
+    on, lines = _on_lines(g), [s for s in g.strokes if len(s) > 1]
+    ink = outline(Glyph(g.name, [], [], [], lines), P) if lines else Polygon()
+    halves = {}
+    for p in dots:
+        c = P.pt(*p)
+        fits = lambda r: ink.is_empty or _nib(c, r).distance(ink) >= h
+        lo, hi = h, h * (1 if p in on else P.dot)
+        if not fits(hi):
+            for _ in range(12):
+                mid = (lo + hi) / 2
+                lo, hi = (mid, hi) if fits(mid) else (lo, mid)
+            hi = lo
+        halves[p] = hi
+    return halves
+
+
 def outline(g, P=Params()):
     """Glyph → shapely geometry in font units.
 
@@ -173,10 +211,10 @@ def outline(g, P=Params()):
     (the mitre of those two lines), clipped to the dot's nib. One line alone → its end cap.
     Three lines meeting (the tip of ᛏ) → still just the one outer corner, no shoulders.
     """
-    h, parts, arms = P.stroke / 2, [], {}
+    h, parts, arms, halves = P.stroke / 2, [], {}, _dot_halves(g, P)
     for pts in g.strokes:
         if len(pts) == 1:                                  # a dot
-            parts.append(_nib(P.pt(*pts[0]), h))
+            parts.append(_nib(P.pt(*pts[0]), halves[pts[0]]))
             continue
         for a, b in zip(pts, pts[1:]):
             k = gcd(b[0] - a[0], b[1] - a[1])
@@ -231,11 +269,11 @@ def pieces(g, P=Params()):
     piece is a fixed shape scaled by the half-stroke around a dot, so a glyph has the same
     contours and points at every stroke width — the masters of the variable font interpolate exactly.
     """
-    h, out, arms, runs = P.stroke / 2, [], {}, {}
+    h, out, arms, runs, halves = P.stroke / 2, [], {}, {}, _dot_halves(g, P)
     for pts in g.strokes:
         if len(pts) == 1:
-            x, y = P.pt(*pts[0])
-            out.append([(x - h, y - h), (x + h, y - h), (x + h, y + h), (x - h, y + h)])
+            (x, y), half = P.pt(*pts[0]), halves[pts[0]]
+            out.append([(x - half, y - half), (x + half, y - half), (x + half, y + half), (x - half, y + half)])
             continue
         for a, b in zip(pts, pts[1:]):
             k = gcd(b[0] - a[0], b[1] - a[1])

@@ -196,7 +196,7 @@ def main():
         "strokes": g.strokes, "fullWidth": uses_full_width(g, P),
         "path": " ".join("M" + " L".join(f"{x} {y}" for x, y in r) + " Z" for r in rings_of(g, P, merged=True)),
     } for g in glyphs]
-    params = {k: getattr(P, k) for k in ("cols", "rows", "cell_w", "cell_h", "stroke", "light", "bold", "side", "advance", "cap")}
+    params = {k: getattr(P, k) for k in ("cols", "rows", "cell_w", "cell_h", "stroke", "light", "bold", "dot", "side", "advance", "cap")}
     (ROOT / "specimen").mkdir(exist_ok=True)
     (ROOT / "specimen/data.js").write_text(
         "window.RUNION = " + json.dumps({"built": int(time.time()), "params": params, "weights": WEIGHTS, "glyphs": data},

@@ -42,6 +42,9 @@
 @stroke      50
 @light       32
 @bold        74
+#   a dot that stands free (stung dots, the period, the umlaut) is 1.4 pens wide, so it reads as
+#   strongly as a line; a dot that sits on a line stays one pen
+@dot         1.4
 @charset     charsets/GF_Latin_Core.txt
 
 .notdef   |                 | 00-06-26-20-00 00-26
@@ -85,13 +88,13 @@ z         | z               | 06-26-00-20
 #   A a second bar right above its own · T a second bar below its top, like ansuz's second arm
 #   E splits its middle line in two, one step up and one step down · H is dagaz ᛞ: the bar becomes a cross
 #   I keeps its bars and takes the diamond of ingwaz between them
-#   N a middle stave through the diagonal, like the stave of naudiz ᚾ
 #   P its diagonal doubled two steps lower and closed at the right · F is fehu ᚠ itself
 #   K the branches of kaunan · L a second bar right above its foot · M W mannaz's cross
 #   Y algiz · Z a bar · J a short stem hanging free under its bar
 #   B C G O Q R U V have no line to add: they take ONE stung dot, in the counter
 #   (B's, C's and R's sit at the middle right, in the open mouth) · S takes two, one in each
-#   counter · D takes two, at the top and bottom of its right edge
+#   counter · D takes two, at the top and bottom of its right edge · N a dot at the top middle and a
+#   short branch from the middle of its first stave down to the bottom middle
 A         | A               | 16-00-16-20 03-23 02-22
 B         | B               | =b 23
 C         | C               | 26-03-20 23
@@ -105,7 +108,7 @@ J         | J               | 06-26-21-10-01 16 15-12
 K         | K               | 00-06 26-13-20 03-13
 L         | L               | 06-00-20 01-21
 M         | M               | 00-06-24 20-26-04
-N         | N               | 00-06-20-26 16-10
+N         | N               | 00-06-20-26 16 10 03-10
 O         | O               | =o 13
 P         | P               | 00-06-26-04-02-24-26
 Q         | Q               | =q 13

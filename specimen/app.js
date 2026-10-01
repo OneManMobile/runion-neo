@@ -84,8 +84,13 @@
   };
   const gcd = (a, b) => (b ? gcd(b, a % b) : Math.abs(a));
   const ink = (strokes) => {
-    const h = pen / 2, arms = new Map();
+    const h = pen / 2, arms = new Map(), onLine = new Set();
     let s = "";
+    for (const pts of strokes)                            // a lone dot sitting on a line stays one pen wide
+      for (let i = 0; i + 1 < pts.length; i++) {
+        const a = pts[i], b = pts[i + 1], k = gcd(b[0] - a[0], b[1] - a[1]);
+        for (let j = 0; k && j <= k; j++) onLine.add(`${a[0] + ((b[0] - a[0]) / k) * j},${a[1] + ((b[1] - a[1]) / k) * j}`);
+      }
     const arm = (n, to) => {                              // a line leaving dot n towards `to`
       let t = Math.atan2(Y(n[1]) - Y(to[1]), X(to[0]) - X(n[0]));
       if (t < -Math.PI + 1e-9) t += 2 * Math.PI;
@@ -95,7 +100,8 @@
     };
     for (const pts of strokes) {
       if (pts.length === 1) {
-        s += `<rect x="${X(pts[0][0]) - h}" y="${Y(pts[0][1]) - h}" width="${2 * h}" height="${2 * h}" fill="currentColor" stroke="none"/>`;
+        const d = onLine.has(pts[0].join(",")) ? h : h * P.dot;
+        s += `<rect x="${X(pts[0][0]) - d}" y="${Y(pts[0][1]) - d}" width="${2 * d}" height="${2 * d}" fill="currentColor" stroke="none"/>`;
         continue;
       }
       for (let i = 0; i + 1 < pts.length; i++) {
