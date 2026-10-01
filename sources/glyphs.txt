@@ -87,7 +87,7 @@ z         | z               | 06-26-00-20
 # ── Latin capitals ── the same letter with a rune accent ───────────
 #   A a second bar right above its own · T a second bar below its top, like ansuz's second arm
 #   E splits its middle line in two, one step up and one step down · H is dagaz ᛞ: the bar becomes a cross
-#   I keeps its bars and takes the diamond of ingwaz between them
+#   I keeps its bars and stem and takes a crossbar through the middle
 #   P its diagonal doubled two steps lower and closed at the right · F is fehu ᚠ itself
 #   K the branches of kaunan · L a second bar right above its foot · M W mannaz's cross
 #   Y algiz · Z a bar · J a short stem hanging free under its bar
@@ -103,7 +103,7 @@ E         | E               | 26-06-00-20 04-14 02-12
 F         | F               | 06-00 04-26 02-24
 G         | G               | 26-03-20-23-13 24
 H         | H               | 00-06 20-26 04-22 02-24
-I         | I               | 06-26 16-03-10-20-00-10-23-16
+I         | I               | 06-26 00-20 16-10 03-23
 J         | J               | 06-26-21-10-01 16 15-12
 K         | K               | 00-06 26-13-20 03-13
 L         | L               | 06-00-20 01-21

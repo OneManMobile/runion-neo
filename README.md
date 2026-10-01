@@ -39,7 +39,7 @@ A capital is its lowercase letter with a rune accent: an added or split stroke, 
 | A T | A second crossing bar, like the two arms of ansuz ᚨ: A's sits right above its own, T's below its top. |
 | E | The middle line splits in two, one step up and one step down, and the old line becomes the space between them. |
 | H | Dagaz ᛞ itself: the bar becomes a cross between the staves. |
-| I | The bars stay, and the diamond of ingwaz ᛜ fills the space between them. |
+| I | The bars and stem stay, and a crossbar runs through the middle. |
 | P | The flag's diagonal is doubled: a second one, two steps lower, closed off at the right. |
 | F | Fehu ᚠ itself. |
 | K | Branches: the arms meet in the middle like kaunan ᚲ. |
