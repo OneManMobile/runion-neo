@@ -46,7 +46,7 @@ A capital is its lowercase letter with a rune accent: an added or split stroke, 
 
 Æ, Œ, Ð, Ø, Þ, ẞ, Ħ and Ł follow the same rules. Æ, Œ and Ð split their middle bar like E. Ø gets two slashes, the strokes of the medieval ø rune ᚯ. Capital Þ is thurisaz ᚦ itself, the rune the Latin letter comes from.
 
-The lowercase letters are sharp too. O is four lines, a diamond, the same shape as ingwaz ᛜ. C is three strokes and G is C with a stem (four). D is three strokes: a stave and a point. P is three strokes too, a flag on the stave; R is P with a leg (four strokes) and B is P with the flag mirrored below. S has pointed corners.
+The lowercase letters are sharp too. O is four lines, a diamond, the same shape as ingwaz ᛜ. C is three strokes. G is four: from the upper right to the middle left, down to the lower right, up to the middle, then a bar inwards that stops short of the first strokes. Capital G's dot sits in the mouth above that bar. D is three strokes: a stave and a point. P is three strokes too, a flag on the stave; R is P with a leg (four strokes) and B is P with the flag mirrored below. S has pointed corners.
 
 All of it is defined in one text file, [`sources/glyphs.txt`](sources/glyphs.txt).
 

@@ -46,7 +46,8 @@ space     | U+0020          |
 uni00A0   | U+00A0          |
 
 # ── Latin lowercase ── the plain letter ────────────────────────────
-#   sharp: C is three strokes, G is C plus a stem (four) · D is three strokes, a stave and a point
+#   sharp: C is three strokes · G is four: upper right to middle left, to lower right, up to
+#   the middle, then a bar inwards that stops short of the first strokes · D is a stave and a point
 #   P is three strokes, a flag on the stave; R is P plus a leg (four strokes);
 #   B is P with the flag mirrored below
 a         | a               | 00-16-20 02-22
@@ -55,7 +56,7 @@ c         | c               | 26-05-01-20
 d         | d               | 00-06-23-00
 e         | e               | 26-06-00-20 03-13
 f         | f               | 00-06-26 03-13
-g         | g               | 26-05-01-20-22
+g         | g               | 26-03-20-23-13
 h         | h               | 00-06 20-26 03-23
 i         | i ı             | 06-26 16-10 00-20
 j         | j ȷ             | 06-26-21-10-01
@@ -92,7 +93,7 @@ C         | C               | =c 13
 D         | D               | =d 13
 E         | E               | 26-06-00-20 04-14 02-12
 F         | F               | 00-06 04-26 02-24 06-16
-G         | G               | =g 13
+G         | G               | =g 24
 H         | H               | 00-06 20-26 02-22 04-24
 I         | I               | 06-26-20-00-06
 J         | J               | =j 13
