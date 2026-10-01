@@ -34,9 +34,8 @@ A capital is its lowercase letter with a rune accent: an added or split stroke, 
 | Capitals | Accent |
 | --- | --- |
 | A T | A second crossing bar, like the two arms of ansuz ᚨ: A's goes above its bar, T's below its top. |
-| E H I | The middle line splits in two, one step to either side, and the old line becomes the space between them. E and H get two middle lines, I gets two downstrokes. |
-| B P | The bowls come to a point on the stave, as in berkanan ᛒ and wunjo ᚹ. |
-| R | Raido ᚱ itself. |
+| E H I | The middle line splits in two, one step to either side, and the old line becomes the space between them. E and H get two middle lines. I's stem becomes two downstrokes that meet both bars. |
+| B P R | Berkanan ᛒ, wunjo's ᚹ shape and raido ᚱ themselves: the bowls come to a point on the stave. |
 | F | The arms of fehu ᚠ. |
 | K L | Branches: K's arms meet in the middle like kaunan ᚲ, L gets laguz's ᛚ slanted arm. |
 | N | Two downstrokes. The second bends into the bottom right and climbs the right stave. |
@@ -47,7 +46,7 @@ A capital is its lowercase letter with a rune accent: an added or split stroke, 
 
 Æ, Œ, Ð, Ø, Þ, ẞ, Ħ and Ł follow the same rules. Æ and Œ split their middle bar like E. Ø gets two slashes, the strokes of the medieval ø rune ᚯ. Capital Þ is thurisaz ᚦ itself, the rune the Latin letter comes from.
 
-The lowercase letters are sharp too. O is four lines, a diamond, the same shape as ingwaz ᛜ. R and S have pointed bowls and corners.
+The lowercase letters are sharp too. O is four lines, a diamond, the same shape as ingwaz ᛜ, and C, D and G are built from its halves. P is three strokes, a flag on the stave; R is P with a leg (four strokes) and B is P with the flag mirrored below. S has pointed corners.
 
 All of it is defined in one text file, [`sources/glyphs.txt`](sources/glyphs.txt).
 

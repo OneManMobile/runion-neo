@@ -46,13 +46,15 @@ space     | U+0020          |
 uni00A0   | U+00A0          |
 
 # ── Latin lowercase ── the plain letter ────────────────────────────
+#   sharp: C D G are halves of the diamond O · P is three strokes, a flag on the stave;
+#   R is P plus a leg (four strokes); B is P with the flag mirrored below
 a         | a               | 00-16-20 02-22
-b         | b               | 00-06-16-25-24-13-22-21-10-00 03-13
-c         | c               | 26-16-05-01-10-20
-d         | d               | 00-06-16-25-21-10-00
+b         | b               | 00-06-26-03-20-00
+c         | c               | 26-16-03-10-20
+d         | d               | 00-06-16-23-10-00
 e         | e               | 26-06-00-20 03-13
 f         | f               | 00-06-26 03-13
-g         | g               | 26-16-05-01-10-20-22-12
+g         | g               | 26-16-03-10-20-22-12
 h         | h               | 00-06 20-26 03-23
 i         | i ı             | 06-26 16-10 00-20
 j         | j ȷ             | 06-26-21-10-01
@@ -61,9 +63,9 @@ l         | l               | 06-00-20
 m         | m               | 00-06-15-26-20
 n         | n               | 00-06-20-26
 o         | o               | 16-23-10-03-16
-p         | p               | 00-06-16-25-24-13-03
+p         | p               | 00-06-26-03
 q         | q               | =o 11-20
-r         | r               | 00-06-25-13-03 13-20
+r         | r               | 00-06-26-03-20
 s         | s               | 26-16-04-22-10-00
 t         | t               | 06-26 16-10
 u         | u               | 06-01-10-21-26
@@ -75,29 +77,29 @@ z         | z               | 06-26-00-20
 
 # ── Latin capitals ── the same letter with a rune accent ───────────
 #   A T take a second crossing stroke below or above their own, like ansuz's second arm
-#   E H I split in two, one step to either side, and the old line becomes negative space:
-#   E and H get two middle lines, I gets two downstrokes
+#   E H split in two, one step up and one step down, and the old line becomes negative
+#   space · I's stem splits into two downstrokes that meet both bars
 #   N two downstrokes: the second bends into the bottom right and climbs the right stave
-#   B P the pointed bowls of berkanan and wunjo · R is raido ᚱ itself · F the arms of fehu
+#   B P R the pointed bowls of berkanan, wunjo and raido · F the arms of fehu
 #   K L the branches of kaunan and laguz · M W mannaz's cross
 #   Y algiz · Z a bar
 #   C D G J O Q S U V have no line to add: they take ONE stung dot, in the counter
 A         | A               | 00-16-20 02-22 04-24
-B         | B               | 00-06-16-25-24-03-22-21-10-00
+B         | B               | 00-06-24-03-22-00
 C         | C               | =c 13
 D         | D               | =d 13
 E         | E               | 26-06-00-20 04-14 02-12
 F         | F               | 00-06 04-26 02-24 06-16
-G         | G               | =g 14
+G         | G               | =g 13
 H         | H               | 00-06 20-26 02-22 04-24
-I         | I               | 06-26 00-20 05-01 25-21
+I         | I               | 06-26-20-00-06
 J         | J               | =j 13
 K         | K               | 00-06 26-13-20 03-13
 L         | L               | =l 06-24
 M         | M               | 00-06-24 20-26-04
 N         | N               | 00-06 16-11-20-26
 O         | O               | =o 13
-P         | P               | 00-06-16-25-24-03
+P         | P               | 00-06-24-03
 Q         | Q               | =q 13
 R         | R               | 00-06-24-03-20
 S         | S               | =s 14
@@ -113,11 +115,11 @@ Z         | Z               | =z 03-23
 ae        | æ               | 00-16-26 16-10-20 03-23
 AE        | Æ               | 00-16-26 16-10-20 02-22 04-24
 eth       | ð đ             | =d 03-13
-Eth       | Ð Đ             | =d 03-13 14
+Eth       | Ð Đ             | =d 02-12 04-14
 oslash    | ø               | =o 02-24
 Oslash    | Ø               | =o 01-23 03-25
-oe        | œ               | 26-16-05-01-10-20 16-10 13-23
-OE        | Œ               | 26-16-05-01-10-20 16-10 14-24 12-22
+oe        | œ               | 26-16-03-10-20 16-10 13-23
+OE        | Œ               | 26-16-03-10-20 16-10 14-24 12-22
 thorn     | þ               | 00-06 05-15-24-22-11-01
 Thorn     | Þ               | 00-06 05-23-01
 germandbls| ß               | 00-05-16-25-24-13-22-21-10
