@@ -60,7 +60,7 @@ def specimen():
     for word, w in (("light", 300), ("regular", 400), ("bold", 700)):
         d.text((cx, y), word, font=vf(66, w), fill=INK)
         cx += int(vf(66, w).getlength(word + "  "))
-    d.text((x, 885 * K), "ᚠᚢᚦᚨᚱᚲᚷᚹ ᚺᚾᛁᛃᛇᛈᛉᛊ ᛏᛒᛖᛗᛚᛜᛞᛟ", font=vf(66, 400), fill=INK)
+    d.text((x, 885 * K), "THE RUNION NEO FONT ALSO HAS CAPITALS", font=vf(66, 400), fill=INK)
 
     P = Params()                                              # the system: a and its capital, dot to dot
     glyphs = {g.name: g for g in parse(SRC / "glyphs.txt", P)}
