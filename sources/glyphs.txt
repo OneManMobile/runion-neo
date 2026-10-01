@@ -95,12 +95,12 @@ z         | z               | 06-26-00-20
 #   Y algiz · Z a bar · J a short stem hanging free under its bar
 #   B C G K O Q R U V have no line to add: they take ONE stung dot, in the counter
 #   (B's, C's, K's and R's sit at the middle right, in the open mouth) · S takes two, one in each
-#   counter · D two crossing lines from its stave out to its right edge
+#   counter · D a smaller triangle inside, and its point squared off at the right edge
 #   N a short branch from the middle of its first stave down to the bottom middle
 A         | A               | 16-00-16-20 03-23 02-22
 B         | B               | =b 23
 C         | C               | 26-03-20 23
-D         | D               | 06-00-23-06 01-24 05-22
+D         | D               | 06-00-01-23-05-06-24-22-00
 E         | E               | 26-06-00-20 04-14 02-12
 F         | F               | 06-00 04-26 02-24
 G         | G               | 26-03-20-23-13 24
@@ -132,7 +132,7 @@ Eth       | Ð Đ             | =d 02-12 04-14
 dotlessi  | ı               | =i
 dotlessj  | ȷ               | =j
 oslash    | ø               | 16-03-10-23-16 26-00
-Oslash    | Ø               | 16-03-10-23-16 26-00 25-12 01-14
+Oslash    | Ø               | 16-03-10-23-16 22-04 02-24
 #   å Å are drawn, not composed: the A comes down one step and the ring becomes a dot on its
 #   tip; a + combining ring (decomposed text) draws the same glyph
 aring     | å a+U+030A      | 00-15-20 02-22 16

@@ -55,14 +55,14 @@ A capital is its lowercase letter with an ornament. The ornaments follow a few r
 | M W | A cross between the staves. |
 | N | A short branch from the middle of the first stave down to the bottom. |
 | P | The flag's diagonal is doubled and closed at the right. |
-| D | Two lines from the stave, crossing inside the triangle. |
+| D | A smaller triangle nested inside, and the point squared off at the right edge. |
 | J | A short stem hanging free under the top bar. |
 | Y | The stave runs on to the top. |
 | X Z | A bar across. |
 | B C G K O Q R U V | One dot, in the counter or, for B, C, K and R, at the middle right. |
 | S | Two dots, one in each counter. |
 
-The rest follow the same logic. Æ, Œ and Ð split their middle bar like E. ø is the diamond with a slash, and Ø keeps that slash with a short stroke on either side of it. Å is drawn as a lower A with a dot above its tip.
+The rest follow the same logic. Æ, Œ and Ð split their middle bar like E. ø is the diamond with a slash, and Ø has a small cross through the middle instead. Å is drawn as a lower A with a dot above its tip.
 
 Everything is defined in one text file, [`sources/glyphs.txt`](sources/glyphs.txt).
 
