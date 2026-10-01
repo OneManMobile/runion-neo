@@ -79,24 +79,24 @@ y         | y               | 06-13-26 13-10
 z         | z               | 06-26-00-20
 
 # ── Latin capitals ── the same letter with a rune accent ───────────
-#   A T take a second crossing stroke below or above their own, like ansuz's second arm
-#   E H split in two, one step up and one step down, and the old line becomes negative
-#   space · I's stem splits into two downstrokes that meet both bars
+#   A a second bar right above its own · T a second bar below its top, like ansuz's second arm
+#   E H split in two, one step up and one step down, and the old line becomes negative space
+#   I keeps its bars and takes the diamond of ingwaz between them
 #   N two downstrokes: the second bends into the bottom right and climbs the right stave
-#   P R the pointed bowls of wunjo and raido · F the arms of fehu
+#   P R the pointed bowls of wunjo and raido · F is fehu ᚠ itself
 #   K L the branches of kaunan and laguz · M W mannaz's cross
 #   Y algiz · Z a bar
-#   B C D G J O Q S U V have no line to add: they take ONE stung dot, in the counter
-#   (B's sits at the middle right, between its two flags)
-A         | A               | 00-16-20 02-22 04-24
+#   B C D G J O Q U V have no line to add: they take ONE stung dot, in the counter
+#   (B's sits at the middle right, between its two flags) · S takes two, one in each counter
+A         | A               | 16-00-16-20 03-23 02-22
 B         | B               | =b 23
 C         | C               | =c 13
 D         | D               | =d 13
 E         | E               | 26-06-00-20 04-14 02-12
-F         | F               | 00-06 04-26 02-24 06-16
-G         | G               | =g 24
+F         | F               | 06-00 04-26 02-24
+G         | G               | 26-03-20-23-13 24
 H         | H               | 00-06 20-26 02-22 04-24
-I         | I               | 06-26-20-00-06
+I         | I               | 06-26 16-03-10-20-00-10-23-16
 J         | J               | =j 13
 K         | K               | 00-06 26-13-20 03-13
 L         | L               | =l 06-24
@@ -106,7 +106,7 @@ O         | O               | =o 13
 P         | P               | 00-06-24-03
 Q         | Q               | =q 13
 R         | R               | 00-06-24-03-20
-S         | S               | =s 24
+S         | S               | 26-03-23-00 24 02
 T         | T               | =t 04-24
 U         | U               | =u 13
 V         | V               | =v 15

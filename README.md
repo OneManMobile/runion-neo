@@ -33,20 +33,22 @@ A capital is its lowercase letter with a rune accent: an added or split stroke, 
 
 | Capitals | Accent |
 | --- | --- |
-| A T | A second crossing bar, like the two arms of ansuz ᚨ: A's goes above its bar, T's below its top. |
-| E H I | The middle line splits in two, one step to either side, and the old line becomes the space between them. E and H get two middle lines. I's stem becomes two downstrokes that meet both bars. |
+| A T | A second crossing bar, like the two arms of ansuz ᚨ: A's sits right above its own, T's below its top. |
+| E H | The middle line splits in two, one step up and one step down, and the old line becomes the space between them. |
+| I | The bars stay, and the diamond of ingwaz ᛜ fills the space between them. |
 | P R | Wunjo's ᚹ shape and raido ᚱ themselves: the bowl comes to a point on the stave. |
-| F | The arms of fehu ᚠ. |
+| F | Fehu ᚠ itself. |
 | K L | Branches: K's arms meet in the middle like kaunan ᚲ, L gets laguz's ᛚ slanted arm. |
 | N | Two downstrokes. The second bends into the bottom right and climbs the right stave. |
 | M W | The cross of mannaz ᛗ. |
 | Y | Algiz ᛉ: the Y with its stave continued to the top. |
 | X Z | A bar across. |
-| B C D G J O Q S U V | These have no line to add, so they get one dot, in the counter or, for B, at the middle right between its two flags. Medieval carvers made new letters from runes the same way, with a dot: the stung runes. |
+| B C D G J O Q U V | These have no line to add, so they get one dot, in the counter or, for B, at the middle right between its two flags. Medieval carvers made new letters from runes the same way, with a dot: the stung runes. |
+| S | Two dots, one in each counter: upper right and lower left. |
 
 Æ, Œ, Ð, Ø, Þ, ẞ, Ħ and Ł follow the same rules. Æ, Œ and Ð split their middle bar like E. Ø gets two slashes, the strokes of the medieval ø rune ᚯ. Capital Þ is thurisaz ᚦ itself, the rune the Latin letter comes from.
 
-The lowercase letters are sharp too. O is four lines, a diamond, the same shape as ingwaz ᛜ. C is two strokes, the angle of kaunan ᚲ. G is four: C, then up to the middle and a bar inwards that stops short of the first strokes. Capital G's dot sits in the mouth above that bar. D is three strokes: a stave and a point. P is three strokes too, a flag on the stave; R is P with a leg (four strokes) and B is P with the flag mirrored below. S is three strokes: from the upper right down to the middle left, across to the middle right, and down to the lower left. Capital S's dot sits at the upper right, above the crossbar.
+The lowercase letters are sharp too. O is four lines, a diamond, the same shape as ingwaz ᛜ. C is two strokes, the angle of kaunan ᚲ. G is four: C, then up to the middle and a bar inwards that stops short of the first strokes. Capital G's dot sits in the mouth above that bar. D is three strokes: a stave and a point. P is three strokes too, a flag on the stave; R is P with a leg (four strokes) and B is P with the flag mirrored below. S is three strokes: from the upper right down to the middle left, across to the middle right, and down to the lower left.
 
 All of it is defined in one text file, [`sources/glyphs.txt`](sources/glyphs.txt).
 
