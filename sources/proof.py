@@ -82,25 +82,8 @@ def weights():
         font.set_variation_by_axes([w])
         y = 40 + i * 170
         d.text((70, y + 70), f"{name} {w}", font=small, fill=SOFT)
-        d.text((360, y), "runion neo ᚠᚢᚦᚨᚱᚲ", font=font, fill=INK)
+        d.text((360, y), "runion neo  Runion Neo", font=font, fill=INK)
     img.save(DOC / "weights.png")
-
-
-
-def futhark():
-    runes = ["fehu ᚠ", "uruz ᚢ", "thurisaz ᚦ", "ansuz ᚨ", "raido ᚱ", "kaunan ᚲ", "gebo ᚷ", "wunjo ᚹ",
-             "hagalaz ᚺ", "naudiz ᚾ", "isa ᛁ", "jera ᛃ", "eihwaz ᛇ", "perthro ᛈ", "algiz ᛉ", "sowilo ᛊ",
-             "tiwaz ᛏ", "berkanan ᛒ", "ehwaz ᛖ", "mannaz ᛗ", "laguz ᛚ", "ingwaz ᛜ", "dagaz ᛞ", "othala ᛟ"]
-    cw, ch = 250, 330
-    img = Image.new("RGB", (8 * cw, 3 * ch + 40), PAPER)
-    d, big, small = ImageDraw.Draw(img), ImageFont.truetype(VF, 190), label_font(24)
-    for i, entry in enumerate(runes):
-        name, rune = entry.split()
-        x, y = (i % 8) * cw, (i // 8) * ch + 20
-        d.text((x + 125, y + 20), rune, font=big, fill=INK, anchor="ma")
-        d.text((x + 125, y + 262), name, font=small, fill=INK, anchor="ma")
-        d.text((x + 125, y + 292), f"U+{ord(rune):04X}", font=small, fill=SOFT, anchor="ma")
-    img.save(DOC / "futhark.png")
 
 
 def grid():
@@ -135,5 +118,5 @@ def grid():
 
 if __name__ == "__main__":
     DOC.mkdir(exist_ok=True)
-    specimen(), weights(), futhark(), grid()
-    print("→ documentation/specimen.png · weights.png · futhark.png · grid.png")
+    specimen(), weights(), grid()
+    print("→ documentation/specimen.png · weights.png · grid.png")
