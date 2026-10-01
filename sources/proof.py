@@ -83,7 +83,7 @@ def weights():
         font.set_variation_by_axes([w])
         y = 40 + i * 170
         d.text((70, y + 70), f"{name} {w}", font=small, fill=SOFT)
-        d.text((360, y), "Runion Neo ᚠᚢᚦᚨᚱᚲ", font=font, fill=INK)
+        d.text((360, y), "runion neo ᚠᚢᚦᚨᚱᚲ", font=font, fill=INK)
     img.save(DOC / "weights.png")
 
 
