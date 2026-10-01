@@ -27,11 +27,5 @@
       <point x="216" y="720" type="line"/>
       <point x="216" y="752" type="line"/>
     </contour>
-    <contour>
-      <point x="216" y="152" type="line"/>
-      <point x="184" y="152" type="line"/>
-      <point x="184" y="120" type="line"/>
-      <point x="216" y="120" type="line"/>
-    </contour>
   </outline>
 </glyph>

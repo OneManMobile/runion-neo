@@ -311,7 +311,13 @@ def pieces(g, P=Params()):
             gap = 2 * pi if len(th) == 1 else (b - a) % (2 * pi)
             if len(th) == 1 or gap > pi + 1e-9:            # a straight run through a dot is already inked
                 out.append([(x + h * ux, y + h * uy) for ux, uy in _unit_corner(a, b)])
-    return out
+    seen, unique = set(), []                               # a dot drawn on a line's square end is the same piece twice
+    for piece in out:
+        key = frozenset((round(x, 6), round(y, 6)) for x, y in piece)
+        if key not in seen:
+            seen.add(key)
+            unique.append(piece)
+    return unique
 
 
 def _turns(a, b, c):
