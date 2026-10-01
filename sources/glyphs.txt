@@ -81,12 +81,13 @@ z         | z               | 06-26-00-20
 #   E H split in two, one step up and one step down, and the old line becomes negative
 #   space · I's stem splits into two downstrokes that meet both bars
 #   N two downstrokes: the second bends into the bottom right and climbs the right stave
-#   B P R the pointed bowls of berkanan, wunjo and raido · F the arms of fehu
+#   P R the pointed bowls of wunjo and raido · F the arms of fehu
 #   K L the branches of kaunan and laguz · M W mannaz's cross
 #   Y algiz · Z a bar
-#   C D G J O Q S U V have no line to add: they take ONE stung dot, in the counter
+#   B C D G J O Q S U V have no line to add: they take ONE stung dot, in the counter
+#   (B's sits at the middle right, between its two flags)
 A         | A               | 00-16-20 02-22 04-24
-B         | B               | 00-06-24-03-22-00
+B         | B               | =b 23
 C         | C               | =c 13
 D         | D               | =d 13
 E         | E               | 26-06-00-20 04-14 02-12
