@@ -49,7 +49,8 @@ uni00A0   | U+00A0          |
 #   sharp: C is three strokes · G is four: upper right to middle left, to lower right, up to
 #   the middle, then a bar inwards that stops short of the first strokes · D is a stave and a point
 #   P is three strokes, a flag on the stave; R is P plus a leg (four strokes);
-#   B is P with the flag mirrored below
+#   B is P with the flag mirrored below · S is three strokes: upper right down to the middle
+#   left, across to the middle right, down to the lower left
 a         | a               | 00-16-20 02-22
 b         | b               | 00-06-26-03-20-00
 c         | c               | 26-05-01-20
@@ -68,7 +69,7 @@ o         | o               | 16-23-10-03-16
 p         | p               | 00-06-26-03
 q         | q               | =o 11-20
 r         | r               | 00-06-26-03-20
-s         | s               | 26-16-04-22-10-00
+s         | s               | 26-03-23-00
 t         | t               | 06-26 16-10
 u         | u               | 06-01-10-21-26
 v         | v               | 06-10-26
@@ -105,7 +106,7 @@ O         | O               | =o 13
 P         | P               | 00-06-24-03
 Q         | Q               | =q 13
 R         | R               | 00-06-24-03-20
-S         | S               | =s 14
+S         | S               | =s 24
 T         | T               | =t 04-24
 U         | U               | =u 13
 V         | V               | =v 15
