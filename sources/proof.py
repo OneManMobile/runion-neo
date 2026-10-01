@@ -20,16 +20,59 @@ def label_font(size):
     return ImageFont.load_default()
 
 
+def draw_construction(d, g, P, ox, top, S, ink=(208, 200, 186), dots=range(0, 7), line=5, r=9):
+    """A glyph on its grid: the ink, the skeleton dot to dot, and the dots. top = y of the grid's top row."""
+    to = lambda x, y: (ox + x * S, top + (P.cap - P.h - y) * S - (P.cap - P.h - P.pt(0, P.rows - 1)[1]) * S)
+    shape = outline(g, P)
+    for ring in contours(shape):
+        d.polygon([to(x, y) for x, y in ring], fill=ink)
+    for poly in getattr(shape, "geoms", [shape]):
+        for hole in getattr(poly, "interiors", []):
+            d.polygon([to(x, y) for x, y in hole.coords], fill=PAPER)
+    for s in g.strokes:
+        pts = [to(*P.pt(*p)) for p in s]
+        if len(pts) > 1:
+            d.line(pts, fill=ACCENT, width=line, joint="curve")
+    for gx in range(P.cols):
+        for gy in dots:
+            x, y = to(*P.pt(gx, gy))
+            rr = r if 0 <= gy < P.rows else r * 0.6
+            d.ellipse([x - rr, y - rr, x + rr, y + rr], fill=ACCENT if 0 <= gy < P.rows else (214, 170, 150))
+
+
 def specimen():
-    lines = [("RUNION Neo", 190), ("The North Wind sings", 112), ("through the Stones", 112),
-             ("Rødgrød med fløde på Ærø", 92), ("ᚱᚢᚾᛁᛟᚾ ᚾᛖᛟ · ᚠᚢᚦᚨᚱᚲ", 92),
-             ("0123456789 & @ § € $ % ( ) [ ] { }", 62)]
-    img = Image.new("RGB", (2000, 1050), PAPER)
-    d, y = ImageDraw.Draw(img), 40
-    for text, size in lines:
-        d.text((70, y), text, font=ImageFont.truetype(TTF, size), fill=INK)
-        y += int(size * 1.5)
-    img.save(DOC / "specimen.png")
+    """The showcase: lowercase leads, the system on the right, capitals only where they explain themselves."""
+    K = 2                                                     # drawn at 2× and scaled down, for clean edges
+    img = Image.new("RGB", (2000 * K, 1050 * K), PAPER)
+    d = ImageDraw.Draw(img)
+
+    def vf(size, w=400):
+        font = ImageFont.truetype(VF, size * K)
+        font.set_variation_by_axes([w])
+        return font
+
+    x = 80 * K
+    d.text((x, 100 * K), "runion neo", font=vf(250, 400), fill=INK)
+    d.text((x + 6 * K, 395 * K), "latin and the elder futhark on a grid of 3 × 7 dots", font=label_font(26 * K), fill=SOFT)
+    d.text((x, 490 * K), "the north wind sings", font=vf(84, 300), fill=INK)
+    d.text((x, 615 * K), "through the stones", font=vf(84, 300), fill=INK)
+    y, cx = 765 * K, x
+    for word, w in (("light", 300), ("regular", 400), ("bold", 700)):
+        d.text((cx, y), word, font=vf(66, w), fill=INK)
+        cx += int(vf(66, w).getlength(word + "  "))
+    d.text((x, 885 * K), "ᚠᚢᚦᚨᚱᚲᚷᚹ ᚺᚾᛁᛃᛇᛈᛉᛊ ᛏᛒᛖᛗᛚᛜᛞᛟ", font=vf(66, 400), fill=INK)
+
+    P = Params()                                              # the system: a and its capital, dot to dot
+    glyphs = {g.name: g for g in parse(SRC / "glyphs.txt", P)}
+    S = 0.62 * K
+    for i, name in enumerate(("a", "A")):
+        draw_construction(d, glyphs[name], P, 1330 * K + i * 300 * K, 180 * K, S, line=5 * K // 2, r=8 * K // 2 + 2)
+    small = label_font(24 * K)
+    d.text((1345 * K, 735 * K), "a                  A", font=small, fill=INK)
+    d.text((1345 * K, 790 * K), "every line runs dot to dot;", font=small, fill=SOFT)
+    d.text((1345 * K, 830 * K), "the capital adds a rune accent,", font=small, fill=SOFT)
+    d.text((1345 * K, 870 * K), "here ansuz's second arm", font=small, fill=SOFT)
+    img.resize((2000, 1050), Image.LANCZOS).save(DOC / "specimen.png")
 
 
 def weights():
