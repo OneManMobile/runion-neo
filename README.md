@@ -40,7 +40,7 @@ A capital is its lowercase letter with a rune accent: an added or split stroke, 
 | F | Fehu ᚠ itself. |
 | K | Branches: the arms meet in the middle like kaunan ᚲ. |
 | L | A second bar right above its foot. |
-| N | Two downstrokes. The second bends into the bottom right and climbs the right stave. |
+| N | A middle stave through the diagonal, like the stave of naudiz ᚾ crossed by its bar. |
 | M W | The cross of mannaz ᛗ. |
 | Y | Algiz ᛉ: the Y with its stave continued to the top. |
 | X Z | A bar across. |
