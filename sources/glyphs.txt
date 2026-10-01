@@ -86,7 +86,7 @@ z         | z               | 06-26-00-20
 
 # ── Latin capitals ── the lowercase letter plus an ornament ──────────
 #   RULES: add, don't redraw — keep the lowercase form and add dots and/or lines; a line where
-#   a line fits, a dot where it doesn't · vibes trump rules: E, F, H (and Æ Œ Ð) redraw on purpose
+#   a line fits, a dot where it doesn't · vibes trump rules: D, E, F, H (and Æ Œ Ð) redraw on purpose
 #   A a second bar right above its own · T a second bar below its top, like ansuz's second arm
 #   E splits its middle line in two, one step up and one step down · H is dagaz ᛞ: the bar becomes a cross
 #   I keeps its bars and stem and takes a crossbar through the middle

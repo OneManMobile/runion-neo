@@ -42,7 +42,7 @@ A capital is its lowercase letter with an ornament. The ornaments follow a few r
 - **Add, don't redraw.** Most capitals keep the lowercase letter as it is and add something to it: a dot, a bar, a branch or a cross.
 - **A line where a line fits.** Where the letter has room for one more line, it gets one: a second bar, a crossbar, a branch.
 - **A dot where it doesn't.** Letters with no room for a line get one dot, in the counter or at the middle right. A few take two.
-- **Vibes trump rules.** A handful of capitals change the letter itself because it looks better: E splits its middle line, H turns its bar into a cross, F raises its arms.
+- **Vibes trump rules.** A handful of capitals change the letter itself because it looks better: E splits its middle line, H turns its bar into a cross, F raises its arms, D nests a second triangle and squares off its point.
 
 | Capitals | Ornament |
 | --- | --- |
