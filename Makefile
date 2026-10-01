@@ -24,7 +24,6 @@ proof: build
 test: build
 	mkdir -p out
 	.venv/bin/fontbakery check-googlefonts "fonts/variable/RunionNeo[wght].ttf" -l WARN --succinct --ghmarkdown out/fontbakery-variable.md
-	.venv/bin/fontbakery check-googlefonts fonts/ttf/*.ttf -l WARN --succinct --ghmarkdown out/fontbakery-static.md
 
 serve:
 	python3 -m http.server 8417 --bind 127.0.0.1

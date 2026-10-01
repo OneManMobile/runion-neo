@@ -8,7 +8,6 @@ from runion import Params, contours, outline, parse
 SRC = Path(__file__).parent
 ROOT = SRC.parent
 DOC = ROOT / "documentation"
-TTF = str(ROOT / "fonts/ttf/RunionNeo-Regular.ttf")
 VF = str(ROOT / "fonts/variable/RunionNeo[wght].ttf")
 PAPER, INK, SOFT, ACCENT = (244, 240, 232), (24, 22, 20), (139, 131, 119), (196, 72, 48)
 
@@ -94,7 +93,7 @@ def futhark():
              "tiwaz ᛏ", "berkanan ᛒ", "ehwaz ᛖ", "mannaz ᛗ", "laguz ᛚ", "ingwaz ᛜ", "dagaz ᛞ", "othala ᛟ"]
     cw, ch = 250, 330
     img = Image.new("RGB", (8 * cw, 3 * ch + 40), PAPER)
-    d, big, small = ImageDraw.Draw(img), ImageFont.truetype(TTF, 190), label_font(24)
+    d, big, small = ImageDraw.Draw(img), ImageFont.truetype(VF, 190), label_font(24)
     for i, entry in enumerate(runes):
         name, rune = entry.split()
         x, y = (i % 8) * cw, (i // 8) * ch + 20

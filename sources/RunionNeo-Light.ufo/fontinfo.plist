@@ -75,10 +75,6 @@
     <integer>-100</integer>
     <key>postscriptUnderlineThickness</key>
     <integer>50</integer>
-    <key>styleMapFamilyName</key>
-    <string>Runion Neo Light</string>
-    <key>styleMapStyleName</key>
-    <string>regular</string>
     <key>styleName</key>
     <string>Light</string>
     <key>unitsPerEm</key>

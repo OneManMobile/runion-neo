@@ -1,19 +1,17 @@
-"""Build Runion Neo: a variable font (wght 300–700) and static Light, Regular and Bold.
+"""Build Runion Neo: one variable font, any weight from Light (300) to Bold (700).
 
     sources/glyphs.txt ─► sources/RunionNeo-{Light,Regular,Bold}.ufo + RunionNeo.designspace
                               (ink as separate pieces, so the masters interpolate)
-                          ─ fontmake ─► fonts/variable/RunionNeo[wght].ttf
-                      └─► merged outlines ─ fontmake ─► fonts/ttf/RunionNeo-{Light,Regular,Bold}.ttf
-    every font ─► fonts/webfonts/*.woff2 · the Regular ─► specimen/data.js (playground)
+                          ─ fontmake ─► fonts/variable/RunionNeo[wght].ttf ─► fonts/webfonts/RunionNeo[wght].woff2
+                      └─► the Regular, merged into outlines ─► specimen/data.js (playground)
 
 glyphs.txt is the real source: dots and the lines between them. The UFOs are generated from it
-on every build so the fonts can be compiled — and reviewed — with the standard fontmake tooling.
+on every build so the font can be compiled — and reviewed — with the standard fontmake tooling.
 Weight is the pen alone: the dots never move, the lines only get thicker or thinner.
 """
 import json
 import subprocess
 import sys
-import tempfile
 import time
 from dataclasses import replace
 from pathlib import Path
@@ -74,7 +72,7 @@ def stroke_of(style):
 
 
 def rings_of(g, Q, merged):
-    """Glyph contours at the pen Q: merged into one outline (statics, playground) or as pieces (masters)."""
+    """Glyph contours at the pen Q: merged into one outline (playground) or as pieces (masters)."""
     rings = contours(outline(g, Q), clockwise=False) if merged else [[(round(x), round(y)) for x, y in r]
                                                                      for r in pieces(g, Q)]
     if g.mark:                                             # zero-width: the ink sits back over the glyph before it
@@ -82,11 +80,11 @@ def rings_of(g, Q, merged):
     return rings
 
 
-def make_ufo(glyphs, fea, style, merged):
+def make_master(glyphs, fea, style):
     Q = replace(P, stroke=stroke_of(style))
     ufo, ys = Font(), []
     for g in glyphs:
-        rings = rings_of(g, Q, merged)
+        rings = rings_of(g, Q, merged=False)
         ys += [y for r in rings for _, y in r]
         glyph = ufo.newGlyph(g.name)
         glyph.width = 0 if g.mark else P.advance
@@ -102,8 +100,6 @@ def make_ufo(glyphs, fea, style, merged):
     ufo.lib["public.openTypeMeta"] = {"dlng": ["Latn", "Runr"], "slng": ["Latn", "Runr"]}
     i = ufo.info
     i.familyName, i.styleName, i.versionMajor, i.versionMinor = FAMILY, style, *VERSION
-    i.styleMapFamilyName = FAMILY if style in ("Regular", "Bold") else f"{FAMILY} {style}"
-    i.styleMapStyleName = "bold" if style == "Bold" else "regular"
     i.unitsPerEm, i.ascender, i.descender, i.capHeight, i.xHeight, i.italicAngle = P.upm, ASCENT, DESCENT, Q.cap, Q.cap, 0
     i.copyright, i.openTypeNameDesigner, i.openTypeNameDesignerURL = COPYRIGHT, DESIGNER, DESIGNER_URL
     i.openTypeNameManufacturer, i.openTypeNameManufacturerURL = DESIGNER, REPO
@@ -123,8 +119,8 @@ def fontmake(*args):
         sys.exit(run.stdout + run.stderr)
 
 
-def finish(path, variable=False):
-    """Unhinted fix-ups (as `gftools fix-nonhinting`), overlap flags for the variable font, then a WOFF2."""
+def finish(path):
+    """Unhinted fix-ups (as `gftools fix-nonhinting`), overlap flags, then the WOFF2."""
     font = TTFont(path)
     font["gasp"] = gasp = newTable("gasp")
     gasp.gaspRange = {0xFFFF: 15}
@@ -132,12 +128,11 @@ def finish(path, variable=False):
     prep.program = Program()
     prep.program.fromAssembly(["PUSHW[]", "511", "SCANCTRL[]", "PUSHB[]", "4", "SCANTYPE[]"])
     font["head"].flags |= 1 << 3
-    if variable:                                           # its pieces overlap on purpose: OVERLAP_SIMPLE
-        glyf = font["glyf"]
-        for name in font.getGlyphOrder():
-            g = glyf[name]
-            if g.numberOfContours > 0:
-                g.flags[0] |= 0x40
+    glyf = font["glyf"]                                    # its pieces overlap on purpose: OVERLAP_SIMPLE
+    for name in font.getGlyphOrder():
+        g = glyf[name]
+        if g.numberOfContours > 0:
+            g.flags[0] |= 0x40
     font.save(path)
     font.flavor = "woff2"
     font.save(ROOT / "fonts/webfonts" / path.with_suffix(".woff2").name)
@@ -154,15 +149,14 @@ def main():
             cmap[ord(c)] = g.name
     fea, n_seq, n_alt = features(glyphs, cmap)
 
-    for d in ("fonts/ttf", "fonts/variable", "fonts/webfonts"):
+    for d in ("fonts/variable", "fonts/webfonts"):
         (ROOT / d).mkdir(parents=True, exist_ok=True)
         for old in (ROOT / d).glob("*.*"):
             old.unlink()
 
-    masters = {s: make_ufo(glyphs, fea, s, merged=False) for s in MASTERS}
-    statics = {s: make_ufo(glyphs, fea, s, merged=True) for s in MASTERS}
-    ys = [y for _, v in [*masters.values(), *statics.values()] for y in v]
-    for ufo, _ in [*masters.values(), *statics.values()]:  # one set of win metrics, from the heaviest ink
+    masters = {s: make_master(glyphs, fea, s) for s in MASTERS}
+    ys = [y for _, v in masters.values() for y in v]
+    for ufo, _ in masters.values():                        # one set of win metrics, from the heaviest ink
         ufo.info.openTypeOS2WinAscent, ufo.info.openTypeOS2WinDescent = max(ys + [ASCENT]), -min(ys + [DESCENT])
 
     doc = DesignSpaceDocument()
@@ -181,15 +175,7 @@ def main():
 
     vf = ROOT / "fonts/variable" / f"{STEM}[wght].ttf"
     fontmake("-m", str(ds), "-o", "variable", "--output-path", str(vf))
-    finish(vf, variable=True)
-    with tempfile.TemporaryDirectory() as tmp:
-        paths = []
-        for s, (ufo, _) in statics.items():
-            ufo.save(Path(tmp) / f"{STEM}-{s}.ufo")
-            paths.append(str(Path(tmp) / f"{STEM}-{s}.ufo"))
-        fontmake("-u", *paths, "-o", "ttf", "--keep-overlaps", "--output-dir", str(ROOT / "fonts/ttf"))
-    for s in MASTERS:
-        finish(ROOT / "fonts/ttf" / f"{STEM}-{s}.ttf")
+    finish(vf)
 
     data = [{
         "name": g.name, "chars": g.chars, "mark": g.mark, "group": g.group,
@@ -213,7 +199,7 @@ def main():
     print(f"{len(names)} glyphs · {len(cmap)} characters · {n_seq} drawn sequences (ccmp) · {n_alt} alternates (ss01)")
     print(f"advance {P.advance} · stroke Light {P.light:g} · Regular {P.stroke:g} · Bold {P.bold:g} · ink y {min(ys)}…{max(ys)}")
     print(f"letters and digits not full width ({len(narrow)}): {' '.join(narrow) or '—'}")
-    print(f"→ {vf.relative_to(ROOT)} · fonts/ttf/{STEM}-{{{','.join(MASTERS)}}}.ttf")
+    print(f"→ {vf.relative_to(ROOT)} · fonts/webfonts/{vf.with_suffix('.woff2').name}")
 
 
 if __name__ == "__main__":
