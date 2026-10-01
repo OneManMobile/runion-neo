@@ -45,7 +45,7 @@ A capital is its lowercase letter with a rune accent: an added or split stroke, 
 | Y | Algiz ᛉ: the Y with its stave continued to the top. |
 | X Z | A bar across. |
 | J | A short stem under the top bar, hanging free between the bar and the hook. |
-| B C D G O Q U V | These have no line to add, so they get one dot, in the counter or, for B, at the middle right between its two flags. Medieval carvers made new letters from runes the same way, with a dot: the stung runes. |
+| B C D G O Q U V | These have no line to add, so they get one dot, in the counter or, for B and C, at the middle right in the open mouth. Medieval carvers made new letters from runes the same way, with a dot: the stung runes. |
 | S | Two dots, one in each counter: upper right and lower left. |
 
 Æ, Œ, Ð, Ø, Þ, ẞ, Ħ and Ł follow the same rules. Æ, Œ and Ð split their middle bar like E. Ø gets two slashes, the strokes of the medieval ø rune ᚯ. Capital Þ is thurisaz ᚦ itself, the rune the Latin letter comes from.

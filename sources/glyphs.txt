@@ -87,10 +87,10 @@ z         | z               | 06-26-00-20
 #   K the branches of kaunan · L a second bar right above its foot · M W mannaz's cross
 #   Y algiz · Z a bar · J a short stem hanging free under its bar
 #   B C D G O Q U V have no line to add: they take ONE stung dot, in the counter
-#   (B's sits at the middle right, between its two flags) · S takes two, one in each counter
+#   (B's and C's sit at the middle right, in the open mouth) · S takes two, one in each counter
 A         | A               | 16-00-16-20 03-23 02-22
 B         | B               | =b 23
-C         | C               | =c 13
+C         | C               | 26-03-20 23
 D         | D               | =d 13
 E         | E               | 26-06-00-20 04-14 02-12
 F         | F               | 06-00 04-26 02-24
