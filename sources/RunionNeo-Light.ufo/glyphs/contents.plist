@@ -74,10 +74,14 @@
     <string>Z_.glif</string>
     <key>a</key>
     <string>a.glif</string>
+    <key>ac</key>
+    <string>ac.glif</string>
     <key>acute</key>
     <string>acute.glif</string>
     <key>ae</key>
     <string>ae.glif</string>
+    <key>aesc</key>
+    <string>aesc.glif</string>
     <key>algiz</key>
     <string>algiz.glif</string>
     <key>ampersand</key>
@@ -120,8 +124,12 @@
     <string>bullet.glif</string>
     <key>c</key>
     <string>c.glif</string>
+    <key>calc</key>
+    <string>calc.glif</string>
     <key>caron</key>
     <string>caron.glif</string>
+    <key>cealc</key>
+    <string>cealc.glif</string>
     <key>cedilla</key>
     <string>cedilla.glif</string>
     <key>cen</key>
@@ -138,6 +146,8 @@
     <string>copyright.glif</string>
     <key>crune</key>
     <string>crune.glif</string>
+    <key>cweorth</key>
+    <string>cweorth.glif</string>
     <key>d</key>
     <string>d.glif</string>
     <key>dagaz</key>
@@ -168,6 +178,8 @@
     <string>drune.glif</string>
     <key>e</key>
     <string>e.glif</string>
+    <key>ear</key>
+    <string>ear.glif</string>
     <key>ehwaz</key>
     <string>ehwaz.glif</string>
     <key>eight</key>
@@ -202,8 +214,12 @@
     <string>four.glif</string>
     <key>g</key>
     <string>g.glif</string>
+    <key>gar</key>
+    <string>gar.glif</string>
     <key>gebo</key>
     <string>gebo.glif</string>
+    <key>ger</key>
+    <string>ger.glif</string>
     <key>germandbls</key>
     <string>germandbls.glif</string>
     <key>grave</key>
@@ -242,6 +258,8 @@
     <string>ing.glif</string>
     <key>ingwaz</key>
     <string>ingwaz.glif</string>
+    <key>ior</key>
+    <string>ior.glif</string>
     <key>isa</key>
     <string>isa.glif</string>
     <key>j</key>
@@ -300,6 +318,8 @@
     <string>ordmasculine.glif</string>
     <key>orune</key>
     <string>orune.glif</string>
+    <key>os</key>
+    <string>os.glif</string>
     <key>oslash</key>
     <string>oslash.glif</string>
     <key>oss</key>
@@ -396,6 +416,8 @@
     <string>sowilo.ss01.glif</string>
     <key>space</key>
     <string>space.glif</string>
+    <key>stan</key>
+    <string>stan.glif</string>
     <key>sterling</key>
     <string>sterling.glif</string>
     <key>stungfehu</key>
@@ -758,6 +780,8 @@
     <string>yen.glif</string>
     <key>yr</key>
     <string>yr.glif</string>
+    <key>yrfuthorc</key>
+    <string>yrfuthorc.glif</string>
     <key>yrune</key>
     <string>yrune.glif</string>
     <key>z</key>

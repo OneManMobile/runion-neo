@@ -227,6 +227,24 @@ drune     | ᛑ               | =shorttyr 23
 dottedp   | ᛔ               | =berkanan 23
 dottedl   | ᛛ               | =laguz 13
 
+# ── Anglo-Saxon Futhorc ── the rest of the row next to ᚳ ᚻ ᛝ above ──
+#   ᚩ ōs bends both arms of ansuz back up · ᚪ āc bends only the top one · ᚫ æsc keeps
+#   them straight and close · ᚸ gār opens gebo's crossing into a diamond, ᛤ cealc adds a stave
+#   ᛄ gēr is a stave through a diamond · ᛡ īor is a steep hagall · ᛣ calc is yr ᛦ
+#   ᛥ stān is two staves with two crossings · ᛢ cweorþ hooks both ends of its stave
+yrfuthorc | ᚣ               | 00-06-20 10-12
+os        | ᚩ               | 00-06 06-15-26 04-13-24
+ac        | ᚪ               | 00-06 06-15-26 04-13
+aesc      | ᚫ               | 00-06-24 05-23
+gar       | ᚸ               | 06-14-26 00-12-20 03-14-23-12-03
+ger       | ᛄ               | 10-16 03-14-23-12-03
+ear       | ᛠ               | 10-16 06-05-16-25-26
+ior       | ᛡ               | 10-16 05-21 01-25
+cweorth   | ᛢ               | 10-16 16-25-26 10-01-00
+calc      | ᛣ               | =yr
+cealc     | ᛤ               | =gar 10-16
+stan      | ᛥ               | 00-06 20-26 06-23-00 26-03-20
+
 # ── Numbers ── same grid, same rules ───────────────────────────────
 zero      | 0               | 10-01-05-16-25-21-10 12-14
 one       | 1               | 05-16-10 00-20
