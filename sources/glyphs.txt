@@ -232,7 +232,7 @@ dottedl   | ᛛ               | =laguz 13
 #   them straight and close · ᚸ gār opens gebo's crossing into a diamond, ᛤ cealc adds a stave
 #   ᛄ gēr is a stave through a diamond · ᛡ īor is a steep hagall · ᛣ calc is yr ᛦ
 #   ᛥ stān is two staves with two crossings · ᛢ cweorþ hooks both ends of its stave
-yrfuthorc | ᚣ               | 00-06-20 10-12
+yrfuthorc | ᚣ               | 00-06-24-20 10-13
 os        | ᚩ               | 00-06 06-15-26 04-13-24
 ac        | ᚪ               | 00-06 06-15-26 04-13
 aesc      | ᚫ               | 00-06-24 05-23
