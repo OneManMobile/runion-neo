@@ -246,6 +246,8 @@
     <string>macron.glif</string>
     <key>mannaz</key>
     <string>mannaz.glif</string>
+    <key>multiply</key>
+    <string>multiply.glif</string>
     <key>n</key>
     <string>n.glif</string>
     <key>naudiz</key>
@@ -284,6 +286,8 @@
     <string>percent.glif</string>
     <key>period</key>
     <string>period.glif</string>
+    <key>periodcentered</key>
+    <string>periodcentered.glif</string>
     <key>perthro</key>
     <string>perthro.glif</string>
     <key>plus</key>
@@ -318,6 +322,8 @@
     <string>registered.glif</string>
     <key>ring</key>
     <string>ring.glif</string>
+    <key>runecolon</key>
+    <string>runecolon.glif</string>
     <key>runecross</key>
     <string>runecross.glif</string>
     <key>runedot</key>

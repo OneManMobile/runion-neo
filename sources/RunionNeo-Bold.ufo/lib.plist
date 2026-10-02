@@ -147,6 +147,9 @@
       <string>numbersign</string>
       <string>runedot</string>
       <string>runecross</string>
+      <string>runecolon</string>
+      <string>periodcentered</string>
+      <string>multiply</string>
       <string>bar</string>
       <string>asciicircum</string>
       <string>grave</string>

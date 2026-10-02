@@ -205,7 +205,7 @@ nine      | 9               | 06-26-24-04-06 24-00
 # ── Symbols ──────────────────────────────────────────────────────────
 period    | .               | 10
 comma     | , ‚             | 11-00
-colon     | : ᛬             | 12 14
+colon     | :               | 12 14
 semicolon | ;               | 14 12-01
 exclam    | !               | 16-11 11 10
 question  | ?               | 06-26-14-12 10
@@ -225,8 +225,11 @@ less      | <               | 25-03-21
 greater   | >               | 05-23-01
 asterisk  | *               | 05-23 03-25 13-15
 numbersign| U+0023          | 00-15 10-25 02-22 04-24
-runedot   | ᛫ ·             | 13
-runecross | ᛭ ×             | 02-24 04-22
+runedot   | ᛫               | 13
+runecross | ᛭               | 02-24 04-22
+runecolon | ᛬               | =colon
+periodcentered | ·          | =runedot
+multiply  | ×               | =runecross
 bar        | U+007C         | 10-16
 asciicircum| ^              | 04-16-24
 grave      | `              | 06-15
