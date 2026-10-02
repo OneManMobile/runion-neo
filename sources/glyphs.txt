@@ -219,7 +219,7 @@ icelandicyr | ᛨ             | 10-16 05-16-25 01-10-21
 xrune     | ᛪ               | 05-15 06-04-22-20 11-21
 yrune     | ᚤ               | =uruz 13
 wrune     | ᚥ               | 00-06-25-20 04-23 13-10
-grune     | ᚵ               | =kaun 15
+grune     | ᚵ               | 06-00 03-26 16
 engrune   | ᚶ               | =kaun 12
 dottedn   | ᛀ               | =naudiz 23
 erune     | ᛂ               | 16-15-04-13-10-13-24-15
