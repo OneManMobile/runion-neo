@@ -202,7 +202,7 @@ oss       | ᚬ               | 10-16 06-24 04-22
 madr      | ᛘ               | =algiz
 yr        | ᛦ               | 10-16 00-13-20
 shortoss  | ᚭ               | 10-16 15-24 13-22
-shorthagall | ᚽ             | 10-16 03-23
+shorthagall | ᚽ             | 16-14-03-12-10-12-23-14 13
 shortnaud | ᚿ               | 10-16 13-22
 shortar   | ᛆ               | 10-16 02-13
 shortsol  | ᛌ               | 13-16
@@ -220,7 +220,7 @@ wrune     | ᚥ               | 00-06-25-20 04-23 13-10
 grune     | ᚵ               | =kaun 15
 engrune   | ᚶ               | =kaun 12
 dottedn   | ᛀ               | =naudiz 23
-erune     | ᛂ               | =isa 23
+erune     | ᛂ               | 16-15-04-13-10-13-24-15
 crune     | ᛍ               | =shortsol 11
 zrune     | ᛎ               | 13-16 04-13-24
 drune     | ᛑ               | =shorttyr 23
