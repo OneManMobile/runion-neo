@@ -195,7 +195,8 @@ sowilo.ss01 | ~ᛊ            | 26-04-23-02-20
 #   ᛘ maðr is algiz ᛉ and ᛦ yr is algiz upside down, as on the stones
 #   short-twig: the long form cut back to one side of its stave, or to half a stave
 #   stung: a dot never sits on a line here (it would vanish into it), so the stung dot
-#   goes beside the stave, in the crook or at the middle right, like the Latin capitals
+#   goes beside the stave, in the crook or at the middle right, like the Latin capitals ·
+#   ᛂ and ᚽ instead open the stave into a diamond, the lozenge of the references; ᚽ keeps a dot inside
 kaun      | ᚴ               | 00-06 02-26
 hagall    | ᚼ               | 10-16 04-22 02-24
 oss       | ᚬ               | 10-16 06-24 04-22
