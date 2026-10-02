@@ -94,6 +94,8 @@
     <string>ar.glif</string>
     <key>aring</key>
     <string>aring.glif</string>
+    <key>arlaug</key>
+    <string>arlaug.glif</string>
     <key>asciicircum</key>
     <string>asciicircum.glif</string>
     <key>asciitilde</key>
@@ -108,6 +110,8 @@
     <string>backslash.glif</string>
     <key>bar</key>
     <string>bar.glif</string>
+    <key>belgthor</key>
+    <string>belgthor.glif</string>
     <key>berkanan</key>
     <string>berkanan.glif</string>
     <key>braceleft</key>
@@ -212,6 +216,16 @@
     <string>five.glif</string>
     <key>four</key>
     <string>four.glif</string>
+    <key>franksac</key>
+    <string>franksac.glif</string>
+    <key>franksaesc</key>
+    <string>franksaesc.glif</string>
+    <key>frankseh</key>
+    <string>frankseh.glif</string>
+    <key>franksis</key>
+    <string>franksis.glif</string>
+    <key>franksos</key>
+    <string>franksos.glif</string>
     <key>g</key>
     <string>g.glif</string>
     <key>gar</key>
@@ -272,6 +286,8 @@
     <string>kaun.glif</string>
     <key>kaunan</key>
     <string>kaunan.glif</string>
+    <key>krune</key>
+    <string>krune.glif</string>
     <key>l</key>
     <string>l.glif</string>
     <key>laguz</key>
@@ -310,6 +326,8 @@
     <string>one.glif</string>
     <key>onrune</key>
     <string>onrune.glif</string>
+    <key>oorune</key>
+    <string>oorune.glif</string>
     <key>openp</key>
     <string>openp.glif</string>
     <key>ordfeminine</key>
@@ -406,6 +424,8 @@
     <string>shorttyr.glif</string>
     <key>shortyr</key>
     <string>shortyr.glif</string>
+    <key>shrune</key>
+    <string>shrune.glif</string>
     <key>six</key>
     <string>six.glif</string>
     <key>slash</key>
@@ -436,6 +456,8 @@
     <string>tiwaz.glif</string>
     <key>trademark</key>
     <string>trademark.glif</string>
+    <key>tvimadur</key>
+    <string>tvimadur.glif</string>
     <key>two</key>
     <string>two.glif</string>
     <key>u</key>

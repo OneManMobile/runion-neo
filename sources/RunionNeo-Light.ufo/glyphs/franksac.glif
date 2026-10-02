@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="franksac" format="2">
+  <advance width="400"/>
+  <unicode hex="16F7"/>
+  <outline>
+    <contour>
+      <point x="96" y="16" type="line"/>
+      <point x="96" y="736" type="line"/>
+      <point x="64" y="736" type="line"/>
+      <point x="64" y="16" type="line"/>
+    </contour>
+    <contour>
+      <point x="336" y="16" type="line"/>
+      <point x="336" y="616" type="line"/>
+      <point x="304" y="616" type="line"/>
+      <point x="304" y="16" type="line"/>
+    </contour>
+    <contour>
+      <point x="87" y="482" type="line"/>
+      <point x="327" y="602" type="line"/>
+      <point x="313" y="630" type="line"/>
+      <point x="73" y="510" type="line"/>
+    </contour>
+    <contour>
+      <point x="96" y="32" type="line"/>
+      <point x="64" y="32" type="line"/>
+      <point x="64" y="0" type="line"/>
+      <point x="96" y="0" type="line"/>
+    </contour>
+    <contour>
+      <point x="64" y="752" type="line"/>
+      <point x="64" y="720" type="line"/>
+      <point x="96" y="720" type="line"/>
+      <point x="96" y="752" type="line"/>
+    </contour>
+    <contour>
+      <point x="324" y="600" type="line"/>
+      <point x="336" y="606" type="line"/>
+      <point x="336" y="632" type="line"/>
+      <point x="316" y="632" type="line"/>
+      <point x="304" y="626" type="line"/>
+      <point x="304" y="600" type="line"/>
+    </contour>
+    <contour>
+      <point x="336" y="32" type="line"/>
+      <point x="304" y="32" type="line"/>
+      <point x="304" y="0" type="line"/>
+      <point x="336" y="0" type="line"/>
+    </contour>
+  </outline>
+</glyph>

@@ -245,6 +245,21 @@ calc      | ᛣ               | =yr
 cealc     | ᛤ               | =gar 10-16
 stan      | ᛥ               | 00-06 20-26 06-23-00 26-03-20
 
+# ── Rare runes ── golden numbers, Tolkien's additions, the Franks Casket ──
+#   ᛮ ᛯ ᛰ: the Icelandic golden-number runes, arlaug, tvímaðr (ᛉ over ᛦ), belgþór (a stave through
+#   a tall diamond) · ᛱ ᛲ ᛳ: Tolkien's k, sh and oo · ᛴ–ᛸ: the Franks Casket's cipher runes
+arlaug    | ᛮ               | 10-16 16-25 14-03
+tvimadur  | ᛯ               | 10-16 06-14-26 00-12-20
+belgthor  | ᛰ               | 10-16 03-15-23-11-03
+krune     | ᛱ               | 00-06 02-13-20
+shrune    | ᛲ               | 00-04-22-26
+oorune    | ᛳ               | 10-16 05-16-25-14-05
+franksos  | ᛴ               | 03-06 20-23 02-24
+franksis  | ᛵ               | 16-05-14-03-12-01-10
+frankseh  | ᛶ               | 06-20 02-23
+franksac  | ᛷ               | 00-06 04-25-20
+franksaesc| ᛸ               | 13-16 00-13-20
+
 # ── Numbers ── same grid, same rules ───────────────────────────────
 zero      | 0               | 10-01-05-16-25-21-10 12-14
 one       | 1               | 05-16-10 00-20

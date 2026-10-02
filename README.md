@@ -79,7 +79,7 @@ Everything is defined in one text file, [`sources/glyphs.txt`](sources/glyphs.tx
 
 Runion Neo is made for headlines, titles, signs and short text. On an ordinary screen it reads well from 16 px; at 12–14 px use Regular or Bold, and give Light about 18 px. On high-resolution screens, such as phones and Retina displays, these sizes halve.
 
-It covers the Google Fonts Latin Core character set (319 characters).
+It covers the Google Fonts Latin Core character set (319 characters) and the whole Unicode Runic block (89 characters, U+16A0–U+16F8).
 
 ## Building
 
@@ -109,4 +109,4 @@ This Font Software is licensed under the SIL Open Font License, Version 1.1. The
 
 ---
 
-**A historical footnote.** The look comes from runes. Their angular shapes were cut into wood and stone with straight strokes, and several of the capital ornaments are runes: H is dagaz ᛞ, M is mannaz ᛗ, F is fehu ᚠ, Y is algiz ᛉ, the second bar of A echoes the arms of ansuz ᚨ, and the dotted capitals follow the medieval stung runes, which made new letters by adding a dot. The font also draws the 24 runes of the Elder Futhark and a few later ones at their own Unicode codepoints, with an optional older form of ᛊ (`ss01`); the playground can convert text into them. Runion Neo is a typeface and makes no claim to be a reconstruction.
+**A historical footnote.** The look comes from runes. Their angular shapes were cut into wood and stone with straight strokes, and several of the capital ornaments are runes: H is dagaz ᛞ, M is mannaz ᛗ, F is fehu ᚠ, Y is algiz ᛉ, the second bar of A echoes the arms of ansuz ᚨ, and the dotted capitals follow the medieval stung runes, which made new letters by adding a dot. The font also draws the whole Unicode Runic block at its own codepoints: the Elder Futhark, the Younger Futhark in its long-branch and short-twig forms, the stung medieval runes, the Anglo-Saxon Futhorc, the golden-number runes, Tolkien's additions and the Franks Casket runes. It also has an optional older form of ᛊ (`ss01`), and the playground can convert text into runes. Runic is never mapped onto Latin codepoints. Runion Neo is a typeface and makes no claim to be a reconstruction.
