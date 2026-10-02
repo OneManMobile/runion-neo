@@ -221,7 +221,7 @@
     strokes = JSON.parse(JSON.stringify(g.strokes));
     active = null;
     setPen(P.stroke);
-    $("stage").scrollIntoView({ behavior: "smooth", block: "center" });
+    $("stage").closest(".lab").scrollIntoView({ behavior: "smooth", block: "start" });   // grid and the picked character both in view
   };
   $("glyphs").onclick = pick;
   $("showcase").onclick = pick;

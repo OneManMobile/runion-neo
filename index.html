@@ -97,7 +97,6 @@ Où est le café? Příliš žluťoučký kůň</textarea>
   <h2>Glyphs</h2>
   <div id="glyphs"></div>
 </main>
-<script>document.write('<script src="specimen/data.js?v=' + Date.now() + '"><\/script>');</script>
-<script src="specimen/app.js"></script>
+<script>for (const s of ["specimen/data.js", "specimen/app.js"]) document.write('<script src="' + s + '?v=' + Date.now() + '"><\/script>');</script>
 </body>
 </html>
