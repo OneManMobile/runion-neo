@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="orune" format="2">
+  <advance width="400"/>
+  <unicode hex="16AE"/>
+  <outline>
+    <contour>
+      <point x="237" y="37" type="line"/>
+      <point x="237" y="757" type="line"/>
+      <point x="163" y="757" type="line"/>
+      <point x="163" y="37" type="line"/>
+    </contour>
+    <contour>
+      <point x="106" y="491" type="line"/>
+      <point x="226" y="611" type="line"/>
+      <point x="174" y="663" type="line"/>
+      <point x="54" y="543" type="line"/>
+    </contour>
+    <contour>
+      <point x="106" y="251" type="line"/>
+      <point x="226" y="371" type="line"/>
+      <point x="174" y="423" type="line"/>
+      <point x="54" y="303" type="line"/>
+    </contour>
+    <contour>
+      <point x="237" y="74" type="line"/>
+      <point x="163" y="74" type="line"/>
+      <point x="163" y="0" type="line"/>
+      <point x="237" y="0" type="line"/>
+    </contour>
+    <contour>
+      <point x="163" y="794" type="line"/>
+      <point x="163" y="720" type="line"/>
+      <point x="237" y="720" type="line"/>
+      <point x="237" y="794" type="line"/>
+    </contour>
+    <contour>
+      <point x="95" y="480" type="line"/>
+      <point x="117" y="502" type="line"/>
+      <point x="117" y="554" type="line"/>
+      <point x="65" y="554" type="line"/>
+      <point x="43" y="532" type="line"/>
+      <point x="43" y="480" type="line"/>
+    </contour>
+    <contour>
+      <point x="95" y="240" type="line"/>
+      <point x="117" y="262" type="line"/>
+      <point x="117" y="314" type="line"/>
+      <point x="65" y="314" type="line"/>
+      <point x="43" y="292" type="line"/>
+      <point x="43" y="240" type="line"/>
+    </contour>
+  </outline>
+</glyph>

@@ -190,6 +190,43 @@ qrune     | ᛩ               | 20-26-04-22
 ansuz_ring| ᚨ+U+030A        | 00-06-24 04-22 02-20
 sowilo.ss01 | ~ᛊ            | 26-04-23-02-20
 
+# ── Younger Futhark ── long-branch, short-twig and the stung medieval runes ──
+#   long-branch: ᚬ óss crosses its stave twice · ᚴ kaun one arm up · ᚼ hagall a star
+#   ᛘ maðr is algiz ᛉ and ᛦ yr is algiz upside down, as on the stones
+#   short-twig: the long form cut back to one side of its stave, or to half a stave
+#   stung: a dot never sits on a line here (it would vanish into it), so the stung dot
+#   goes beside the stave, in the crook or at the middle right, like the Latin capitals
+kaun      | ᚴ               | 00-06 02-26
+hagall    | ᚼ               | 10-16 04-22 02-24
+oss       | ᚬ               | 10-16 06-24 04-22
+madr      | ᛘ               | =algiz
+yr        | ᛦ               | 10-16 00-13-20
+shortoss  | ᚭ               | 10-16 15-24 13-22
+shorthagall | ᚽ             | 10-16 03-23
+shortnaud | ᚿ               | 10-16 13-22
+shortar   | ᛆ               | 10-16 02-13
+shortsol  | ᛌ               | 13-16
+shorttyr  | ᛐ               | 10-16 05-16
+shortbjarkan | ᛓ            | 10-16 14-25 12-23
+shortmadr | ᛙ               | 10-16 05-16-25
+shortyr   | ᛧ               | 10-13
+orune     | ᚮ               | 10-16 04-15 02-13
+onrune    | ᚰ               | 10-16 04-26 02-13
+openp     | ᛕ               | 00-06 26-03-20
+icelandicyr | ᛨ             | 10-16 05-16-25 01-10-21
+xrune     | ᛪ               | 05-15 06-04-22-20 11-21
+yrune     | ᚤ               | =uruz 13
+wrune     | ᚥ               | =uruz 10-14-22
+grune     | ᚵ               | =kaun 15
+engrune   | ᚶ               | =kaun 12
+dottedn   | ᛀ               | =naudiz 23
+erune     | ᛂ               | =isa 23
+crune     | ᛍ               | =shortsol 11
+zrune     | ᛎ               | 13-16 04-13-24
+drune     | ᛑ               | =shorttyr 23
+dottedp   | ᛔ               | =berkanan 23
+dottedl   | ᛛ               | =laguz 13
+
 # ── Numbers ── same grid, same rules ───────────────────────────────
 zero      | 0               | 10-01-05-16-25-21-10 12-14
 one       | 1               | 05-16-10 00-20

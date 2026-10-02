@@ -136,6 +136,8 @@
     <string>comma.glif</string>
     <key>copyright</key>
     <string>copyright.glif</string>
+    <key>crune</key>
+    <string>crune.glif</string>
     <key>d</key>
     <string>d.glif</string>
     <key>dagaz</key>
@@ -156,6 +158,14 @@
     <string>dotlessj.glif</string>
     <key>dottedcircle</key>
     <string>dottedcircle.glif</string>
+    <key>dottedl</key>
+    <string>dottedl.glif</string>
+    <key>dottedn</key>
+    <string>dottedn.glif</string>
+    <key>dottedp</key>
+    <string>dottedp.glif</string>
+    <key>drune</key>
+    <string>drune.glif</string>
     <key>e</key>
     <string>e.glif</string>
     <key>ehwaz</key>
@@ -166,8 +176,12 @@
     <string>eihwaz.glif</string>
     <key>ellipsis</key>
     <string>ellipsis.glif</string>
+    <key>engrune</key>
+    <string>engrune.glif</string>
     <key>equal</key>
     <string>equal.glif</string>
+    <key>erune</key>
+    <string>erune.glif</string>
     <key>eth</key>
     <string>eth.glif</string>
     <key>ethrune</key>
@@ -196,6 +210,8 @@
     <string>grave.glif</string>
     <key>greater</key>
     <string>greater.glif</string>
+    <key>grune</key>
+    <string>grune.glif</string>
     <key>guillemetleft</key>
     <string>guillemetleft.glif</string>
     <key>guillemetright</key>
@@ -210,6 +226,8 @@
     <string>haegl.glif</string>
     <key>hagalaz</key>
     <string>hagalaz.glif</string>
+    <key>hagall</key>
+    <string>hagall.glif</string>
     <key>hbar</key>
     <string>hbar.glif</string>
     <key>hungarumlaut</key>
@@ -218,6 +236,8 @@
     <string>hyphen.glif</string>
     <key>i</key>
     <string>i.glif</string>
+    <key>icelandicyr</key>
+    <string>icelandicyr.glif</string>
     <key>ing</key>
     <string>ing.glif</string>
     <key>ingwaz</key>
@@ -230,6 +250,8 @@
     <string>jera.glif</string>
     <key>k</key>
     <string>k.glif</string>
+    <key>kaun</key>
+    <string>kaun.glif</string>
     <key>kaunan</key>
     <string>kaunan.glif</string>
     <key>l</key>
@@ -244,6 +266,8 @@
     <string>m.glif</string>
     <key>macron</key>
     <string>macron.glif</string>
+    <key>madr</key>
+    <string>madr.glif</string>
     <key>mannaz</key>
     <string>mannaz.glif</string>
     <key>multiply</key>
@@ -266,12 +290,20 @@
     <string>ogonek.glif</string>
     <key>one</key>
     <string>one.glif</string>
+    <key>onrune</key>
+    <string>onrune.glif</string>
+    <key>openp</key>
+    <string>openp.glif</string>
     <key>ordfeminine</key>
     <string>ordfeminine.glif</string>
     <key>ordmasculine</key>
     <string>ordmasculine.glif</string>
+    <key>orune</key>
+    <string>orune.glif</string>
     <key>oslash</key>
     <string>oslash.glif</string>
+    <key>oss</key>
+    <string>oss.glif</string>
     <key>othala</key>
     <string>othala.glif</string>
     <key>p</key>
@@ -336,6 +368,24 @@
     <string>semicolon.glif</string>
     <key>seven</key>
     <string>seven.glif</string>
+    <key>shortar</key>
+    <string>shortar.glif</string>
+    <key>shortbjarkan</key>
+    <string>shortbjarkan.glif</string>
+    <key>shorthagall</key>
+    <string>shorthagall.glif</string>
+    <key>shortmadr</key>
+    <string>shortmadr.glif</string>
+    <key>shortnaud</key>
+    <string>shortnaud.glif</string>
+    <key>shortoss</key>
+    <string>shortoss.glif</string>
+    <key>shortsol</key>
+    <string>shortsol.glif</string>
+    <key>shorttyr</key>
+    <string>shorttyr.glif</string>
+    <key>shortyr</key>
+    <string>shortyr.glif</string>
     <key>six</key>
     <string>six.glif</string>
     <key>slash</key>
@@ -694,17 +744,27 @@
     <string>v.glif</string>
     <key>w</key>
     <string>w.glif</string>
+    <key>wrune</key>
+    <string>wrune.glif</string>
     <key>wunjo</key>
     <string>wunjo.glif</string>
     <key>x</key>
     <string>x.glif</string>
+    <key>xrune</key>
+    <string>xrune.glif</string>
     <key>y</key>
     <string>y.glif</string>
     <key>yen</key>
     <string>yen.glif</string>
+    <key>yr</key>
+    <string>yr.glif</string>
+    <key>yrune</key>
+    <string>yrune.glif</string>
     <key>z</key>
     <string>z.glif</string>
     <key>zero</key>
     <string>zero.glif</string>
+    <key>zrune</key>
+    <string>zrune.glif</string>
   </dict>
 </plist>

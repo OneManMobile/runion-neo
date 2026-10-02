@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="crune" format="2">
+  <advance width="400"/>
+  <unicode hex="16CD"/>
+  <outline>
+    <contour>
+      <point x="178" y="114" type="line"/>
+      <point x="222" y="114" type="line"/>
+      <point x="222" y="158" type="line"/>
+      <point x="178" y="158" type="line"/>
+    </contour>
+    <contour>
+      <point x="216" y="376" type="line"/>
+      <point x="216" y="736" type="line"/>
+      <point x="184" y="736" type="line"/>
+      <point x="184" y="376" type="line"/>
+    </contour>
+    <contour>
+      <point x="216" y="392" type="line"/>
+      <point x="184" y="392" type="line"/>
+      <point x="184" y="360" type="line"/>
+      <point x="216" y="360" type="line"/>
+    </contour>
+    <contour>
+      <point x="184" y="752" type="line"/>
+      <point x="184" y="720" type="line"/>
+      <point x="216" y="720" type="line"/>
+      <point x="216" y="752" type="line"/>
+    </contour>
+  </outline>
+</glyph>

@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="erune" format="2">
+  <advance width="400"/>
+  <unicode hex="16C2"/>
+  <outline>
+    <contour>
+      <point x="298" y="354" type="line"/>
+      <point x="342" y="354" type="line"/>
+      <point x="342" y="398" type="line"/>
+      <point x="298" y="398" type="line"/>
+    </contour>
+    <contour>
+      <point x="216" y="16" type="line"/>
+      <point x="216" y="736" type="line"/>
+      <point x="184" y="736" type="line"/>
+      <point x="184" y="16" type="line"/>
+    </contour>
+    <contour>
+      <point x="216" y="32" type="line"/>
+      <point x="184" y="32" type="line"/>
+      <point x="184" y="0" type="line"/>
+      <point x="216" y="0" type="line"/>
+    </contour>
+    <contour>
+      <point x="184" y="752" type="line"/>
+      <point x="184" y="720" type="line"/>
+      <point x="216" y="720" type="line"/>
+      <point x="216" y="752" type="line"/>
+    </contour>
+  </outline>
+</glyph>

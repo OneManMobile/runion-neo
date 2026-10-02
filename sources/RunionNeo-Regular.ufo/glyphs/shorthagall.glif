@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="shorthagall" format="2">
+  <advance width="400"/>
+  <unicode hex="16BD"/>
+  <outline>
+    <contour>
+      <point x="225" y="25" type="line"/>
+      <point x="225" y="745" type="line"/>
+      <point x="175" y="745" type="line"/>
+      <point x="175" y="25" type="line"/>
+    </contour>
+    <contour>
+      <point x="80" y="360" type="line"/>
+      <point x="320" y="360" type="line"/>
+      <point x="320" y="410" type="line"/>
+      <point x="80" y="410" type="line"/>
+    </contour>
+    <contour>
+      <point x="225" y="50" type="line"/>
+      <point x="175" y="50" type="line"/>
+      <point x="175" y="0" type="line"/>
+      <point x="225" y="0" type="line"/>
+    </contour>
+    <contour>
+      <point x="175" y="770" type="line"/>
+      <point x="175" y="720" type="line"/>
+      <point x="225" y="720" type="line"/>
+      <point x="225" y="770" type="line"/>
+    </contour>
+    <contour>
+      <point x="55" y="360" type="line"/>
+      <point x="105" y="360" type="line"/>
+      <point x="105" y="410" type="line"/>
+      <point x="55" y="410" type="line"/>
+    </contour>
+    <contour>
+      <point x="295" y="410" type="line"/>
+      <point x="295" y="360" type="line"/>
+      <point x="345" y="360" type="line"/>
+      <point x="345" y="410" type="line"/>
+    </contour>
+  </outline>
+</glyph>
