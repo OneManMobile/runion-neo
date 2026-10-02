@@ -197,7 +197,7 @@ sowilo.ss01 | ~ᛊ            | 26-04-23-02-20
 #   stung: a dot never sits on a line here (it would vanish into it), so the stung dot
 #   goes beside the stave, in the crook or at the middle right, like the Latin capitals ·
 #   ᛂ ᚽ ᛑ ᛍ ᛙ instead open the stave into a diamond, the lozenge of the references; ᚽ keeps a dot
-#   inside · ᛛ ᚶ (stave on the edge) and ᛀ (a diagonal through the middle) keep the dot beside
+#   inside · ᚶ, whose stave is on the edge, takes half a diamond · ᛛ and ᛀ keep the dot beside
 kaun      | ᚴ               | 00-06 02-26
 hagall    | ᚼ               | 10-16 04-22 02-24
 oss       | ᚬ               | 10-16 06-24 04-22
@@ -220,7 +220,7 @@ xrune     | ᛪ               | 05-15 06-04-22-20 11-21
 yrune     | ᚤ               | =uruz 13
 wrune     | ᚥ               | 00-06-25-20 04-23 13-10
 grune     | ᚵ               | 06-00 03-26 16
-engrune   | ᚶ               | =kaun 12
+engrune   | ᚶ               | 06-04-26 04-13-02-00 02-04
 dottedn   | ᛀ               | =naudiz 23
 erune     | ᛂ               | 16-15-04-13-10-13-24-15
 crune     | ᛍ               | 16-14-03-12-23-14
