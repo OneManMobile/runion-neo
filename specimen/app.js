@@ -129,7 +129,18 @@
   };
 
   // ── sketchpad ─────────────────────────────────────────────────────
-  let strokes = [], active = null;
+  let strokes = [], active = null, current = null;       // current: the glyph picked from the table, if any
+  // a character as glyphs.txt writes it: awkward ones (space, |, #, combining marks) as U+XXXX
+  const tok = (c) => /[\s|#\p{M}\p{C}]/u.test(c) ? "U+" + c.codePointAt(0).toString(16).toUpperCase().padStart(4, "0") : c;
+  const charsField = (g) => [...g.chars.map(tok), ...g.sequences.map((s) => [...s].map(tok).join("+")),
+                             ...g.optional.map((c) => "~" + tok(c))].join(" ");
+  const line = () => current ? `${current.name} | ${charsField(current)} | ${$("code").value.trim()}` : $("code").value.trim();
+  function showPicked() {
+    const shown = [...current.chars, ...current.sequences, ...current.optional];
+    $("sym").textContent = shown.join(" ");
+    $("pickinfo").textContent = [current.name, ...[...current.chars, ...current.optional].map((c) =>
+      "U+" + c.codePointAt(0).toString(16).toUpperCase().padStart(4, "0"))].join(" · ") + (current.optional.length ? " (ss01)" : "");
+  }
   const encode = () => strokes.map((s) => s.map((p) => p[0] + rowCode(p[1])).join("-")).join(" ");
   const decode = (t) => t.trim().split(/\s+/).filter(Boolean).map((s) => s.split("-").map((p) => [+p[0], rowOf(p[1])]));
   const valid = (t) => new RegExp(`^\\s*(([0-${P.cols - 1}][0-${HIGH}ab])(-[0-${P.cols - 1}][0-${HIGH}ab])*\\s*)*$`).test(t);
@@ -150,9 +161,12 @@
       `<rect x="${P.side}" y="0" width="${P.advance - 2 * P.side}" height="${P.cap}" fill="none" stroke="var(--line)" stroke-width="3" stroke-dasharray="10 10"/>` +
       `<g opacity=".82">${ink(strokes)}</g>${skeleton}${dots}`;
     if (!fromInput) $("code").value = encode();
+    $("line").textContent = current ? line() : "";
     const xs = strokes.flat().map((p) => p[0]), full = xs.includes(0) && xs.includes(P.cols - 1);
-    $("rule").className = full ? "ok" : "bad";
-    $("rule").textContent = !xs.length ? "" : full ? "✓ fills the full width" : "✗ a letter or digit must touch both the left and right column";
+    // the full-width rule binds Latin letters and digits only; runes and symbols keep their own width
+    const bound = !current || current.chars.some((c) => /[\p{Script=Latin}\p{Nd}]/u.test(c));
+    $("rule").className = full || !bound ? "ok" : "bad";
+    $("rule").textContent = !xs.length || (!bound && !full) ? "" : full ? "✓ fills the full width" : "✗ a letter or digit must touch both the left and right column";
   }
 
   $("stage").onclick = (e) => {
@@ -174,7 +188,7 @@
     draw();
   };
   $("clear").onclick = () => { strokes = []; active = null; draw(); };
-  $("copy").onclick = () => navigator.clipboard && navigator.clipboard.writeText($("code").value);
+  $("copy").onclick = () => navigator.clipboard && navigator.clipboard.writeText(line());
   $("code").oninput = (e) => { if (valid(e.target.value)) { strokes = decode(e.target.value); active = null; draw(true); } };
   const setPen = (v) => { pen = +v; $("pen").value = pen; $("penv").textContent = pen; draw(); };
   $("pen").oninput = (e) => setPen(e.target.value);
@@ -202,6 +216,8 @@
     const cell = document.querySelector(`.cell[data-name="${hit.dataset.name}"]`);
     if (cell) cell.classList.add("on");
     const g = glyphs.find((g) => g.name === hit.dataset.name);
+    current = g;
+    showPicked();
     strokes = JSON.parse(JSON.stringify(g.strokes));
     active = null;
     setPen(P.stroke);
@@ -210,6 +226,8 @@
   $("glyphs").onclick = pick;
   $("showcase").onclick = pick;
 
-  strokes = JSON.parse(JSON.stringify(glyphs.find((g) => g.name === "A").strokes));
+  current = glyphs.find((g) => g.name === "A");
+  showPicked();
+  strokes = JSON.parse(JSON.stringify(current.strokes));
   setPen(P.stroke);
 })();

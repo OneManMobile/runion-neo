@@ -41,6 +41,10 @@
   button { font:inherit; font-size:13px; padding:6px 12px; border:1px solid var(--line); background:var(--card); color:var(--ink);
            border-radius:4px; cursor:pointer; } button:hover { border-color:var(--accent); color:var(--accent); }
   .ok { color:var(--soft); } .bad { color:var(--accent); }
+  #picked { display:flex; align-items:baseline; gap:12px; margin:0 0 8px; min-height:44px; }
+  #sym { font:40px/1 system-ui, "Runion Neo"; user-select:all; }
+  #pickinfo { font:13px ui-monospace, Menlo, monospace; color:var(--soft); }
+  #line { margin-top:8px; font:13px ui-monospace, Menlo, monospace; color:var(--soft); user-select:all; overflow-wrap:anywhere; }
   .group { font-size:12px; color:var(--soft); margin:28px 0 10px; }
   .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(84px, 1fr)); gap:8px; }
   .cell { border:1px solid var(--line); background:var(--card); border-radius:4px; padding:10px 6px 6px; text-align:center; cursor:pointer; }
@@ -75,8 +79,10 @@ Où est le café? Příliš žluťoučký kůň</textarea>
     <svg id="stage"></svg>
     <div>
       <p>Pick any glyph below to load it, or draw your own: click a dot to start a line, keep clicking to continue it. Click the last dot again to end the stroke (that also makes a lone dot).</p>
-      <p class="soft">A point is written <b>xy</b> — column, then row. <b>06</b> is top-left, <b>20</b> bottom-right. Lines join any two points with a dash. That string is the entire definition of a glyph.</p>
+      <p class="soft">A point is written <b>xy</b> — column, then row. <b>06</b> is top-left, <b>20</b> bottom-right. Lines join any two points with a dash. That string is the entire definition of a glyph. <b>copy</b> gives the whole line for glyphs.txt: name, character, strokes.</p>
+      <div id="picked"><span id="sym"></span><span id="pickinfo"></span></div>
       <input id="code" spellcheck="false" placeholder="00-16-20 02-22 04-24">
+      <div id="line"></div>
       <div class="bar">
         <button id="undo">undo point</button><button id="clear">clear</button><button id="copy">copy</button>
         <span id="rule"></span>
